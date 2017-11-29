@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:Core Ml Vision Simple/Core Ml Vision Simple.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Core ML Vision Continuous Learning/Core ML Vision Continuous Learning.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Core ML Vision Discovery/Core ML Vision Discovery.xcodeproj">
+   </FileRef>
+</Workspace>
