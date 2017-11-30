@@ -18,8 +18,6 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var classificationLabel: UILabel!
     
-    var test = ""
-    
     // MARK: - Image Classification
     
     /// - Tag: MLModelSetup
@@ -80,7 +78,7 @@ class ImageClassificationViewController: UIViewController {
                     // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
                     return String(format: "  (%.4f) %@", classification.confidence, classification.identifier)
                 }
-                                self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+                self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
                 //                self.saveClassification(classificationLabel: self.imageClassification, imageData: self.imageBinary)
             }
         }
