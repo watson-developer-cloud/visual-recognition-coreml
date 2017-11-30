@@ -13,7 +13,7 @@
 		2DBDD2601FCF7F0E004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */; };
 		2DE513261FD065400063C133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE513251FD065380063C133 /* Main.storyboard */; };
 		2DE513281FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
-		2DE5132A1FD067AB0063C133 /* mobilenet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513291FD0679F0063C133 /* mobilenet.mlmodel */; };
+		2DE5132D1FD06B150063C133 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2DE5132C1FD06AF00063C133 /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,7 +25,7 @@
 		2DBDD2611FCF7F0E004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE513251FD065380063C133 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
-		2DE513291FD0679F0063C133 /* mobilenet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = mobilenet.mlmodel; path = "../../../WatsonVRandCoreML-Swift/WatsonVR_CoreML/mobilenet.mlmodel"; sourceTree = "<group>"; };
+		2DE5132C1FD06AF00063C133 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,8 +61,8 @@
 				2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */,
 				2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */,
 				2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
+				2DE5132C1FD06AF00063C133 /* MobileNet.mlmodel */,
 				2DE513251FD065380063C133 /* Main.storyboard */,
-				2DE513291FD0679F0063C133 /* mobilenet.mlmodel */,
 				2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */,
 				2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2611FCF7F0E004A6DC1 /* Info.plist */,
@@ -142,10 +142,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DE5132D1FD06B150063C133 /* MobileNet.mlmodel in Sources */,
 				2DBDD2551FCF7F0E004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DBDD2531FCF7F0E004A6DC1 /* AppDelegate.swift in Sources */,
 				2DE513281FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
-				2DE5132A1FD067AB0063C133 /* mobilenet.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
