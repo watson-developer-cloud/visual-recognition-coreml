@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Core Ml Vision Simple/ImageClassificationViewController.swift"
-            timestampString = "533752641.122282"
+            timestampString = "533762219.57068"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "98"
-            endingLineNumber = "98"
+            startingLineNumber = "97"
+            endingLineNumber = "97"
             landmarkName = "takePicture()"
             landmarkType = "7">
          </BreakpointContent>

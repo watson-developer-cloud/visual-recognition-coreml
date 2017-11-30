@@ -10,7 +10,6 @@ import UIKit
 import CoreML
 import Vision
 import ImageIO
-import CoreData
 
 class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
