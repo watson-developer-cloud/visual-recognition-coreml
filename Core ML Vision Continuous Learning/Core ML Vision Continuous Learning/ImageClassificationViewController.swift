@@ -19,71 +19,20 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var classificationLabel: UILabel!
     
-    // MARK: - Image Classification
+    let apiKey = ""
+    let version = ""
+    var visualRecognition: VisualRecognition!
+    var watsonModel: VisualRecognitionCoreMLModel!
     
-    /// - Tag: MLModelSetup
-    lazy var classificationRequest: VNCoreMLRequest = {
-        do {
-            let model = try VNCoreMLModel(for: MobileNet().model)
-            
-            let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
-                self?.processClassifications(for: request, error: error)
-            })
-            request.imageCropAndScaleOption = .scaleFit
-            return request
-        } catch {
-            fatalError("Failed to load Vision ML model: \(error)")
-        }
-    }()
-    
-    /// - Tag: PerformRequests
-    func updateClassifications(for image: UIImage) {
-        classificationLabel.text = "Classifying..."
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
         
-        let orientation = CGImagePropertyOrientation(image.imageOrientation)
-        guard let ciImage = CIImage(image: image) else { fatalError("Unable to create \(CIImage.self) from \(image).") }
-        
-        DispatchQueue.global(qos: .userInitiated).async {
-            let handler = VNImageRequestHandler(ciImage: ciImage, orientation: orientation)
-            do {
-                try handler.perform([self.classificationRequest])
-            } catch {
-                /*
-                 This handler catches general image processing errors. The `classificationRequest`'s
-                 completion handler `processClassifications(_:error:)` catches errors specific
-                 to processing that request.
-                 */
-                print("Failed to perform classification.\n\(error.localizedDescription)")
-            }
+        if let model = try? VNCoreMLModel( for: MobileNet().model ) {
+            watsonModel = VisualRecognitionCoreMLModel( model: model )
         }
     }
     
-    /// Updates the UI with the results of the classification.
-    /// - Tag: ProcessClassifications
-    func processClassifications(for request: VNRequest, error: Error?) {
-        DispatchQueue.main.async {
-            guard let results = request.results else {
-                self.classificationLabel.text = "Unable to classify image.\n\(error!.localizedDescription)"
-                return
-            }
-            // The `results` will always be `VNClassificationObservation`s, as specified by the Core ML model in this project.
-            let classifications = results as! [VNClassificationObservation]
-            
-            if classifications.isEmpty {
-                self.classificationLabel.text = "Nothing recognized."
-            } else {
-                // Display top classifications ranked by confidence in the UI.
-                let topClassifications = classifications.prefix(2)
-                //                self.imageClassification = topClassifications[0].identifier
-                let descriptions = topClassifications.map { classification in
-                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-                    return String(format: "  (%.4f) %@", classification.confidence, classification.identifier)
-                }
-                self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
-                //                self.saveClassification(classificationLabel: self.imageClassification, imageData: self.imageBinary)
-            }
-        }
-    }
     
     // MARK: - Photo Actions
     
@@ -116,6 +65,36 @@ class ImageClassificationViewController: UIViewController {
         present(picker, animated: true)
     }
     
+    // MARK: - Image Classification
+    
+    func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
+        
+        classificationLabel.text = "Classifying..."
+        
+        let failure = { (error: Error) in
+            print(error)
+        }
+        // TODO: remove this line once SDK switches to using UIImage
+        let imageData = UIImageJPEGRepresentation(image, 1.0)
+        
+        self.visualRecognition.classify(image: imageData!, model: watsonModel.model, localThreshold: localThreshold, failure: failure) { classifiedImages in
+            let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
+            
+            // Update UI on main thread
+            DispatchQueue.main.async {
+                if filtered.isEmpty {
+                    self.classificationLabel.text = "Unrecognized."
+                } else {
+                    let descriptions = filtered.map { classification in
+                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
+                    }
+                    self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+                }
+            }
+        }
+    }
+    
     
 }
 
@@ -130,8 +109,7 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.image = image
         
-        //        self.imageBinary = UIImageJPEGRepresentation(image, 1)
-        updateClassifications(for: image)
+        classifyImage(for: image, localThreshold: 0.1)
     }
 }
 
