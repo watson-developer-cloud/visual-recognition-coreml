@@ -1,0 +1,11 @@
+framework module VisualRecognitionV3 {
+  umbrella header "VisualRecognitionV3.h"
+
+  export *
+  module * { export * }
+}
+
+module VisualRecognitionV3.Swift {
+    header "VisualRecognitionV3-Swift.h"
+    requires objc
+}
