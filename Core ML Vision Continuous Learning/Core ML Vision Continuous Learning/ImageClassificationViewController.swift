@@ -10,6 +10,7 @@ import UIKit
 import CoreML
 import Vision
 import ImageIO
+import VisualRecognitionV3
 
 class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets

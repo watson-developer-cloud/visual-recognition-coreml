@@ -12,12 +12,28 @@
 		2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD27A1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld */; };
 		2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
 		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
+		2DBEDF431FD20171003F17C8 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D05D30A1FD1FFA100FA3A0E /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DE513351FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		2DE513371FD093F90063C133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE513361FD093B60063C133 /* Main.storyboard */; };
 		2DE513391FD094230063C133 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513381FD094110063C133 /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2DBEDF441FD20171003F17C8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2DBEDF431FD20171003F17C8 /* VisualRecognitionV3.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2D05D30A1FD1FFA100FA3A0E /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = ../../Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Continuous Learning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Continuous Learning.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2751FCF7F88004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +76,7 @@
 		2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Continuous Learning */ = {
 			isa = PBXGroup;
 			children = (
+				2D05D30A1FD1FFA100FA3A0E /* VisualRecognitionV3.framework */,
 				2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */,
 				2DBDD2751FCF7F88004A6DC1 /* ImageClassificationViewController.swift */,
 				2DE513361FD093B60063C133 /* Main.storyboard */,
@@ -83,6 +100,7 @@
 				2DBDD26C1FCF7F88004A6DC1 /* Sources */,
 				2DBDD26D1FCF7F88004A6DC1 /* Frameworks */,
 				2DBDD26E1FCF7F88004A6DC1 /* Resources */,
+				2DBEDF441FD20171003F17C8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
