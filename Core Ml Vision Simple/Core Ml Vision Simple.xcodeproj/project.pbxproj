@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D7EF15D1FD5DFCA0007B7E0 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2D7EF15C1FD5DFCA0007B7E0 /* MobileNet.mlmodel */; };
 		2DBDD2531FCF7F0E004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */; };
 		2DBDD2551FCF7F0E004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */; };
 		2DBDD25D1FCF7F0E004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2D7EF15C1FD5DFCA0007B7E0 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = ../MobileNet.mlmodel; sourceTree = "<group>"; };
 		2DBDD24F1FCF7F0E004A6DC1 /* Core Ml Vision Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Ml Vision Simple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
@@ -40,6 +42,7 @@
 		2DBDD2461FCF7F0E004A6DC1 = {
 			isa = PBXGroup;
 			children = (
+				2D7EF15C1FD5DFCA0007B7E0 /* MobileNet.mlmodel */,
 				2DBDD2511FCF7F0E004A6DC1 /* Core Ml Vision Simple */,
 				2DBDD2501FCF7F0E004A6DC1 /* Products */,
 			);
@@ -139,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7EF15D1FD5DFCA0007B7E0 /* MobileNet.mlmodel in Sources */,
 				2DBDD2551FCF7F0E004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DBDD2531FCF7F0E004A6DC1 /* AppDelegate.swift in Sources */,
 				2DE513281FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
