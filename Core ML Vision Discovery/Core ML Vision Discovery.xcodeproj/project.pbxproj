@@ -15,7 +15,6 @@
 		2DBDD29F1FCF7FAE004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD29E1FCF7FAE004A6DC1 /* Assets.xcassets */; };
 		2DBDD2A21FCF7FAE004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD2A01FCF7FAE004A6DC1 /* LaunchScreen.storyboard */; };
 		2DBEDF461FD20680003F17C8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBEDF451FD20672003F17C8 /* Main.storyboard */; };
-		2DBEDF481FD206A8003F17C8 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEDF471FD2068C003F17C8 /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,7 +41,6 @@
 		2DBDD2A11FCF7FAE004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2A31FCF7FAE004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DBEDF451FD20672003F17C8 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		2DBEDF471FD2068C003F17C8 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */,
-				2DBEDF471FD2068C003F17C8 /* MobileNet.mlmodel */,
 				2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */,
 				2DBEDF451FD20672003F17C8 /* Main.storyboard */,
 				2DBDD29E1FCF7FAE004A6DC1 /* Assets.xcassets */,
@@ -162,7 +159,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DBEDF481FD206A8003F17C8 /* MobileNet.mlmodel in Sources */,
 				2DBDD2971FCF7FAE004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DBDD29D1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld in Sources */,
 				2DBDD2951FCF7FAE004A6DC1 /* AppDelegate.swift in Sources */,

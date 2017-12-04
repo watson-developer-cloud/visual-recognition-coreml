@@ -16,7 +16,6 @@
 		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
 		2DE513351FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		2DE513371FD093F90063C133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE513361FD093B60063C133 /* Main.storyboard */; };
-		2DE513391FD094230063C133 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513381FD094110063C133 /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -44,7 +43,6 @@
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		2DE513361FD093B60063C133 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../Core ML Vision Discovery/Core ML Vision Discovery/Main.storyboard"; sourceTree = "<group>"; };
-		2DE513381FD094110063C133 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = "../../Core ML Vision Discovery/Core ML Vision Discovery/MobileNet.mlmodel"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,7 +80,6 @@
 				2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */,
 				2DBDD2751FCF7F88004A6DC1 /* ImageClassificationViewController.swift */,
 				2DE513361FD093B60063C133 /* Main.storyboard */,
-				2DE513381FD094110063C133 /* MobileNet.mlmodel */,
 				2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */,
 				2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
@@ -166,7 +163,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DE513351FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
-				2DE513391FD094230063C133 /* MobileNet.mlmodel in Sources */,
 				2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */,
 				2DBDD2761FCF7F88004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */,
