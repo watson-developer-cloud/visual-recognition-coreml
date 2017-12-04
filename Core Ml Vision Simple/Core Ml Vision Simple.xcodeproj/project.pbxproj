@@ -12,7 +12,7 @@
 		2DBDD2551FCF7F0E004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */; };
 		2DBDD25D1FCF7F0E004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */; };
 		2DBDD2601FCF7F0E004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */; };
-		2DE513261FD065400063C133 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DE513251FD065380063C133 /* Main.storyboard */; };
+		2DC5F1391FD5F33E0063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1381FD5F33E0063B2D5 /* Main.storyboard */; };
 		2DE513281FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +24,7 @@
 		2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBDD25F1FCF7F0E004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2611FCF7F0E004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2DE513251FD065380063C133 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Main.storyboard; path = "../../Core ML Vision Continuous Learning/Core ML Vision Continuous Learning/Main.storyboard"; sourceTree = "<group>"; };
+		2DC5F1381FD5F33E0063B2D5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -59,10 +59,10 @@
 		2DBDD2511FCF7F0E004A6DC1 /* Core Ml Vision Simple */ = {
 			isa = PBXGroup;
 			children = (
+				2DC5F1381FD5F33E0063B2D5 /* Main.storyboard */,
 				2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */,
 				2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */,
 				2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
-				2DE513251FD065380063C133 /* Main.storyboard */,
 				2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */,
 				2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2611FCF7F0E004A6DC1 /* Info.plist */,
@@ -129,7 +129,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DE513261FD065400063C133 /* Main.storyboard in Resources */,
+				2DC5F1391FD5F33E0063B2D5 /* Main.storyboard in Resources */,
 				2DBDD2601FCF7F0E004A6DC1 /* LaunchScreen.storyboard in Resources */,
 				2DBDD25D1FCF7F0E004A6DC1 /* Assets.xcassets in Resources */,
 			);
