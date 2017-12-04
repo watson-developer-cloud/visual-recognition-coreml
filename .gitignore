@@ -4,4 +4,5 @@
 # Xcode - User files
 *xcuserdata/
 
-Carthage/Checkouts
+# Carthage
+Carthage/
