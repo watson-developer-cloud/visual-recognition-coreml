@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D7EF1511FD5CC680007B7E0 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7EF1501FD5CC680007B7E0 /* VisualRecognitionV3.framework */; };
+		2D7EF1521FD5CC680007B7E0 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7EF1501FD5CC680007B7E0 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DBDD2951FCF7FAE004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */; };
 		2DBDD2971FCF7FAE004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */; };
 		2DBDD29D1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD29B1FCF7FAE004A6DC1 /* Core_ML_Vision_Discovery.xcdatamodeld */; };
@@ -16,7 +18,22 @@
 		2DBEDF481FD206A8003F17C8 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2DBEDF471FD2068C003F17C8 /* MobileNet.mlmodel */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		2D7EF1531FD5CC680007B7E0 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				2D7EF1521FD5CC680007B7E0 /* VisualRecognitionV3.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2D7EF1501FD5CC680007B7E0 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = ../Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 		2DBDD2911FCF7FAE004A6DC1 /* Core ML Vision Discovery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Discovery.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2941FCF7FAE004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2961FCF7FAE004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
@@ -33,6 +50,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D7EF1511FD5CC680007B7E0 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -42,6 +60,7 @@
 		2DBDD2881FCF7FAE004A6DC1 = {
 			isa = PBXGroup;
 			children = (
+				2D7EF1501FD5CC680007B7E0 /* VisualRecognitionV3.framework */,
 				2DBDD2931FCF7FAE004A6DC1 /* Core ML Vision Discovery */,
 				2DBDD2921FCF7FAE004A6DC1 /* Products */,
 			);
@@ -80,6 +99,7 @@
 				2DBDD28D1FCF7FAE004A6DC1 /* Sources */,
 				2DBDD28E1FCF7FAE004A6DC1 /* Frameworks */,
 				2DBDD28F1FCF7FAE004A6DC1 /* Resources */,
+				2D7EF1531FD5CC680007B7E0 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
