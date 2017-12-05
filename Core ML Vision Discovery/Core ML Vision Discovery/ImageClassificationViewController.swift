@@ -16,9 +16,6 @@ import DiscoveryV1
 
 class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
-    
-//    @IBOutlet weak var imageView: UIImageView!
-//    @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var displayContainer: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
@@ -44,6 +41,8 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
+    //MARK: - Pulley Library methods
+    
     private var pulleyViewController: PulleyViewController!
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -51,6 +50,8 @@ class ImageClassificationViewController: UIViewController {
             self.pulleyViewController = controller
         }
     }
+    
+    // MARK: - Display Methods
     
     func displayImage( image: UIImage ) {
         if let pulley = self.pulleyViewController {
@@ -71,7 +72,7 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
-    // Parse classification information. Check whether there is any indication of damage
+    // Parse  cable classification information. Check whether there is any indication of damage
     func sortClassifications(data: [VisualRecognitionV3.Classification]) -> [String: String] {
         var label = ""
         var damage = ""
@@ -85,7 +86,6 @@ class ImageClassificationViewController: UIViewController {
             } else if unparsedLabel.contains("_faulty") {
                 let damageDescription = unparsedLabel.replacingOccurrences(of: "_faulty", with: "")
                 damage = damageDescription.prefix(1).uppercased() + String(damageDescription.dropFirst())
-                print(damage)
             }
         }
         label = label.count > 0 ? label : "Unrecognized"
@@ -112,6 +112,8 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
+    // MARK: - Discovery Methods
+    
     // Convenience method for pushing discovery data to TableView
     func displayDiscoveryResults(data: String, title: String = "", subTitle: String = "") {
         getTableController { tableController, drawer in
@@ -124,9 +126,8 @@ class ImageClassificationViewController: UIViewController {
     }
 
     
-    //Convenience method for querying Discovery
+    // Method for querying Discovery
     func fetchDiscoveryResults(query: String, damaged: Bool = false) {
-        
         DispatchQueue.main.async {
             self.displayDiscoveryResults(data: "Retrieving more information on " + query + "...")
         }
@@ -139,10 +140,11 @@ class ImageClassificationViewController: UIViewController {
         print(queryItem)
         var generalQuery = ""
         var filter = ""
+        // search for troubleshooting information if cable is damaged
         if damaged {
             generalQuery = "text%3A%22faulty%20" + queryItem + "%22"
-        } else {
-            generalQuery = "extracted_metadata.title%3A%3A%22What%20is%20" + queryItem + "%3F%22"
+        } else { // search for general information if cable is not damaged
+            generalQuery = "extracted_metadata.title%3A%22What%20is%20" + queryItem + "%3F%22"
             filter = "text%3A%21%22faulty%22"
         }
         self.discovery.queryDocumentsInCollection(
@@ -209,8 +211,6 @@ class ImageClassificationViewController: UIViewController {
     
     func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
         
-//        classificationLabel.text = "Classifying..."
-        
         let failure = { (error: Error) in
             print(error)
         }
@@ -222,40 +222,10 @@ class ImageClassificationViewController: UIViewController {
             
             // Update UI on main thread
             DispatchQueue.main.async {
-//                if filtered.isEmpty {
-//                    self.classificationLabel.text = "Unrecognized."
-//                } else {
-//                    let descriptions = filtered.map { classification in
-//                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-//                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
-//                    }
-//                    self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
-//                }
                 self.displayResults( data: Array(filtered) )
             }
         }
     }
-    
-    // Convenience method for pushing classification data to TableView
-    func displayResults(data: [VisualRecognitionV3.Classification], discovery: Bool = false) {
-        getTableController { tableController, drawer in
-            if drawer.drawerPosition == .open {
-                return // assume user is inspecting results
-            }
-            let parsedData = sortClassifications(data: data)
-            let classification = parsedData["classification"]!
-            tableController.classificationLabel = classification
-            tableController.damage = parsedData["damage"]!
-            let damaged = parsedData["damage"]!.count > 0
-            if discovery && classification != "Unrecognized" {
-                print("fetching discovery")
-                fetchDiscoveryResults(query: classification, damaged: damaged)
-            }
-            self.dismiss(animated: false, completion: nil)
-            //            drawer.setDrawerPosition(position: .collapsed, animated: true)
-        }
-    }
-    
     
 }
 
