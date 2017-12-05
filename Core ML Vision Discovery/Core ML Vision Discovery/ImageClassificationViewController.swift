@@ -23,7 +23,12 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     
     
-    let apiKey = ""
+    let visualRecognitionApiKey = ""
+    let visualRecognitionClassifierID = ""
+    let discoveryUsername = ""
+    let discoveryPassword = ""
+    let discoveryEnvironmentID = ""
+    let discoveryCollectionID = ""
     let version = "2017-11-10"
     var visualRecognition: VisualRecognition!
     var watsonModel: VisualRecognitionCoreMLModel!
@@ -31,9 +36,7 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let discoveryUsername = ""
-        let discoveryPassword = ""
-        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
+        self.visualRecognition = VisualRecognition(apiKey: visualRecognitionApiKey, version: version)
         self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
         
         if let model = try? VNCoreMLModel( for: MobileNet().model ) {
@@ -123,8 +126,6 @@ class ImageClassificationViewController: UIViewController {
     
     //Convenience method for querying Discovery
     func fetchDiscoveryResults(query: String, damaged: Bool = false) {
-        let discoveryEnvironmentID = ""
-        let discoveryCollectionID = ""
         
         DispatchQueue.main.async {
             self.displayDiscoveryResults(data: "Retrieving more information on " + query + "...")
