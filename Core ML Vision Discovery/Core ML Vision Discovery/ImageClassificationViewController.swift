@@ -10,26 +10,165 @@ import UIKit
 import CoreML
 import Vision
 import ImageIO
+import Pulley
 import VisualRecognitionV3
+import DiscoveryV1
 
 class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
     
-    @IBOutlet weak var imageView: UIImageView!
+//    @IBOutlet weak var imageView: UIImageView!
+//    @IBOutlet weak var classificationLabel: UILabel!
+    @IBOutlet weak var displayContainer: UIView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var classificationLabel: UILabel!
     
-    let apiKey = "1f2ffecd6cd01dddec1c914df041024981bd0309"
+    
+    let apiKey = ""
     let version = "2017-11-10"
     var visualRecognition: VisualRecognition!
     var watsonModel: VisualRecognitionCoreMLModel!
+    var discovery: Discovery!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let discoveryUsername = ""
+        let discoveryPassword = ""
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
+        self.discovery = Discovery(username: discoveryUsername, password: discoveryPassword, version: version)
         
         if let model = try? VNCoreMLModel( for: MobileNet().model ) {
             watsonModel = VisualRecognitionCoreMLModel( model: model )
+        }
+    }
+    
+    private var pulleyViewController: PulleyViewController!
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let controller = segue.destination as? PulleyViewController {
+            self.pulleyViewController = controller
+        }
+    }
+    
+    func displayImage( image: UIImage ) {
+        if let pulley = self.pulleyViewController {
+            if let display = pulley.primaryContentViewController as? ImageDisplayViewController {
+                display.image.contentMode = UIViewContentMode.scaleAspectFit
+                display.image.image = image
+            }
+        }
+    }
+    
+    // Convenience method for pushing data to the TableView.
+    func getTableController(run: (_ tableController: ResultsTableViewController, _ drawer: PulleyViewController) -> Void) {
+        if let drawer = self.pulleyViewController {
+            if let tableController = drawer.drawerContentViewController as? ResultsTableViewController {
+                run(tableController, drawer)
+                tableController.tableView.reloadData()
+            }
+        }
+    }
+    
+    // Parse classification information. Check whether there is any indication of damage
+    func sortClassifications(data: [VisualRecognitionV3.Classification]) -> [String: String] {
+        var label = ""
+        var damage = ""
+        label = data[0].classification
+        for classification in data {
+            let unparsedLabel = classification.classification
+            if unparsedLabel.contains("_male") || unparsedLabel.contains("_female") {
+                var labelWords = unparsedLabel.components(separatedBy: "_")
+                labelWords[0] = labelWords[0].uppercased()
+                label = labelWords.joined(separator: " ")
+            } else if unparsedLabel.contains("_faulty") {
+                let damageDescription = unparsedLabel.replacingOccurrences(of: "_faulty", with: "")
+                damage = damageDescription.prefix(1).uppercased() + String(damageDescription.dropFirst())
+                print(damage)
+            }
+        }
+        label = label.count > 0 ? label : "Unrecognized"
+        return ["classification": label, "damage": damage]
+    }
+    
+    // Convenience method for pushing classification data to TableView
+    func displayResults(data: [VisualRecognitionV3.Classification]) {
+        getTableController { tableController, drawer in
+            if drawer.drawerPosition == .open {
+                return // assume user is inspecting results
+            }
+            let parsedData = sortClassifications(data: data)
+            let classification = parsedData["classification"]!
+            tableController.classificationLabel = classification
+            tableController.damage = parsedData["damage"]!
+            let damaged = parsedData["damage"]!.count > 0
+            if classification != "Unrecognized" {
+                print("fetching discovery")
+                fetchDiscoveryResults(query: classification, damaged: damaged)
+            }
+            self.dismiss(animated: false, completion: nil)
+            //            drawer.setDrawerPosition(position: .collapsed, animated: true)
+        }
+    }
+    
+    // Convenience method for pushing discovery data to TableView
+    func displayDiscoveryResults(data: String, title: String = "", subTitle: String = "") {
+        getTableController { tableController, drawer in
+            tableController.discoveryResult = data
+            tableController.discoveryResultTitle = title
+            tableController.discoveryResultSubtitle = subTitle
+            self.dismiss(animated: false, completion: nil)
+            //            drawer.setDrawerPosition(position: .collapsed, animated: true)
+        }
+    }
+
+    
+    //Convenience method for querying Discovery
+    func fetchDiscoveryResults(query: String, damaged: Bool = false) {
+        let discoveryEnvironmentID = ""
+        let discoveryCollectionID = ""
+        
+        DispatchQueue.main.async {
+            self.displayDiscoveryResults(data: "Retrieving more information on " + query + "...")
+        }
+        
+        let failure = { (error: Error) in
+            print(error)
+        }
+        
+        let queryItem = query.components(separatedBy: " ")[0]
+        print(queryItem)
+        var generalQuery = ""
+        var filter = ""
+        if damaged {
+            generalQuery = "text%3A%22faulty%20" + queryItem + "%22"
+        } else {
+            generalQuery = "extracted_metadata.title%3A%3A%22What%20is%20" + queryItem + "%3F%22"
+            filter = "text%3A%21%22faulty%22"
+        }
+        self.discovery.queryDocumentsInCollection(
+            withEnvironmentID: discoveryEnvironmentID,
+            withCollectionID: discoveryCollectionID,
+            withFilter: filter,
+            withQuery: generalQuery,
+            failure: failure)
+        {
+            queryResponse in
+            if let results = queryResponse.results {
+                DispatchQueue.main.async() {
+                    print(queryResponse)
+                    var truncatedString = ""
+                    var sectionTitle = ""
+                    var subTitle = ""
+                    if results.count > 0 {
+                        let text = results[0].text as! String
+                        truncatedString = text.count >= 350 ? text.prefix(350) + "..." : text
+                        sectionTitle = damaged ? "Troubleshooting" : "Description"
+                        subTitle = query
+                    } else {
+                        print(results)
+                    }
+                    self.displayDiscoveryResults(data: truncatedString, title: sectionTitle, subTitle: subTitle)
+                }
+            }
         }
     }
     
@@ -69,7 +208,7 @@ class ImageClassificationViewController: UIViewController {
     
     func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
         
-        classificationLabel.text = "Classifying..."
+//        classificationLabel.text = "Classifying..."
         
         let failure = { (error: Error) in
             print(error)
@@ -82,16 +221,37 @@ class ImageClassificationViewController: UIViewController {
             
             // Update UI on main thread
             DispatchQueue.main.async {
-                if filtered.isEmpty {
-                    self.classificationLabel.text = "Unrecognized."
-                } else {
-                    let descriptions = filtered.map { classification in
-                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
-                    }
-                    self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
-                }
+//                if filtered.isEmpty {
+//                    self.classificationLabel.text = "Unrecognized."
+//                } else {
+//                    let descriptions = filtered.map { classification in
+//                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+//                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
+//                    }
+//                    self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
+//                }
+                self.displayResults( data: Array(filtered) )
             }
+        }
+    }
+    
+    // Convenience method for pushing classification data to TableView
+    func displayResults(data: [VisualRecognitionV3.Classification], discovery: Bool = false) {
+        getTableController { tableController, drawer in
+            if drawer.drawerPosition == .open {
+                return // assume user is inspecting results
+            }
+            let parsedData = sortClassifications(data: data)
+            let classification = parsedData["classification"]!
+            tableController.classificationLabel = classification
+            tableController.damage = parsedData["damage"]!
+            let damaged = parsedData["damage"]!.count > 0
+            if discovery && classification != "Unrecognized" {
+                print("fetching discovery")
+                fetchDiscoveryResults(query: classification, damaged: damaged)
+            }
+            self.dismiss(animated: false, completion: nil)
+            //            drawer.setDrawerPosition(position: .collapsed, animated: true)
         }
     }
     
@@ -106,8 +266,9 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         
         // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
         let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        imageView.image = image
+        DispatchQueue.main.async {
+            self.displayImage( image: image )
+        }
         
         classifyImage(for: image, localThreshold: 0.1)
     }

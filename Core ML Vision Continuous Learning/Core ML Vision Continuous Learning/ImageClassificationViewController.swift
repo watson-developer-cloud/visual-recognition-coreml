@@ -20,6 +20,7 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var classificationLabel: UILabel!
     
     let apiKey = ""
+    let classifierId = ""
     let version = ""
     var visualRecognition: VisualRecognition!
     var watsonModel: VisualRecognitionCoreMLModel!
