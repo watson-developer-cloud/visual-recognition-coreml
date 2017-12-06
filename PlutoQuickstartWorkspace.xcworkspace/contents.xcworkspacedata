@@ -16,7 +16,4 @@
    <FileRef
       location = "group:Core ML Vision Continuous Learning/Core ML Vision Continuous Learning.xcodeproj">
    </FileRef>
-   <FileRef
-      location = "group:Core ML Vision Discovery/Core ML Vision Discovery.xcodeproj">
-   </FileRef>
 </Workspace>
