@@ -2,12 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Carthage/Checkouts/Pulley/Pulley.xcodeproj">
-   </FileRef>
-   <FileRef
-      location = "group:Carthage/Checkouts/pluto-swift-sdk/WatsonDeveloperCloud.xcodeproj">
-   </FileRef>
-   <FileRef
       location = "group:MobileNet.mlmodel">
    </FileRef>
    <FileRef
