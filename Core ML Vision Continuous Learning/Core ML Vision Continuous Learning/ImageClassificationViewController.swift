@@ -23,14 +23,14 @@ class ImageClassificationViewController: UIViewController {
     let classifierId = ""
     let version = ""
     var visualRecognition: VisualRecognition!
-    var watsonModel: VisualRecognitionCoreMLModel!
+//    var watsonModel: VisualRecognitionCoreMLModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
         
         if let model = try? VNCoreMLModel( for: MobileNet().model ) {
-            watsonModel = VisualRecognitionCoreMLModel( model: model )
+//            watsonModel = VisualRecognitionCoreMLModel( model: model )
         }
     }
     
@@ -75,10 +75,8 @@ class ImageClassificationViewController: UIViewController {
         let failure = { (error: Error) in
             print(error)
         }
-        // TODO: remove this line once SDK switches to using UIImage
-        let imageData = UIImageJPEGRepresentation(image, 1.0)
         
-        self.visualRecognition.classify(image: imageData!, model: watsonModel.model, localThreshold: localThreshold, failure: failure) { classifiedImages in
+        visualRecognition.classifyLocally(image: image, owners: [classifierId], failure: failure) { classifiedImages in
             let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
             
             // Update UI on main thread

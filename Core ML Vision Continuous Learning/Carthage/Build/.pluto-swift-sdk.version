@@ -2,79 +2,79 @@
   "commitish" : "6492eb14f560fc8ab01c7725734bac49762e00c6",
   "iOS" : [
     {
-      "hash" : "78a80af403e2e0b2e1919b6218645e0268a6452453416a6e90806cfffab39e67",
-      "name" : "AlchemyVisionV1"
-    },
-    {
-      "hash" : "c0706ad5deb6e2eaf52f67b6b7496497ef7308a14f0e5e1fa2d4c47939c2819e",
+      "hash" : "20517908c3f7248b4f185d7288a3254ed26e2a427a6eb3e975c4ddb956ad66bc",
       "name" : "ToneAnalyzerV3"
     },
     {
-      "hash" : "676f5163664ff0934ab965124c6a04aae0cdc415e56174fdb40be8d3d974f70d",
-      "name" : "PersonalityInsightsV2"
-    },
-    {
-      "hash" : "996b5d2f53d0a51fd79f73b629778e84009b1c9770e30fb475505ad979231dcb",
-      "name" : "PersonalityInsightsV3"
-    },
-    {
-      "hash" : "782c9922be97ee86ce63c3229ed89de9b6ec9fa617320a6b90a88b836ce66cac",
-      "name" : "DialogV1"
-    },
-    {
-      "hash" : "3dac31fe55998a4f2234c058b2e8111db8555917a4817948c66ae2b2818e7a45",
-      "name" : "DocumentConversionV1"
-    },
-    {
-      "hash" : "b35b4260228fec7d0f1c222909ee67c5a814e9340a0d9522f2f0f63f3de8b4b2",
+      "hash" : "7e90ceda978442bacc992e7b2ca7ece8fca71284a75306b49d711fe86252cbd3",
       "name" : "NaturalLanguageClassifierV1"
     },
     {
-      "hash" : "c36734a419f1073a197de8de4020822c50e3dc397421ee80049c35e81280925c",
-      "name" : "RetrieveAndRankV1"
-    },
-    {
-      "hash" : "e6623e3f539a646ae031b98acb2f0e168e6818e7f4a77ce50e081a01ff7636ce",
-      "name" : "RelationshipExtractionV1Beta"
-    },
-    {
-      "hash" : "8a2eb2d83d1ea7f48e3efce6ca680f0e19d635716597534ba47f481798a817f7",
+      "hash" : "16a8dc8e725138e158a6ca804ba6d5ef7280ae88f6461a41f36f4611cda58304",
       "name" : "TradeoffAnalyticsV1"
     },
     {
-      "hash" : "cbcfb8a46444c9efe000136ba29dfab380142dd48b37c3f78eac13cb3c2a5cad",
+      "hash" : "20d4db73a82e4e18c7f4cb847f0927d274e7d0a140fa06151c688af18587f666",
+      "name" : "RelationshipExtractionV1Beta"
+    },
+    {
+      "hash" : "550463a92472a0d2ed31441c6bc8d3293cbdfd1fbb6668134329b614c2e0f79e",
+      "name" : "PersonalityInsightsV3"
+    },
+    {
+      "hash" : "578a06eeea02de33f6366cef5868ad8da9fad1f602884b9764738ee2a65918e9",
+      "name" : "PersonalityInsightsV2"
+    },
+    {
+      "hash" : "6b4666466d98fb830247e5d027fb3e95ca38e329c0695b7a47a1c89dd6d7f7d6",
       "name" : "LanguageTranslatorV2"
     },
     {
-      "hash" : "751b965f1be36ac8f8f01f582fbe63b71c30453e6fe09a751744486f8c86780f",
+      "hash" : "55510a8742dacb63abc3f881ccba537d1ebc7ac5d135223be4998dd82477b6da",
+      "name" : "DocumentConversionV1"
+    },
+    {
+      "hash" : "9973097a4f01e2aee409974d7a8edc60a6d1e5df5e66eaa7891b75b34dd25a11",
+      "name" : "DialogV1"
+    },
+    {
+      "hash" : "c9961ddc6a0c20f48f5b578492bee3df1ceeac342bb46a8811471e0c313dc137",
+      "name" : "AlchemyVisionV1"
+    },
+    {
+      "hash" : "1cae8ff199eef48e128a99bd296654439d51eb24b3a2b5afb4868c32c222cb43",
+      "name" : "RetrieveAndRankV1"
+    },
+    {
+      "hash" : "c3c8daba733b66ccfd5a213dbb10fd3414e1c91a92fb01d2c59b071af7eaeec4",
       "name" : "VisualRecognitionV3"
     },
     {
-      "hash" : "0545424479903366fa8e3976b38264661407821aa11522fef35247266a99b20b",
+      "hash" : "0f81aea0393d014a4e60139008bb5b9b40dbb47f287b431d2adfb6e0852319df",
       "name" : "TextToSpeechV1"
     },
     {
-      "hash" : "4a88f9df9ffdd2124b67c445d1dceb66b21ca1eecb432c5823078dc08516690d",
+      "hash" : "5f44e01031ab1c42f5d47cfd2859f9db2cbe7f6ddbf0843b069dc3dacd2525f7",
       "name" : "AlchemyDataNewsV1"
     },
     {
-      "hash" : "05cca979b9fd419a7c3b6814c5491b970105f178353ebd44f1cf79f4b1326c73",
-      "name" : "DiscoveryV1"
-    },
-    {
-      "hash" : "716c2aff8b724c7cb1b0d5b04a11ad95b8e508c42037e7b3d9ad5a3bda84553b",
+      "hash" : "0b0a545e946b421aa479877bc6d8d4a1d6bdfa9f67cb035530d544498ef51552",
       "name" : "NaturalLanguageUnderstandingV1"
     },
     {
-      "hash" : "ee6c155f450d3ff387e5339f7e636a0113d625f5ee5c39ce11031621edc7d99e",
+      "hash" : "026a1860344d80122fd7a50b3987e9435ae90a338666440c57635b7072210d6b",
       "name" : "AlchemyLanguageV1"
     },
     {
-      "hash" : "1a8bef2616919da89e8223ac74e43815888070f46bc72a0d176e83bc16a7095c",
+      "hash" : "7c2a2c6bde466c822daf059917b6f619f128dea0db6646bfc9d222b0d3b4e026",
+      "name" : "DiscoveryV1"
+    },
+    {
+      "hash" : "2413661f0a0f181c127b0dc2e95b8c7b9818b456fc7e183c19046d5eab8e0c89",
       "name" : "SpeechToTextV1"
     },
     {
-      "hash" : "c4a02cdb81a0a5a5998db5af1ac231c126e7d0cd215e561aa48d26a76fd534b8",
+      "hash" : "a44ff0198fbff2f4e7826112bf07f4e4b3de921d61b8bac43e8110cd1fc870c6",
       "name" : "ConversationV1"
     }
   ],
