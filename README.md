@@ -1,9 +1,11 @@
-# This Xcode workspace contains the following projects
+# Watson Core ML Quickstart. This is an Xcode workspace that contains the following two projects
+* Core ML Vision Simple
+* Core ML Vision Custom Training
 
 ## Core ML Vision Simple
 A basic implemenation of Watson Visual Recognition using Core ML.
 ### Getting Started
-1. Download project from GitHub. You can either clone or download as zip
+1. Download project from GitHub. You can either clone the project or download it as a zip folder.
 
 2. Open workspace (QuickstartWorkspace.xcworkspace) in Xcode
 
@@ -11,7 +13,7 @@ A basic implemenation of Watson Visual Recognition using Core ML.
 
 4. If you hit run, you can launch the first project and start classifying images immediately. Click the camera icon to choose photo to classify.
 
-## Core ML Vision Custom Model
+## Core ML Vision Custom Training
 Watson Visual Recognition using Core ML, with the ability to train the base model and pull down updated versions. This guide will walk you through training a custom model on common cables (HDMI, USBC, etc.) and incorporating the custom model into your visual recognition application using the Watson SDK
 
 ### Getting Started
@@ -30,6 +32,7 @@ carthage update
 
 6. On the page where you got your credentials, open the Visual Recogniton tooling by clicking the launch tool button.
 
+7. Select 'Create Classifier'
 
-[Get API key in IBM Cloud](https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue)
+8. Select 'add data.' In your project directory there is a folder called 'training images.' Select all of the images from this folder.
 
