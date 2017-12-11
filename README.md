@@ -1,4 +1,5 @@
-# Watson Core ML Quickstart. This is an Xcode workspace that contains the following two projects
+# Watson Core ML Quickstart.
+## This is an Xcode workspace that contains the following two projects
 * Core ML Vision Simple
 * Core ML Vision Custom Training
 
