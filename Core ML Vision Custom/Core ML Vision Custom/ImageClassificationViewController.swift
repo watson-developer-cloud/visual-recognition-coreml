@@ -18,6 +18,8 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var classificationLabel: UILabel!
+    @IBOutlet weak var currentModelLabel: UILabel!
+    @IBOutlet weak var modelUpdateActivityIndicator: UIActivityIndicatorView!
     
     let apiKey = ""
     let classifierId = ""
@@ -26,15 +28,33 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        currentModelLabel.text = "Current Model: \(classifierId)"
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
-        visualRecognition.updateCoreMLModelLocally(classifierID: classifierId, apiKey: apiKey)
+        self.invokeModelUpdate()
         // Check for model updates every 60 seconds
         let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
     }
     
     @objc func invokeModelUpdate()
     {
-        visualRecognition.updateCoreMLModelLocally(classifierID: classifierId, apiKey: apiKey)
+        let failure = { (error: Error) in
+            print(error)
+            DispatchQueue.main.async {
+                self.currentModelLabel.text = "Error updating model"
+                self.modelUpdateActivityIndicator.stopAnimating()
+            }
+        }
+        
+        let success = {
+            DispatchQueue.main.async {
+                self.currentModelLabel.text = "Current Model: \(self.classifierId)"
+                self.modelUpdateActivityIndicator.stopAnimating()
+            }
+        }
+        
+        self.currentModelLabel.text = "Updating model..."
+        self.modelUpdateActivityIndicator.startAnimating()
+        visualRecognition.updateCoreMLModelLocally(classifierID: classifierId, apiKey: apiKey, failure: failure, success: success)
     }
     
     
@@ -79,44 +99,22 @@ class ImageClassificationViewController: UIViewController {
             print(error)
         }
         
-        let fileManager = FileManager.default
-        let applicationSupportDirectories = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask)
-        guard let applicationSupport = applicationSupportDirectories.first else {
-            print("application support failure")
-            return
-        }
-        
-        // construct model file path
-        let modelURL = applicationSupport.appendingPathComponent("MobileNet" + ".mlmodelc")
-        
-        // ensure the model file exists
-        guard fileManager.fileExists(atPath: modelURL.path) else {
-            print("file does not exist")
-            return
-        }
-        
-        // load model file from disk
-        guard let model = try? MLModel(contentsOf: modelURL) else {
-            print("failed to set model")
-            return
-        }
-        
-        visualRecognition.classifyLocally(image: image, owners: [classifierId], failure: failure) { classifiedImages in
+        visualRecognition.classifyLocally(image: image, classifierIDs: [classifierId], failure: failure) { classifiedImages in
             print(classifiedImages)
-//            let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
-//
-//            // Update UI on main thread
-//            DispatchQueue.main.async {
-//                if filtered.isEmpty {
-//                    self.classificationLabel.text = "Unrecognized."
-//                } else {
-//                    let descriptions = filtered.map { classification in
-//                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-//                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
-//                    }
-//                    self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
-//                }
-//            }
+            let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
+
+            // Update UI on main thread
+            DispatchQueue.main.async {
+                if filtered.isEmpty {
+                    self.classificationLabel.text = "Unrecognized."
+                } else {
+                    let descriptions = filtered.map { classification in
+                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
+                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
+                    }
+                    self.classificationLabel.text = "Classification: \(filtered[0].classification)"
+                }
+            }
         }
     }
     

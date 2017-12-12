@@ -5,15 +5,19 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Image Classification View Controller-->
         <scene sceneID="9Lq-ti-DJX">
             <objects>
-                <viewController id="MPu-h4-IWa" customClass="ImageClassificationViewController" customModule="Core_ML_Vision_Discovery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="MPu-h4-IWa" customClass="ImageClassificationViewController" customModule="Core_ML_Vision_Custom" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="oBa-W5-Ood">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -33,57 +37,69 @@
                                 </items>
                             </toolbar>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YX-t4-YGx">
-                                <rect key="frame" x="16" y="547" width="138" height="60"/>
+                                <rect key="frame" x="0.0" y="578.5" width="375" height="44.5"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="3e2-oF-SfQ">
-                                    <rect key="frame" x="0.0" y="0.0" width="138" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44.5"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEb-NC-NRJ">
-                                            <rect key="frame" x="20" y="20" width="98" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
-                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <rect key="frame" x="10" y="10" width="355" height="24.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
+                                            <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="pEb-NC-NRJ" secondAttribute="trailing" constant="20" symbolic="YES" id="RwC-6l-jWZ"/>
-                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="top" secondItem="3e2-oF-SfQ" secondAttribute="top" constant="20" symbolic="YES" id="Zqu-2c-QRz"/>
-                                        <constraint firstAttribute="bottom" secondItem="pEb-NC-NRJ" secondAttribute="bottom" constant="20" symbolic="YES" id="o8h-Vn-zzk"/>
-                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="leading" secondItem="3e2-oF-SfQ" secondAttribute="leading" constant="20" symbolic="YES" id="vcd-U2-aV5"/>
+                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="leading" secondItem="3e2-oF-SfQ" secondAttribute="leading" constant="10" id="7aI-Hi-dPv"/>
+                                        <constraint firstAttribute="trailing" secondItem="pEb-NC-NRJ" secondAttribute="trailing" constant="10" id="DkQ-jh-oaq"/>
+                                        <constraint firstAttribute="bottom" secondItem="pEb-NC-NRJ" secondAttribute="bottom" constant="10" id="HWh-kn-XcG"/>
+                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="top" secondItem="3e2-oF-SfQ" secondAttribute="top" constant="10" id="eI5-60-wof"/>
                                     </constraints>
                                 </view>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <blurEffect style="extraLight"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </visualEffectView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current Model: " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b2I-nz-Bpy" userLabel="Current Model:">
+                                <rect key="frame" x="137.5" y="640" width="100.5" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="5sa-d8-uC6">
+                                <rect key="frame" x="253" y="637" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="dAg-J4-Lwe" firstAttribute="top" secondItem="1YX-t4-YGx" secondAttribute="bottom" constant="16" id="0Wi-s3-cVh"/>
-                            <constraint firstItem="1YX-t4-YGx" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leadingMargin" id="7Lg-sG-4Ov"/>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="bottom" secondItem="b2I-nz-Bpy" secondAttribute="bottom" constant="10" id="IaM-ni-zxv"/>
+                            <constraint firstItem="5sa-d8-uC6" firstAttribute="leading" secondItem="b2I-nz-Bpy" secondAttribute="trailing" constant="15" id="NOd-4p-m9m"/>
+                            <constraint firstItem="b2I-nz-Bpy" firstAttribute="centerX" secondItem="oBa-W5-Ood" secondAttribute="centerX" id="S0r-AT-4iJ"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leading" id="X6A-uN-JTq"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="trailing" secondItem="dAg-J4-Lwe" secondAttribute="trailing" id="ZQM-VP-HaA"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="bottom" secondItem="dAg-J4-Lwe" secondAttribute="bottom" id="bXh-dw-Iqp"/>
+                            <constraint firstItem="1YX-t4-YGx" firstAttribute="leading" secondItem="QGZ-b4-zCe" secondAttribute="leading" id="dFr-b7-vgV"/>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="bottom" secondItem="5sa-d8-uC6" secondAttribute="bottom" constant="10" id="lT8-eT-9il"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="centerY" secondItem="oBa-W5-Ood" secondAttribute="centerY" id="pxE-cT-OTc"/>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="trailing" secondItem="1YX-t4-YGx" secondAttribute="trailing" id="ruV-85-t0Y"/>
                             <constraint firstAttribute="trailing" secondItem="pUB-PT-eoR" secondAttribute="trailing" id="tlg-dE-bfb"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="top" secondItem="oBa-W5-Ood" secondAttribute="top" id="uvo-Pf-Wrd"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="dAg-J4-Lwe" secondAttribute="leading" id="yD6-rE-wFN"/>
-                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="1YX-t4-YGx" secondAttribute="trailing" constant="16" id="zAy-28-Yn8"/>
+                            <constraint firstItem="dAg-J4-Lwe" firstAttribute="top" secondItem="1YX-t4-YGx" secondAttribute="bottom" id="zTR-HR-NEH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QGZ-b4-zCe"/>
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="DIl-Jp-qo4" id="Uda-Bb-pvW"/>
                         <outlet property="classificationLabel" destination="pEb-NC-NRJ" id="fdK-Gq-GJU"/>
+                        <outlet property="currentModelLabel" destination="b2I-nz-Bpy" id="cYQ-WA-RnQ"/>
                         <outlet property="imageView" destination="pUB-PT-eoR" id="o73-CL-qHW"/>
+                        <outlet property="modelUpdateActivityIndicator" destination="5sa-d8-uC6" id="N6z-td-Cdo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igj-I4-czO" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.5" y="138.5"/>
+            <point key="canvasLocation" x="138.40000000000001" y="138.0809595202399"/>
         </scene>
     </scenes>
 </document>

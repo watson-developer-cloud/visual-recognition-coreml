@@ -13,7 +13,7 @@
         <!--Image Classification View Controller-->
         <scene sceneID="YBa-4n-Cju">
             <objects>
-                <viewController id="L4b-Nb-4vo" customClass="ImageClassificationViewController" customModule="Core_ML_Vision_Discovery" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="L4b-Nb-4vo" customClass="ImageClassificationViewController" customModule="Core_Ml_Vision_Simple" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qtz-dI-qr6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

@@ -18,8 +18,6 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var classificationLabel: UILabel!
     
-    var test = ""
-    
     // MARK: - Image Classification
     
     /// - Tag: MLModelSetup
