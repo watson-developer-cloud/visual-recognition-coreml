@@ -19,15 +19,22 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var classificationLabel: UILabel!
     
-    let apiKey = "9a88901d-b8ff-4e5b-bf64-e0ad07e8eb0d"
-    let classifierId = "connectors"
+    let apiKey = ""
+    let classifierId = ""
     let version = "2017-12-07"
     var visualRecognition: VisualRecognition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
-        visualRecognition.updateCoreMLModelLocally(classifierID: "connectors", apiKey: apiKey)
+        visualRecognition.updateCoreMLModelLocally(classifierID: classifierId, apiKey: apiKey)
+        // Check for model updates every 60 seconds
+        let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
+    }
+    
+    @objc func invokeModelUpdate()
+    {
+        visualRecognition.updateCoreMLModelLocally(classifierID: classifierId, apiKey: apiKey)
     }
     
     

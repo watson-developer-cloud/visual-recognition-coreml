@@ -303,7 +303,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Core ML Vision Continuous Learning/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Core-ML-Vision-Continuous-Learning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -321,7 +321,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "Core ML Vision Continuous Learning/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Core-ML-Vision-Continuous-Learning";
 				PRODUCT_NAME = "$(TARGET_NAME)";
