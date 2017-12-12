@@ -43,7 +43,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7EF15C1FD5DFCA0007B7E0 /* MobileNet.mlmodel */,
-				2DBDD2511FCF7F0E004A6DC1 /* Core Ml Vision Simple */,
+				2DBDD2511FCF7F0E004A6DC1 /* Core ML Vision Simple */,
 				2DBDD2501FCF7F0E004A6DC1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -56,7 +56,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2DBDD2511FCF7F0E004A6DC1 /* Core Ml Vision Simple */ = {
+		2DBDD2511FCF7F0E004A6DC1 /* Core ML Vision Simple */ = {
 			isa = PBXGroup;
 			children = (
 				2DC5F1381FD5F33E0063B2D5 /* Main.storyboard */,
@@ -67,7 +67,7 @@
 				2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2611FCF7F0E004A6DC1 /* Info.plist */,
 			);
-			path = "Core Ml Vision Simple";
+			path = "Core ML Vision Simple";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -106,7 +106,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2DBDD24A1FCF7F0E004A6DC1 /* Build configuration list for PBXProject "Core Ml Vision Simple" */;
+			buildConfigurationList = 2DBDD24A1FCF7F0E004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Simple" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -301,7 +301,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DBDD24A1FCF7F0E004A6DC1 /* Build configuration list for PBXProject "Core Ml Vision Simple" */ = {
+		2DBDD24A1FCF7F0E004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Simple" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2DBDD2621FCF7F0E004A6DC1 /* Debug */,

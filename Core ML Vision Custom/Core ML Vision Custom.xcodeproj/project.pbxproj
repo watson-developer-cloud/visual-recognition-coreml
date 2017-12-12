@@ -7,13 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
 		2D7EF15F1FD5DFDF0007B7E0 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2D7EF15E1FD5DFDF0007B7E0 /* MobileNet.mlmodel */; };
 		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
-		2DBDD2761FCF7F88004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2751FCF7F88004A6DC1 /* ImageClassificationViewController.swift */; };
 		2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD27A1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld */; };
 		2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
 		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
 		2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1361FD5F3200063B2D5 /* Main.storyboard */; };
+		2DD057CC1FD9F92D00E8D23A /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD057CB1FD9F91900E8D23A /* VisualRecognitionV3.framework */; };
+		2DD057CD1FD9F92D00E8D23A /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2DD057CB1FD9F91900E8D23A /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DE513351FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				2DD057CD1FD9F92D00E8D23A /* VisualRecognitionV3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -31,15 +34,16 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
 		2D7EF15E1FD5DFDF0007B7E0 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = ../MobileNet.mlmodel; sourceTree = "<group>"; };
-		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Continuous Learning.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Continuous Learning.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Custom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2DBDD2751FCF7F88004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageClassificationViewController.swift; path = "/Users/iainmccown/pluto-quickstart-workspace/Core ML Vision Continuous Learning/Core ML Vision Continuous Learning/ImageClassificationViewController.swift"; sourceTree = "<absolute>"; };
 		2DBDD27B1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_ML_Vision_Continuous_Learning.xcdatamodel; sourceTree = "<group>"; };
 		2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBDD2801FCF7F88004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC5F1361FD5F3200063B2D5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		2DD057CB1FD9F91900E8D23A /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 		2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -48,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2DD057CC1FD9F92D00E8D23A /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,7 +63,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7EF15E1FD5DFDF0007B7E0 /* MobileNet.mlmodel */,
-				2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Continuous Learning */,
+				2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */,
 				2DBDD2711FCF7F88004A6DC1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -66,16 +71,17 @@
 		2DBDD2711FCF7F88004A6DC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Continuous Learning.app */,
+				2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Continuous Learning */ = {
+		2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */ = {
 			isa = PBXGroup;
 			children = (
+				2DD057CB1FD9F91900E8D23A /* VisualRecognitionV3.framework */,
 				2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */,
-				2DBDD2751FCF7F88004A6DC1 /* ImageClassificationViewController.swift */,
+				2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */,
 				2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */,
 				2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
@@ -83,15 +89,15 @@
 				2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				2DC5F1361FD5F3200063B2D5 /* Main.storyboard */,
 			);
-			path = "Core ML Vision Continuous Learning";
+			path = "Core ML Vision Custom";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2DBDD26F1FCF7F88004A6DC1 /* Core ML Vision Continuous Learning */ = {
+		2DBDD26F1FCF7F88004A6DC1 /* Core ML Vision Custom */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Continuous Learning" */;
+			buildConfigurationList = 2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Custom" */;
 			buildPhases = (
 				2DBDD26C1FCF7F88004A6DC1 /* Sources */,
 				2DBDD26D1FCF7F88004A6DC1 /* Frameworks */,
@@ -102,9 +108,9 @@
 			);
 			dependencies = (
 			);
-			name = "Core ML Vision Continuous Learning";
+			name = "Core ML Vision Custom";
 			productName = "Core ML Vision Continuous Learning";
-			productReference = 2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Continuous Learning.app */;
+			productReference = 2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -123,7 +129,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Continuous Learning" */;
+			buildConfigurationList = 2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Custom" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -136,7 +142,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2DBDD26F1FCF7F88004A6DC1 /* Core ML Vision Continuous Learning */,
+				2DBDD26F1FCF7F88004A6DC1 /* Core ML Vision Custom */,
 			);
 		};
 /* End PBXProject section */
@@ -162,8 +168,8 @@
 				2D7EF15F1FD5DFDF0007B7E0 /* MobileNet.mlmodel in Sources */,
 				2DE513351FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
 				2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */,
-				2DBDD2761FCF7F88004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */,
+				2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +333,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Continuous Learning" */ = {
+		2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Custom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2DBDD2831FCF7F88004A6DC1 /* Debug */,
@@ -336,7 +342,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Continuous Learning" */ = {
+		2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Custom" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2DBDD2861FCF7F88004A6DC1 /* Debug */,
