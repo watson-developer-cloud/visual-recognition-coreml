@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
-		2D765C611FE0755500D23D35 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D765C601FE0754C00D23D35 /* VisualRecognitionV3.framework */; };
-		2D765C621FE0755500D23D35 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D765C601FE0754C00D23D35 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2D7EF15F1FD5DFDF0007B7E0 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2D7EF15E1FD5DFDF0007B7E0 /* MobileNet.mlmodel */; };
 		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
 		2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD27A1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld */; };
@@ -26,7 +24,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				2D765C621FE0755500D23D35 /* VisualRecognitionV3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -35,7 +32,6 @@
 
 /* Begin PBXFileReference section */
 		2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
-		2D765C601FE0754C00D23D35 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 		2D7EF15E1FD5DFDF0007B7E0 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = ../MobileNet.mlmodel; sourceTree = "<group>"; };
 		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Custom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,7 +48,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D765C611FE0755500D23D35 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +74,6 @@
 		2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */ = {
 			isa = PBXGroup;
 			children = (
-				2D765C601FE0754C00D23D35 /* VisualRecognitionV3.framework */,
 				2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */,
 				2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */,
 				2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */,

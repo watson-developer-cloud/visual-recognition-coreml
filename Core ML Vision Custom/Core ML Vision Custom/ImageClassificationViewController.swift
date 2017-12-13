@@ -29,10 +29,10 @@ class ImageClassificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentModelLabel.text = "Current Model: \(classifierId)"
-        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
+        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version, apiKeyTestServer: apiKey)
         self.invokeModelUpdate()
         // Check for model updates every 60 seconds
-        let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
+//        let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
     }
     
     @objc func invokeModelUpdate()
@@ -54,7 +54,7 @@ class ImageClassificationViewController: UIViewController {
         
         self.currentModelLabel.text = "Updating model..."
         self.modelUpdateActivityIndicator.startAnimating()
-        visualRecognition.updateCoreMLModelLocally(classifierID: classifierId, apiKey: apiKey, failure: failure, success: success)
+        visualRecognition.updateLocalModel(classifierID: classifierId, failure: failure, success: success)
     }
     
     
@@ -99,7 +99,7 @@ class ImageClassificationViewController: UIViewController {
             print(error)
         }
         
-        visualRecognition.classifyLocally(image: image, classifierIDs: [classifierId], failure: failure) { classifiedImages in
+        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: 0.2, failure: failure) { classifiedImages in
             print(classifiedImages)
             let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
 
