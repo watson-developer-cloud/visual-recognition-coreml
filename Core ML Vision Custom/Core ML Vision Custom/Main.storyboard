@@ -43,7 +43,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEb-NC-NRJ">
-                                            <rect key="frame" x="10" y="10" width="355" height="24.5"/>
+                                            <rect key="frame" x="126.5" y="10" width="122.5" height="24.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -51,8 +51,7 @@
                                     </subviews>
                                     <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
                                     <constraints>
-                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="leading" secondItem="3e2-oF-SfQ" secondAttribute="leading" constant="10" id="7aI-Hi-dPv"/>
-                                        <constraint firstAttribute="trailing" secondItem="pEb-NC-NRJ" secondAttribute="trailing" constant="10" id="DkQ-jh-oaq"/>
+                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="centerX" secondItem="3e2-oF-SfQ" secondAttribute="centerX" id="9yr-g5-Qqz"/>
                                         <constraint firstAttribute="bottom" secondItem="pEb-NC-NRJ" secondAttribute="bottom" constant="10" id="HWh-kn-XcG"/>
                                         <constraint firstItem="pEb-NC-NRJ" firstAttribute="top" secondItem="3e2-oF-SfQ" secondAttribute="top" constant="10" id="eI5-60-wof"/>
                                     </constraints>

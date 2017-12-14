@@ -5,10 +5,14 @@
     </device>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="HelveticaNeue.ttc">
+            <string>HelveticaNeue</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Image Classification View Controller-->
         <scene sceneID="YBa-4n-Cju">
@@ -33,43 +37,38 @@
                                 </items>
                             </toolbar>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ApE-hZ-3Fj">
-                                <rect key="frame" x="16" y="547" width="138" height="60"/>
+                                <rect key="frame" x="0.0" y="579" width="375" height="44"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="fm0-Qi-p8N">
-                                    <rect key="frame" x="0.0" y="0.0" width="138" height="60"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mqP-gv-Oac">
-                                            <rect key="frame" x="20" y="20" width="98" height="20.5"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <rect key="frame" x="126.5" y="10" width="122.5" height="24.5"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
                                     <constraints>
-                                        <constraint firstAttribute="trailing" secondItem="mqP-gv-Oac" secondAttribute="trailing" constant="20" symbolic="YES" id="Gur-Xo-Ruw"/>
-                                        <constraint firstAttribute="bottom" secondItem="mqP-gv-Oac" secondAttribute="bottom" constant="20" symbolic="YES" id="I7F-iK-ntw"/>
-                                        <constraint firstItem="mqP-gv-Oac" firstAttribute="top" secondItem="fm0-Qi-p8N" secondAttribute="top" constant="20" symbolic="YES" id="LoM-fK-c9q"/>
-                                        <constraint firstItem="mqP-gv-Oac" firstAttribute="leading" secondItem="fm0-Qi-p8N" secondAttribute="leading" constant="20" symbolic="YES" id="bzJ-4T-f9B"/>
+                                        <constraint firstItem="mqP-gv-Oac" firstAttribute="centerX" secondItem="fm0-Qi-p8N" secondAttribute="centerX" id="CNR-Pm-qNu"/>
+                                        <constraint firstAttribute="bottom" secondItem="mqP-gv-Oac" secondAttribute="bottom" constant="10" id="Nnm-sp-7uK"/>
+                                        <constraint firstItem="mqP-gv-Oac" firstAttribute="top" secondItem="fm0-Qi-p8N" secondAttribute="top" constant="10" id="Uta-ZN-QZr"/>
                                     </constraints>
                                 </view>
                                 <blurEffect style="extraLight"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                             </visualEffectView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="aOk-yk-NsG" firstAttribute="leading" secondItem="tmr-ef-pdU" secondAttribute="leading" id="065-e3-lXc"/>
-                            <constraint firstItem="ApE-hZ-3Fj" firstAttribute="leading" secondItem="qtz-dI-qr6" secondAttribute="leadingMargin" id="6HC-x9-LCj"/>
                             <constraint firstItem="aOk-yk-NsG" firstAttribute="centerY" secondItem="qtz-dI-qr6" secondAttribute="centerY" id="Dw0-wz-P8f"/>
                             <constraint firstItem="aOk-yk-NsG" firstAttribute="top" secondItem="qtz-dI-qr6" secondAttribute="top" id="HZX-hk-NXn"/>
-                            <constraint firstItem="EyJ-Nz-exH" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ApE-hZ-3Fj" secondAttribute="trailing" constant="16" id="SWe-NK-Ijt"/>
+                            <constraint firstItem="EyJ-Nz-exH" firstAttribute="trailing" secondItem="ApE-hZ-3Fj" secondAttribute="trailing" id="LA6-If-FVU"/>
                             <constraint firstItem="aOk-yk-NsG" firstAttribute="leading" secondItem="qtz-dI-qr6" secondAttribute="leading" id="Ymg-dY-csy"/>
                             <constraint firstItem="aOk-yk-NsG" firstAttribute="bottom" secondItem="tmr-ef-pdU" secondAttribute="bottom" id="g3U-X1-DMn"/>
-                            <constraint firstItem="tmr-ef-pdU" firstAttribute="top" secondItem="ApE-hZ-3Fj" secondAttribute="bottom" constant="16" id="gHg-k5-Jcw"/>
+                            <constraint firstItem="ApE-hZ-3Fj" firstAttribute="leading" secondItem="EyJ-Nz-exH" secondAttribute="leading" id="kZC-nd-2AT"/>
+                            <constraint firstItem="tmr-ef-pdU" firstAttribute="top" secondItem="ApE-hZ-3Fj" secondAttribute="bottom" id="oBg-c9-uo0"/>
                             <constraint firstAttribute="trailing" secondItem="aOk-yk-NsG" secondAttribute="trailing" id="sA1-2z-yc8"/>
                             <constraint firstItem="aOk-yk-NsG" firstAttribute="trailing" secondItem="tmr-ef-pdU" secondAttribute="trailing" id="uEk-Qz-143"/>
                         </constraints>
@@ -83,7 +82,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CSR-ED-Hee" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="139.5" y="138.5"/>
+            <point key="canvasLocation" x="138.40000000000001" y="138.0809595202399"/>
         </scene>
     </scenes>
 </document>

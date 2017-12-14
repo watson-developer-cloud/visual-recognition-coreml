@@ -21,8 +21,8 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var modelUpdateActivityIndicator: UIActivityIndicatorView!
     
-    let apiKey = ""
-    let classifierId = ""
+    let apiKey = "9a88901d-b8ff-4e5b-bf64-e0ad07e8eb0d"
+    let classifierId = "connectors"
     let version = "2017-12-07"
     var visualRecognition: VisualRecognition!
     

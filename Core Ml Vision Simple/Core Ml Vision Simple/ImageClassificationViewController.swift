@@ -23,7 +23,7 @@ class ImageClassificationViewController: UIViewController {
     /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
-            let model = try VNCoreMLModel(for: MobileNet().model)
+            let model = try VNCoreMLModel(for: watsonVR_w_embedding().model)
             
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
@@ -71,15 +71,8 @@ class ImageClassificationViewController: UIViewController {
             if classifications.isEmpty {
                 self.classificationLabel.text = "Nothing recognized."
             } else {
-                // Display top classifications ranked by confidence in the UI.
-                let topClassifications = classifications.prefix(2)
-                //                self.imageClassification = topClassifications[0].identifier
-                let descriptions = topClassifications.map { classification in
-                    // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-                    return String(format: "  (%.4f) %@", classification.confidence, classification.identifier)
-                }
-                                self.classificationLabel.text = "Classification:\n" + descriptions.joined(separator: "\n")
-                //                self.saveClassification(classificationLabel: self.imageClassification, imageData: self.imageBinary)
+                // Display top classification ranked by confidence in the UI.
+                self.classificationLabel.text = "Classification: " + classifications[0].identifier
             }
         }
     }
