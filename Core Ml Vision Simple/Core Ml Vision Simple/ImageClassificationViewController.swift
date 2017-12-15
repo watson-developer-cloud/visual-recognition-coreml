@@ -23,8 +23,10 @@ class ImageClassificationViewController: UIViewController {
     /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
+            // Initialize Vision Core ML model from base Watson Visual Recognition model
             let model = try VNCoreMLModel(for: watsonVR_w_embedding().model)
             
+            // Create visual recognition request using Core ML model
             let request = VNCoreMLRequest(model: model, completionHandler: { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
             })
@@ -122,7 +124,6 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.image = image
         
-        //        self.imageBinary = UIImageJPEGRepresentation(image, 1)
         updateClassifications(for: image)
     }
 }

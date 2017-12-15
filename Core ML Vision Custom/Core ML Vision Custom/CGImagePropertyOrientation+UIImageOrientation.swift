@@ -1,6 +1,6 @@
 //
 //  CGImagePropertyOrientation+UIImageOrientation.swift
-//  Core Ml Vision Simple
+//  Core Ml Vision Custom
 //
 //  Created by Iain McCown on 11/30/17.
 //  Copyright © 2017 Iain McCown. All rights reserved.

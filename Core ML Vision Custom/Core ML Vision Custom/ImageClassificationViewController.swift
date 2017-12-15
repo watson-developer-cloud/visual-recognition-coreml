@@ -1,6 +1,6 @@
 //
 //  ViewController.swift
-//  Core Ml Vision Simple
+//  Core Ml Vision Custom
 //
 //  Created by Iain McCown on 11/29/17.
 //  Copyright © 2017 Iain McCown. All rights reserved.
@@ -30,11 +30,13 @@ class ImageClassificationViewController: UIViewController {
         super.viewDidLoad()
         currentModelLabel.text = "Current Model: \(classifierId)"
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version, apiKeyTestServer: apiKey)
+        // Immediately check for new model updates
         self.invokeModelUpdate()
         // Check for model updates every 60 seconds
-//        let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
+        let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
     }
     
+    // Check if updated version of model is available in cloud. Pull it down if there is
     @objc func invokeModelUpdate()
     {
         let failure = { (error: Error) in
@@ -54,6 +56,7 @@ class ImageClassificationViewController: UIViewController {
         
         self.currentModelLabel.text = "Updating model..."
         self.modelUpdateActivityIndicator.startAnimating()
+        
         visualRecognition.updateLocalModel(classifierID: classifierId, failure: failure, success: success)
     }
     
@@ -100,20 +103,19 @@ class ImageClassificationViewController: UIViewController {
         }
         
         visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: 0.2, failure: failure) { classifiedImages in
-            print(classifiedImages)
-            let filtered = classifiedImages.images[0].classifiers[0].classes.prefix(2) //  limit results to 2
+            
+            var topClassification = ""
+            print(classifiedImages.images[0].classifiers)
+            if classifiedImages.images.count > 0 && classifiedImages.images[0].classifiers.count > 0 && classifiedImages.images[0].classifiers[0].classes.count > 0 {
+                topClassification = classifiedImages.images[0].classifiers[0].classes[0].classification
+            } else {
+                topClassification = "Unrecognized"
+            }
 
             // Update UI on main thread
             DispatchQueue.main.async {
-                if filtered.isEmpty {
-                    self.classificationLabel.text = "Unrecognized."
-                } else {
-                    let descriptions = filtered.map { classification in
-                        // Formats the classification for display; e.g. "(0.37) cliff, drop, drop-off".
-                        return String(format: "  (%.4f) %@", classification.score, classification.classification)
-                    }
-                    self.classificationLabel.text = "Classification: \(filtered[0].classification)"
-                }
+                // Display top classification ranked by confidence in the UI.
+                self.classificationLabel.text = "Classification: \(topClassification)"
             }
         }
     }
