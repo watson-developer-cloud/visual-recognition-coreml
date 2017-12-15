@@ -105,7 +105,7 @@ class ImageClassificationViewController: UIViewController {
         visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: 0.2, failure: failure) { classifiedImages in
             
             var topClassification = ""
-            print(classifiedImages.images[0].classifiers)
+
             if classifiedImages.images.count > 0 && classifiedImages.images[0].classifiers.count > 0 && classifiedImages.images[0].classifiers[0].classes.count > 0 {
                 topClassification = classifiedImages.images[0].classifiers[0].classes[0].classification
             } else {
