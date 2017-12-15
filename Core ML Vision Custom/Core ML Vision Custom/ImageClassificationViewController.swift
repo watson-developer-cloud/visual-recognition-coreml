@@ -102,7 +102,7 @@ class ImageClassificationViewController: UIViewController {
             print(error)
         }
         
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: 0.2, failure: failure) { classifiedImages in
+        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
             
             var topClassification = ""
 
@@ -134,7 +134,7 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         imageView.contentMode = UIViewContentMode.scaleAspectFit
         imageView.image = image
         
-        classifyImage(for: image, localThreshold: 0.1)
+        classifyImage(for: image, localThreshold: 0.2)
     }
 }
 
