@@ -21,7 +21,7 @@ Watson Visual Recognition using Core ML, with the ability to train the base mode
 
 1. You will need Carthage to download the Watson SDK framework, if you do not already have Carthage installed you can follow instructions [here](https://github.com/Carthage/Carthage#installing-carthage)
 
-2. Once Carthage is set up, you can download the latest SDK by opening your terminal, navigating to the Core ML Vision Continuous Learning/ directory and running the following command
+2. Once Carthage is set up, you can download the latest SDK by opening your terminal, navigating to the Core ML Vision Custom/ directory and running the following command
 ```
 carthage update
 ```
