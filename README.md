@@ -25,6 +25,9 @@ Watson Visual Recognition using Core ML, with the ability to train the base mode
 ```
 carthage update
 ```
+**Temporary Note:** Until the updates to the SDK are made public, you will need to download the development version of the SDK [here](https://github.ibm.com/watson-embed-partnerships/pluto-swift-sdk). Make sure that it is at the same level as this project in whatever directory you save this project in. You may need to periodically pull down updates from the SDK github when you pull down updates for this project.
+
+
 3. After the package is done installing, you will find the Visual Recognition framework in the Carthage/Build/iOS directory. From this folder, drag `VisualRecognitionV3.framework` into your project's workspace, in the Core Ml Vision Continuous Learning\ directory. The Watson SDK makes it easy to keep track of your custom Core ML models and pull down new versions of custom classifiers from the IBM Cloud and store them on your device.
 
 4. Next you will need to go to bluemix and provision a free instance of Visual recognition. Click [this](https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue) link to do so. You will need to create a bluemix account if you do not already have one.
