@@ -2,9 +2,6 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:MobileNet.mlmodel">
-   </FileRef>
-   <FileRef
       location = "group:Core Ml Vision Simple/Core ML Vision Simple.xcodeproj">
    </FileRef>
    <FileRef

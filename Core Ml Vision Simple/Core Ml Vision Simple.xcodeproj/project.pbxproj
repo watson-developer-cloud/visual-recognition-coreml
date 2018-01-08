@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		2D133FEF2003E3F10037FC22 /* MobileNet.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2D133FEE2003E3AC0037FC22 /* MobileNet.mlmodel */; };
-		2D7870C81FE1F1430018BFE9 /* watsonVR_w_embedding.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 2D7870C71FE1F13C0018BFE9 /* watsonVR_w_embedding.mlmodel */; };
 		2DBDD2531FCF7F0E004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */; };
 		2DBDD2551FCF7F0E004A6DC1 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */; };
 		2DBDD25D1FCF7F0E004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */; };
@@ -19,7 +18,6 @@
 
 /* Begin PBXFileReference section */
 		2D133FEE2003E3AC0037FC22 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = "/Users/iainmccown/pluto-quickstart-workspace/Core Ml Vision Simple/MobileNet.mlmodel"; sourceTree = "<absolute>"; };
-		2D7870C71FE1F13C0018BFE9 /* watsonVR_w_embedding.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = watsonVR_w_embedding.mlmodel; path = "../../../coreml-vision/etc/models/watsonVR_w_embedding.mlmodel"; sourceTree = "<group>"; };
 		2DBDD24F1FCF7F0E004A6DC1 /* Core Ml Vision Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Ml Vision Simple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 			isa = PBXGroup;
 			children = (
 				2DC5F1381FD5F33E0063B2D5 /* Main.storyboard */,
-				2D7870C71FE1F13C0018BFE9 /* watsonVR_w_embedding.mlmodel */,
 				2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */,
 				2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */,
 				2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
@@ -145,7 +142,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7870C81FE1F1430018BFE9 /* watsonVR_w_embedding.mlmodel in Sources */,
 				2D133FEF2003E3F10037FC22 /* MobileNet.mlmodel in Sources */,
 				2DBDD2551FCF7F0E004A6DC1 /* ImageClassificationViewController.swift in Sources */,
 				2DBDD2531FCF7F0E004A6DC1 /* AppDelegate.swift in Sources */,
