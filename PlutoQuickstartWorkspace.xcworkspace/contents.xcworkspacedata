@@ -5,7 +5,7 @@
       location = "group:MobileNet.mlmodel">
    </FileRef>
    <FileRef
-      location = "group:/Users/iainmccown/pluto-quickstart-workspace/Core Ml Vision Simple/Core ML Vision Simple.xcodeproj">
+      location = "group:Core Ml Vision Simple/Core ML Vision Simple.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Core ML Vision Custom/Core ML Vision Custom.xcodeproj">
