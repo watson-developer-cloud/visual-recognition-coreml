@@ -40,5 +40,7 @@ carthage update
 
 8. Select 'Create Classifier'
 
-9. Select 'add data.' In your project directory there is a folder called 'training images.' Select all of the images from this folder.
+9. Select 'add data.' In your project directory there is a folder called 'training images.' Select or drag each image zip file to add image data. 
+
+10. Specify class name for each zip file
 
