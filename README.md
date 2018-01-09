@@ -40,7 +40,16 @@ carthage update
 
 8. Select 'Create Classifier'
 
-9. Select 'add data.' In your project directory there is a folder called 'training images.' Select or drag each image zip file to add image data. 
+9. Select 'add class.' to add a new class or drop images into an existing class.  In your project directory there is a folder called 'training images.' Select or drag each image zip file to add image data. 
 
-10. Specify class name for each zip file
+10. Specify class name for each zip file and select "Create" to create a new classifier.
+
+11. Copy and paste the name of the classifier created (TO BE CHANGED TO POINT TO ID) into the `classifiedId` variable.
+
+12. Perform a clean build and run the project pointed to a device. 
+
+13. Run the "Core ML Vision Custom" app on the device. 
+
+14. Select or point to any image in the device or simulator. You should the image getting classified based on the labels you provided during training. 
+
 
