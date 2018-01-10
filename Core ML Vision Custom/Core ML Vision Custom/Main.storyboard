@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13196" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MPu-h4-IWa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="MPu-h4-IWa">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13173"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -43,7 +43,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="1000" text="Add a photo." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEb-NC-NRJ">
-                                            <rect key="frame" x="126.5" y="10" width="122.5" height="24.5"/>
+                                            <rect key="frame" x="25" y="10" width="325" height="24.5"/>
                                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="21"/>
                                             <color key="textColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -51,9 +51,10 @@
                                     </subviews>
                                     <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
                                     <constraints>
-                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="centerX" secondItem="3e2-oF-SfQ" secondAttribute="centerX" id="9yr-g5-Qqz"/>
+                                        <constraint firstAttribute="trailing" secondItem="pEb-NC-NRJ" secondAttribute="trailing" constant="25" id="5CC-Cv-t7u"/>
                                         <constraint firstAttribute="bottom" secondItem="pEb-NC-NRJ" secondAttribute="bottom" constant="10" id="HWh-kn-XcG"/>
                                         <constraint firstItem="pEb-NC-NRJ" firstAttribute="top" secondItem="3e2-oF-SfQ" secondAttribute="top" constant="10" id="eI5-60-wof"/>
+                                        <constraint firstItem="pEb-NC-NRJ" firstAttribute="leading" secondItem="3e2-oF-SfQ" secondAttribute="leading" constant="25" id="xAg-Wv-S29"/>
                                     </constraints>
                                 </view>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
