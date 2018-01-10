@@ -11,7 +11,6 @@
 		2D7870CA1FE305CE0018BFE9 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870C91FE305CE0018BFE9 /* VisualRecognitionV3.framework */; };
 		2D7870CB1FE305CE0018BFE9 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D7870C91FE305CE0018BFE9 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
-		2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD27A1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld */; };
 		2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
 		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
 		2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1361FD5F3200063B2D5 /* Main.storyboard */; };
@@ -37,7 +36,6 @@
 		2D7870C91FE305CE0018BFE9 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VisualRecognitionV3.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Custom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2DBDD27B1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Core_ML_Vision_Continuous_Learning.xcdatamodel; sourceTree = "<group>"; };
 		2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBDD2801FCF7F88004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -82,7 +80,6 @@
 				2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */,
 				2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
-				2DBDD27A1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld */,
 				2DE513341FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */,
 				2DC5F1361FD5F3200063B2D5 /* Main.storyboard */,
 			);
@@ -163,7 +160,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DE513351FD092DF0063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */,
-				2DBDD27C1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld in Sources */,
 				2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */,
 				2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */,
 			);
@@ -348,19 +344,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		2DBDD27A1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				2DBDD27B1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodel */,
-			);
-			currentVersion = 2DBDD27B1FCF7F88004A6DC1 /* Core_ML_Vision_Continuous_Learning.xcdatamodel */;
-			path = Core_ML_Vision_Continuous_Learning.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 2DBDD2681FCF7F88004A6DC1 /* Project object */;
 }
