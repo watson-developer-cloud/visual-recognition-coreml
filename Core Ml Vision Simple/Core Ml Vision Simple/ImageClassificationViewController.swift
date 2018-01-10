@@ -28,7 +28,6 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - Image Classification
     
-    /// - Tag: MLModelSetup
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
             // Initialize Vision Core ML model from base Watson Visual Recognition model
@@ -45,7 +44,6 @@ class ImageClassificationViewController: UIViewController {
         }
     }()
     
-    /// - Tag: PerformRequests
     func updateClassifications(for image: UIImage) {
         classificationLabel.text = "Classifying..."
         
@@ -68,7 +66,6 @@ class ImageClassificationViewController: UIViewController {
     }
     
     /// Updates the UI with the results of the classification.
-    /// - Tag: ProcessClassifications
     func processClassifications(for request: VNRequest, error: Error?) {
         DispatchQueue.main.async {
             guard let results = request.results else {
