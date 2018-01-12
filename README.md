@@ -32,7 +32,7 @@ carthage update
 
 4. Once you've dragged the framework into the workspace, go to the Core ML Vision Custom project settings by clicking on the project in the Project navigator. Under 'General,' scroll down to Embedded Binaries and click the '+' sign. Select the VisualRecognitionV3.framework.
 
-5. Next you will need to go to bluemix and provision a free instance of Visual recognition. Click <a href="https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue" target="_blank">this</a> link to do so. You will need to create a bluemix account if you do not already have one.
+5. Next you will need to go to bluemix and provision a free instance of Visual recognition. Click <a href="https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue" target="blank">this</a> link to do so. You will need to create a bluemix account if you do not already have one.
 
 6. On this page you can copy your `api_key` from the listed credentials and paste it at the top of the `ImageClassificationViewController.swift` file in your project, where it says `apiKey = ""`. Next we will begin training our custom model. You are welcome to use any training images of your choosing, or to make things easier, we have included some sample training images in this github repo.
 
