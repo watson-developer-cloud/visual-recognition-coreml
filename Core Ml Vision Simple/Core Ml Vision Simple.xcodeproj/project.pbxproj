@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2D133FEE2003E3AC0037FC22 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = MobileNet.mlmodel; path = "/Users/iainmccown/pluto-quickstart-workspace/Core Ml Vision Simple/MobileNet.mlmodel"; sourceTree = "<absolute>"; };
+		2D133FEE2003E3AC0037FC22 /* MobileNet.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = MobileNet.mlmodel; sourceTree = SOURCE_ROOT; };
 		2DBDD24F1FCF7F0E004A6DC1 /* Core Ml Vision Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core Ml Vision Simple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2521FCF7F0E004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD2541FCF7F0E004A6DC1 /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
