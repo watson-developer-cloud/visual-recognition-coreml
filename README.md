@@ -32,14 +32,16 @@ For the [Core ML Vision Custom Training](#core-ml-vision-custom-training) you wi
 ## Core ML Vision Simple
 A basic implemenation of Watson Visual Recognition using Core ML.
 
+### Building and running
 1. In Xcode, ensure the active scheme is `Core ML Vision Simple`.
+1. Clean and build the project.
 
-### Using the Simulator
+#### Using the Simulator
 
 2. Select an iPhone simulator target and click the play button to build and run the active scheme.
 3. On the simulator, click the `camera` icon and select a photo from your photo library to classify. Note: You can add custom photos to the simulator by dragging them directly from the Finder to the simulator window.
 
-### Using a device
+#### Using a device
 
 2. Select the device to which you would like to publish the application. 
 3. Select the target `Core ML Vision Simple`, under `Identity` choose a unique `Bundle Identifier` and under `Signing` select the team you would like use to sign the application.
