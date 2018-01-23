@@ -91,16 +91,16 @@ Next we will begin training our custom model. You are welcome to use any trainin
 
 #### Using the Simulator
 
-2. Select an iPhone simulator target and click the play button to build and run the active scheme.
-3. On the simulator, click the `camera` icon and select a photo from your photo library to classify. Note: You can add custom photos to the simulator by dragging them directly from the Finder to the simulator window.
+3. Select an iPhone simulator target and click the play button to build and run the active scheme.
+4. On the simulator, click the `camera` icon and select a photo from your photo library to classify. Note: You can add custom photos to the simulator by dragging them directly from the Finder to the simulator window.
 
 #### Using a device
 
-2. Select the device to which you would like to publish the application. 
-3. Select the target `Core ML Vision Custom`, under `Identity` choose a unique `Bundle Identifier` and under `Signing` select the team you would like use to sign the application.
-4. Click the play button to build and run the active scheme on the device.
-5. If the device shows an Untrusted Developer error, go to `Settings` > `General` > `Device Managment`. Select the team you used to sign the application and trust the profile.
-6. On the device, click the `camera` icon and either take a photo of what you would like to classify (You will need to allow the application permissions to access the device camera) or select an image to be classified from your library. 
+3. Select the device to which you would like to publish the application. 
+4. Select the target `Core ML Vision Custom`, under `Identity` choose a unique `Bundle Identifier` and under `Signing` select the team you would like use to sign the application.
+5. Click the play button to build and run the active scheme on the device.
+6. If the device shows an Untrusted Developer error, go to `Settings` > `General` > `Device Managment`. Select the team you used to sign the application and trust the profile.
+7. On the device, click the `camera` icon and either take a photo of what you would like to classify (You will need to allow the application permissions to access the device camera) or select an image to be classified from your library. 
 
 [ibm_cloud_registration]: http://bluemix.net/registration
 [xcode_download]: https://developer.apple.com/xcode/downloads/
