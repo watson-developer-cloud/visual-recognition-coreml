@@ -66,7 +66,7 @@ carthage update
 
 1. After the package is done installing, you will find the Visual Recognition framework in the Carthage/Build/iOS directory. From this folder, drag `VisualRecognitionV3.framework` into your project's workspace, in the Core Ml Vision Custom\ directory. The Watson Swift SDK makes it easy to keep track of your custom Core ML models and pull down new versions of custom classifiers from the IBM Cloud and store them on your device.
 
-1. Once you've dragged the framework into the workspace, go to the Core ML Vision Custom project settings by clicking on the project in the Project navigator. Under 'General,' scroll down to Embedded Binaries and click the '+' sign. Select the VisualRecognitionV3.framework.
+1. Once you've dragged the framework into the workspace, go to the Core ML Vision Custom project settings by clicking on the project in the Project navigator. Under `General`, scroll down to Embedded Binaries and click the `+` sign. Select the VisualRecognitionV3.framework.
 
 1. Paste the `api_key` from obtained from [Provisioning an instance of Visual Recognition](#provisioning-an-instance-of-visual-recognition) to the top of the `ImageClassificationViewController.swift` file in your project, where it says `{api_key}`. 
 
@@ -75,16 +75,17 @@ Next we will begin training our custom model. You are welcome to use any trainin
 
 1. Navigate to the [Visual Recognition Tooling][vr_tooling] and enter your `api_key` to access your instance of Visual Recognition.
 
-1. Select `Create classifier`
+1. Select `Create classifier`.
 
 1. Drop zip files of class images into an existing class or select `Add class.` to add a new class. In the project directory there is a folder called `training images` you can use to train a new classifier.
 
-1. Specify class name describing each zip file and select "Create" to create a new classifier.
+1. Specify class name describing each zip file and select `Create` to create a new classifier.
 
 1. Copy and paste the `classifierID` of the classifier created into the `{classifier_id}` variable of `ImageClassificationViewController.swift`.
 
 ### Building and running
 1. In Xcode, ensure the active scheme is `Core ML Vision Custom`.
+1. Clean and build the project.
 
 #### Using the Simulator
 
