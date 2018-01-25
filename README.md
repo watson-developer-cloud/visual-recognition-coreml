@@ -1,92 +1,90 @@
-# Starter Kit: Watson Visual Recognition with Core ML
+# Visual Recognition with Core ML starter kit
 
-This repository demonstrates how to classify images using [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/) and [Core ML](https://developer.apple.com/machine-learning/). Images are classified offline using a deep neural network trained by Visual Recognition.
+Classify images with [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/) and [Core ML](https://developer.apple.com/machine-learning/). The images are classified offline using a deep neural network that is trained by Visual Recognition.
 
-## Contents
+This starter kit includes the `QuickstartWorkspace.xcworkspace` workspace with two projects:
 
-* [Requirements](#requirements)
-* [Project Setup](#project-setup)
-* [Example: Core ML Vision Simple](#example-core-ml-vision-simple)
-* [Example: Core ML Vision Custom Training](#example-core-ml-vision-custom-training)
-* [Resources](#resources)
+- **Core ML Vision Simple**: Classify images against the included Visual Recognition model.
+- **Core ML Vision Custom**: Train a custom Visual Recognition model for more specialized classification.
 
-## Requirements
+## Before you begin
 
-Xcode 9.0+ and iOS 11.0+ are required to support Core ML.
+Make sure that you have installed [Xcode 9][xcode_download] or later and iOS 11.0 or later. These versions are required to support Core ML.
 
-A Visual Recognition instance is also required by the [Core ML Vision Custom Training](#example-core-ml-vision-custom-training) example:
+## Getting the files
+Use GitHub to clone the repository locally, or [download the .zip file](https://github.ibm.com/watson-embed-partnerships/pluto-quickstart-workspace/archive/master.zip) of the repository and extract the files.
 
-1. Create an [IBM Cloud](https://bluemix.net) account.
-2. Create a service instance by clicking <a href="https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue" target="blank">here</a>.
-3. Click "Show" to reveal the service credentials.
-4. Copy the `api_key` for use with the [Core ML Vision Custom Training](#example-core-ml-vision-custom-training) example.
-    
-## Project Setup
+## Setting up your Visual Recognition service
+You can use an existing instance of the Visual Recognition service. Otherwise, follow these steps to create an instance:
 
-1. Download the project from GitHub. You can either clone the project or download it as a zip folder.
+1.  <a href="https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue" target="_blank">Create an instance</a> of the Visual Recognition service. From that link you can create or log in to an IBM Cloud account.
+1.  In the project details page, click **Show** to reveal the API key.
+1.  Copy the `api_key` value. You'll use it later to train a custom model.
 
-1. Open the workspace `QuickstartWorkspace.xcworkspace` in Xcode. You will see two projects. The first project ([Core ML Vision Simple](#example-core-ml-vision-simple)) is already pre-packaged with everything you need. It comes bundled with a base Watson Visual Recognition Model. The second project is set up to incorporate a custom Visual Recognition model. We will walk through the steps of creating your own model in [Core ML Vision Custom Training](#example-core-ml-vision-custom-training). 
+**Tip:** To return to the project details page, go to **[Projects](https://console.bluemix.net/developer/watson/projects)** page and select the instance of Visual Recognition that you created.
 
-## Example: Core ML Vision Simple
+## Running Core ML Vision Simple
+Identify common objects with a built-in Visual Recognition model. Images are classified with the [Core ML](https://developer.apple.com/documentation/coreml) framework.
 
-This example uses a Visual Recognition classifier to identify common objects. Images are classified using the [Core ML](https://developer.apple.com/documentation/coreml) framework. A trained model is already included in the project, making it easy to get up-and-running.
+1.  Open `QuickstartWorkspace.xcworkspace` in Xcode.
+1.  Select the `Core ML Vision Simple` scheme.
+1.  Run the application in the simulator or on a device.
+1.  Classify an image by clicking the camera icon and selecting a photo from your photo library. To add a custom image in the simulator, drag the image from the Finder to the simulator window.
 
-1. Clone the repository or download it as a zip file.
-2. Open `QuickstartWorkspace.xcworkspace` in Xcode.
-3. Select the `Core ML Vision Simple` scheme.
-4. Run the application in the simulator or on a device.
-5. To classify an image, click the camera icon and select a photo from your photo library. To add custom images in the simulator, drag-and-drop the image file from Finder to the simulator window.
+[Source code](../master/Core%20Ml%20Vision%20Simple/Core%20Ml%20Vision%20Simple/ImageClassificationViewController.swift) for `ImageClassificationViewController`.
 
-The source code for this example can be found in [`ImageClassificationViewController`](../master/Core%20Ml%20Vision%20Simple/Core%20Ml%20Vision%20Simple/ImageClassificationViewController.swift).
+## Running Core ML Vision Custom
+This project trains a Visual Recognition model (also called a classifier) to identify common types of cables (HDMI, USB, etc.). Use the [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk) to download, manage, and execute the trained model. By using the Watson Swift SDK, you don't have to learn about the underlying Core ML framework.
 
-## Example: Core ML Vision Custom Training
+### Log into the Visual Recognition Tool
+Use the [Visual Recognition Tool][vr_tooling] to upload images and train a custom model.
 
-This example trains a Visual Recognition classifier to identify common types of cables (HDMI, USB, etc.). The [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk) is used to download, manage, and execute the trained model. With the Watson Swift SDK, you can get up-and-running without having to learn the underlying Core ML framework.
+1.  Open the [Visual Recognition Tooling][vr_tooling].
+1.  Enter the `api_key` that you copied earlier.
 
-### Train a Custom Model
+### Training the model
 
-We will use the [Visual Recognition Tooling][vr_tooling] to upload images and train a custom classifier. We have included sample images in this repository, but you are welcome to use any training images you like.
+1.  In the Visual Recognition Tool, select **Create Classifier**.
+1.  Drag each .zip file of sample images from the [Training Images](../master/Training%20Images) directory onto a class.
+1.  Enter `HDMI` and `USB` for the class names.
+1.  Click **Create** to create a classifier.
+1.  Copy the classifier ID and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
+1.  Copy your API Key and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 
-1. Open the [Visual Recognition Tooling][vr_tooling].
-2. Enter the `api_key` for your Visual Recognition instance.
-3. Select "Create Classifier."
-4. Drag-and-drop each zip file of images from the [Training Images](../master/Training%20Images) directory onto a class.
-5. Provide class names of "HDMI" and "USB".
-6. Click "Create" to create a new classifier.
-7. Copy and paste the classifier ID into the `classifierID` property in [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift).
-8. Copy and paste your service instance's API Key into the `apiKey` property in [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift).
+### Downloading the Watson Swift SDK
+Use the Carthage dependency manager to download and build the Watson Swift SDK.
 
-### Download Watson Swift SDK
+1.  Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage).
+1.  Open a terminal window and navigate to the `Core ML Vision Custom` directory.
+1.  Run the following command to download and build the Watson Swift SDK:
 
-We will use the Carthage dependency manager to download and build the Watson Swift SDK.
+    ```bash
+    carthage bootstrap --platform iOS
+    ```
+1.  In Xcode, use the **Project Navigator** to select the `Core ML Vision Custom` project.
+1.  In the General settings tab, scroll down to **Embedded Binaries** and click the `+` icon.
+1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select **VisualRecognitionV3.framework**.
+1.  Download the [development version](https://github.ibm.com/watson-embed-partnerships/pluto-swift-sdk) of the SDK. Make sure that you save the SDK at the same level as where you saved this project.
 
-1. [Install Carthage](https://github.com/Carthage/Carthage#installing-carthage).
-2. Open a terminal and navigate to the `Core ML Vision Custom` directory.
-3. Run `carthage bootstrap --platform iOS` to download and build the Watson Swift SDK.
-4. In Xcode, use the Project Navigator to select the `Core ML Vision Custom` project.
-5. In the "General" settings tab, scroll down to Embedded Binaries and click the "+" icon.
-6. Click "Add Other", navigate to the `Carthage/Build/iOS` directory, and select `VisualRecognitionV3.framework`.
+**Tip:** Regularly download updates from the SDK so you stay in sync with updates to this project.
 
-**Temporary Note:** Until the updates to the SDK are made public, you will need to download the development version of the SDK [here](https://github.ibm.com/watson-embed-partnerships/pluto-swift-sdk). Make sure that it is at the same level as this project in whatever directory you save this project in. You may need to periodically pull down updates from the SDK github when you pull down updates for this project.
-
-### Run the Example App
+### Testing the custom model
 
 1. Open `QuickstartWorkspace.xcworkspace` in Xcode.
-2. Select the `Core ML Vision Custom` scheme.
-3. Run the application in the simulator or on a device.
-4. To classify an image, click the camera icon and select a photo from your photo library. To add custom images in the simulator, drag-and-drop the image file from Finder to the simulator window.
+1. Select the `Core ML Vision Custom` scheme.
+1. Run the application in the simulator or on a device.
+1. Classify an image by clicking the camera icon and selecting a photo from your photo library. To add a custom image in the simulator, drag the image from the Finder to the simulator window.
 
-The source code for this example can be found in [`ImageClassificationViewController`](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift).
+[Source code](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) for `ImageClassificationViewController`.
 
 ## Resources
 
 - [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/)
-- [Watson Visual Recognition Tooling][vr_tooling]
-- [Apple Machine Learning](https://developer.apple.com/machine-learning/)
+- [Watson Visual Recognition Tool][vr_tooling]
+- [Apple machine learning](https://developer.apple.com/machine-learning/)
 - [Core ML Documentation](https://developer.apple.com/documentation/coreml)
 - [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
 - [IBM Cloud](https://bluemix.net)
 
-[ibm_cloud_registration]: http://bluemix.net/registration
 [xcode_download]: https://developer.apple.com/xcode/downloads/
 [vr_tooling]: https://watson-visual-recognition.ng.bluemix.net/
