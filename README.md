@@ -78,6 +78,15 @@ We will use the Carthage dependency manager to download and build the Watson Swi
 
 The source code for this example can be found in [`ImageClassificationViewController`](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift).
 
+## Resources
+
+- [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/)
+- [Watson Visual Recognition Tooling][vr_tooling]
+- [Apple Machine Learning](https://developer.apple.com/machine-learning/)
+- [Core ML Documentation](https://developer.apple.com/documentation/coreml)
+- [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
+- [IBM Cloud](https://bluemix.net)
+
 [ibm_cloud_registration]: http://bluemix.net/registration
 [xcode_download]: https://developer.apple.com/xcode/downloads/
 [vr_tooling]: https://watson-visual-recognition.ng.bluemix.net/
