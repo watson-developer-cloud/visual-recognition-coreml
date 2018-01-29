@@ -89,6 +89,6 @@ Add another Watson service to the custom project with the [Core ML Visual Recogn
 - [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
 - [IBM Cloud](https://bluemix.net)
 
-[vizreq_with_discovery]: (https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/)
-[xcode_download]: (https://developer.apple.com/xcode/downloads/)
+[vizreq_with_discovery]: https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/
+[xcode_download]: https://developer.apple.com/xcode/downloads/
 [vizreq_tooling]: https://watson-visual-recognition.ng.bluemix.net/
