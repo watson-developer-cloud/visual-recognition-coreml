@@ -37,9 +37,9 @@ If you have an existing instance of the Visual Recognition service, you can use 
 **Tip:** To return to the project details page, go to **[Projects](https://console.bluemix.net/developer/watson/projects)** page and select the instance of Visual Recognition that you created.
 
 ### Log into the Visual Recognition Tool
-Use the [Visual Recognition Tool][vr_tooling] to upload images and train a custom model.
+Use the [Visual Recognition Tool][vizreq_tooling] to upload images and train a custom model.
 
-1.  Open the [Visual Recognition Tooling][vr_tooling].
+1.  Open the [Visual Recognition Tooling][vizreq_tooling].
 1.  Enter the `api_key` that you copied earlier.
 
 ### Training the model
@@ -83,12 +83,12 @@ Add another Watson service to the custom project with the [Core ML Visual Recogn
 ## Resources
 
 - [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/)
-- [Watson Visual Recognition Tool][vr_tooling]
+- [Watson Visual Recognition Tool][vizreq_tooling]
 - [Apple machine learning](https://developer.apple.com/machine-learning/)
 - [Core ML documentation](https://developer.apple.com/documentation/coreml)
 - [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
 - [IBM Cloud](https://bluemix.net)
 
 [vizreq_with_discovery]: (https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/)
-[xcode_download]: https://developer.apple.com/xcode/downloads/
-[vr_tooling]: https://watson-visual-recognition.ng.bluemix.net/
+[xcode_download]: (https://developer.apple.com/xcode/downloads/)
+[vizreq_tooling]: https://watson-visual-recognition.ng.bluemix.net/
