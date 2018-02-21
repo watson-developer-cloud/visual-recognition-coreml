@@ -49,8 +49,9 @@ class ImageClassificationViewController: UIViewController {
     {
         let failure = { (error: Error) in
             print(error)
+            let descriptError = error as NSError
             DispatchQueue.main.async {
-                self.currentModelLabel.text = "Error updating model"
+                self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
                 self.modelUpdateActivityIndicator.stopAnimating()
             }
         }
@@ -107,7 +108,7 @@ class ImageClassificationViewController: UIViewController {
         classificationLabel.text = "Classifying..."
         
         let failure = { (error: Error) in
-            print(error)
+            self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
         }
         
         visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
@@ -126,6 +127,15 @@ class ImageClassificationViewController: UIViewController {
                 self.classificationLabel.text = "Classification: \(topClassification)"
             }
         }
+    }
+    
+    //MARK: - Error Handling
+    
+    // Function to show an alert with an alertTitle String and alertMessage String
+    func showAlert(_ alertTitle: String, alertMessage: String) {
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     
