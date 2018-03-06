@@ -37,7 +37,7 @@ class ImageClassificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         currentModelLabel.text = "Current Model: \(classifierId)"
-        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version, apiKeyTestServer: apiKey)
+        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
         // Immediately check for new model updates
         self.invokeModelUpdate()
         // Check for model updates every 60 seconds
@@ -116,7 +116,7 @@ class ImageClassificationViewController: UIViewController {
             var topClassification = ""
 
             if classifiedImages.images.count > 0 && classifiedImages.images[0].classifiers.count > 0 && classifiedImages.images[0].classifiers[0].classes.count > 0 {
-                topClassification = classifiedImages.images[0].classifiers[0].classes[0].classification
+                topClassification = classifiedImages.images[0].classifiers[0].classes[0].className
             } else {
                 topClassification = "Unrecognized"
             }
