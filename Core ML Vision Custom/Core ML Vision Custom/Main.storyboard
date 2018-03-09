@@ -34,6 +34,11 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="OpV-bK-Olg"/>
+                                    <barButtonItem systemItem="refresh" id="uCt-W1-sDm">
+                                        <connections>
+                                            <action selector="updateModel:" destination="MPu-h4-IWa" id="xOq-St-NK4"/>
+                                        </connections>
+                                    </barButtonItem>
                                 </items>
                             </toolbar>
                             <visualEffectView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1YX-t4-YGx">
@@ -66,25 +71,22 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="5sa-d8-uC6">
-                                <rect key="frame" x="253" y="637" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QGZ-b4-zCe" firstAttribute="bottom" secondItem="b2I-nz-Bpy" secondAttribute="bottom" constant="10" id="IaM-ni-zxv"/>
-                            <constraint firstItem="5sa-d8-uC6" firstAttribute="leading" secondItem="b2I-nz-Bpy" secondAttribute="trailing" constant="15" id="NOd-4p-m9m"/>
                             <constraint firstItem="b2I-nz-Bpy" firstAttribute="centerX" secondItem="oBa-W5-Ood" secondAttribute="centerX" id="S0r-AT-4iJ"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leading" id="X6A-uN-JTq"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="trailing" secondItem="dAg-J4-Lwe" secondAttribute="trailing" id="ZQM-VP-HaA"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="bottom" secondItem="dAg-J4-Lwe" secondAttribute="bottom" id="bXh-dw-Iqp"/>
                             <constraint firstItem="1YX-t4-YGx" firstAttribute="leading" secondItem="QGZ-b4-zCe" secondAttribute="leading" id="dFr-b7-vgV"/>
-                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="bottom" secondItem="5sa-d8-uC6" secondAttribute="bottom" constant="10" id="lT8-eT-9il"/>
+                            <constraint firstItem="b2I-nz-Bpy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QGZ-b4-zCe" secondAttribute="leading" constant="60" id="h4C-dj-fNl"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="centerY" secondItem="oBa-W5-Ood" secondAttribute="centerY" id="pxE-cT-OTc"/>
                             <constraint firstItem="QGZ-b4-zCe" firstAttribute="trailing" secondItem="1YX-t4-YGx" secondAttribute="trailing" id="ruV-85-t0Y"/>
                             <constraint firstAttribute="trailing" secondItem="pUB-PT-eoR" secondAttribute="trailing" id="tlg-dE-bfb"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="top" secondItem="oBa-W5-Ood" secondAttribute="top" id="uvo-Pf-Wrd"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="dAg-J4-Lwe" secondAttribute="leading" id="yD6-rE-wFN"/>
+                            <constraint firstItem="QGZ-b4-zCe" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="b2I-nz-Bpy" secondAttribute="trailing" constant="60" id="yuj-Mc-FpR"/>
                             <constraint firstItem="dAg-J4-Lwe" firstAttribute="top" secondItem="1YX-t4-YGx" secondAttribute="bottom" id="zTR-HR-NEH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QGZ-b4-zCe"/>
@@ -94,7 +96,7 @@
                         <outlet property="classificationLabel" destination="pEb-NC-NRJ" id="fdK-Gq-GJU"/>
                         <outlet property="currentModelLabel" destination="b2I-nz-Bpy" id="cYQ-WA-RnQ"/>
                         <outlet property="imageView" destination="pUB-PT-eoR" id="o73-CL-qHW"/>
-                        <outlet property="modelUpdateActivityIndicator" destination="5sa-d8-uC6" id="N6z-td-Cdo"/>
+                        <outlet property="updateModelButton" destination="uCt-W1-sDm" id="VRE-M6-kkf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="igj-I4-czO" sceneMemberID="firstResponder"/>

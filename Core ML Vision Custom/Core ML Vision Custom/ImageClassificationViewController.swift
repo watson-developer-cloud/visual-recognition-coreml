@@ -27,52 +27,58 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var currentModelLabel: UILabel!
-    @IBOutlet weak var modelUpdateActivityIndicator: UIActivityIndicatorView!
-
-    // TODO: Remove test service
-//    let apiKey = "{api_key}"
-//    let classifierId = "{classifier_id}"
-//    let version = "2017-12-07"
-    let apiKey = ""
-    let classifierId = ""
+    @IBOutlet weak var updateModelButton: UIBarButtonItem!
+    
+    let apiKey = "mockKeyForDev"
+    let classifierId = "connectors_1603202612"
     let version = "2017-12-07"
     var visualRecognition: VisualRecognition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        currentModelLabel.text = "Current Model: \(classifierId)"
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
         // TODO: Remove test service
         self.visualRecognition.serviceURL = "https://alchemyapi-s.watsonplatform.net/visual-recognition-playpen/api"
-        // Immediately check for new model updates
-        self.invokeModelUpdate()
-        // Check for model updates every 60 seconds
-        let _ = Timer.scheduledTimer(timeInterval: 60.0, target: self, selector: #selector(ImageClassificationViewController.invokeModelUpdate), userInfo: nil, repeats: true)
     }
     
-    // Check if updated version of model is available in cloud. Pull it down if there is
-    @objc func invokeModelUpdate()
+    override func viewDidAppear(_ animated: Bool) {
+        // Pull down model if none on device
+        let localModels = try? visualRecognition.listLocalModels()
+        if localModels == nil {
+            self.invokeModelUpdate()
+        } else {
+            self.currentModelLabel.text = "Current Model: \(self.classifierId)"
+        }
+    }
+    
+    //MARK: - Model Methods
+    
+    func invokeModelUpdate()
     {
         let failure = { (error: Error) in
             print(error)
             let descriptError = error as NSError
             DispatchQueue.main.async {
                 self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
-                self.modelUpdateActivityIndicator.stopAnimating()
+                SwiftSpinner.hide()
             }
         }
         
         let success = {
             DispatchQueue.main.async {
                 self.currentModelLabel.text = "Current Model: \(self.classifierId)"
-                self.modelUpdateActivityIndicator.stopAnimating()
+                SwiftSpinner.hide()
             }
         }
         
-        self.currentModelLabel.text = "Updating model..."
-        self.modelUpdateActivityIndicator.startAnimating()
+        SwiftSpinner.show("Compiling model...")
         
         visualRecognition.updateLocalModel(classifierID: classifierId, failure: failure, success: success)
+    }
+    
+    
+    @IBAction func updateModel(_ sender: Any) {
+        self.invokeModelUpdate()
     }
     
     

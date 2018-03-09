@@ -73,6 +73,7 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
 1. Select the `Core ML Vision Custom` scheme.
 1. Run the application in the simulator or on a device.
 1. Classify an image by clicking the camera icon and selecting a photo from your photo library. To add a custom image in the simulator, drag the image from the Finder to the simulator window.
+1. Pull new versions of the visual recognition model with the refresh button in the bottom right.
 
 [Source code](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) for `ImageClassificationViewController`.
 
