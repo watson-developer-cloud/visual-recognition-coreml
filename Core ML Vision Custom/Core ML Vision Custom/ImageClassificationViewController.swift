@@ -28,9 +28,13 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var modelUpdateActivityIndicator: UIActivityIndicatorView!
-    
-    let apiKey = "{api_key}"
-    let classifierId = "{classifier_id}"
+
+    // TODO: Remove test service
+//    let apiKey = "{api_key}"
+//    let classifierId = "{classifier_id}"
+//    let version = "2017-12-07"
+    let apiKey = ""
+    let classifierId = ""
     let version = "2017-12-07"
     var visualRecognition: VisualRecognition!
     
@@ -38,6 +42,8 @@ class ImageClassificationViewController: UIViewController {
         super.viewDidLoad()
         currentModelLabel.text = "Current Model: \(classifierId)"
         self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
+        // TODO: Remove test service
+        self.visualRecognition.serviceURL = "https://alchemyapi-s.watsonplatform.net/visual-recognition-playpen/api"
         // Immediately check for new model updates
         self.invokeModelUpdate()
         // Check for model updates every 60 seconds

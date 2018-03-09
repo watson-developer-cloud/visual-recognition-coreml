@@ -2,6 +2,9 @@
 <Workspace
    version = "1.0">
    <FileRef
+      location = "group:../swift-sdk/WatsonDeveloperCloud.xcodeproj">
+   </FileRef>
+   <FileRef
       location = "group:Core Ml Vision Simple/Core ML Vision Simple.xcodeproj">
    </FileRef>
    <FileRef
