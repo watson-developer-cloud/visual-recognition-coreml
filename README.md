@@ -27,27 +27,21 @@ Identify common objects with a built-in Visual Recognition model. Images are cla
 ## Running Core ML Vision Custom
 This project trains a Visual Recognition model (also called a classifier) to identify common types of cables (HDMI, USB, etc.). Use the [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk) to download, manage, and execute the trained model. By using the Watson Swift SDK, you don't have to learn about the underlying Core ML framework.
 
-## Setting up your Visual Recognition service
-If you have an existing instance of the Visual Recognition service, you can use it. Otherwise, follow these steps to create an instance:
-
-1.  <a href="https://console.bluemix.net/registration/trial/?target=%2Fdeveloper%2Fwatson%2Fcreate-project%3Fservices%3Dwatson_vision_combined%26action%3Dcreate%26hideTours%3Dtrue" target="_blank">Create an instance</a> of the Visual Recognition service. From that link you can create or log into an IBM Cloud account.
-1.  In the project details page, click **Show** to reveal the API key.
-1.  Copy the `api_key` value. You'll use it later to train a custom model.
-
-**Tip:** To return to the project details page, go to **[Projects](https://console.bluemix.net/developer/watson/projects)** page and select the instance of Visual Recognition that you created.
-
-### Log into the Visual Recognition Tool
-Use the [Visual Recognition Tool][vizreq_tooling] to upload images and train a custom model.
-
-1.  Open the [Visual Recognition Tooling][vizreq_tooling].
-1.  Enter the `api_key` that you copied earlier.
-
-### Training the model
-
-1.  In the Visual Recognition Tool, select **Create Classifier**.
-1.  Drag each .zip file of sample images from the [Training Images](../master/Training%20Images) directory onto a class.
-1.  Enter `HDMI` as the class name for the `hdmi_male.zip` file and `USB` for the `usb_male.zip` file.
-1.  Click **Create** to create a classifier.
+## Setting up Visual Recognition in Watson Studio
+1.  Click [here][watson_studio_visrec_tooling] to access Watson Studio.
+1.  Sign in to Studio and create an **IBM Cloud account** if you don't have one. 
+    *   If you already have an IBM Cloud account, click the link to *Use it to sign up for IBM Data Platform* and skip to step 3. 
+    *   If you already have both an IBM Cloud account and an IBM Studio account, click *Sign in*. and skip to step 3. 
+    *   If you don't have an IBM Cloud account, *Create your IBM Cloud Account* by entering your email address and clicking the *Next* button. Complete the form and click *Create Account*. Check your email to confirm your account.
+1.  In Watson Studio you should be in your Visual Recognition instance overview page. Click on the *Credentials* tab and click *View credentials* for the Visual Recognition service instance. Copy the `api_key` of the service.
+1.  Click the *Overview* tab. Under "Custom" click the *Create Model* button.
+1.  Name your project and give it a description. Click the *Create* button to create your project.
+1.  Enter "Custom Core ML" for your model name.
+1.  Upload each .zip file of sample images from the Training Images directory onto the data panel. 
+1.  Add the `hdmi_male.zip` file to your model from the data panel.
+1.  Add the `usb_male.zip` file to your model.
+1.  Click *Train Model*.
+1.  Click on your project name on the top left of the screen. Copy the `Model ID` of the custom model you just trained.
 1.  Copy the classifier ID and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 1.  Copy your API Key and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 
@@ -93,3 +87,4 @@ Add another Watson service to the custom project with the [Core ML Visual Recogn
 [vizreq_with_discovery]: https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/
 [xcode_download]: https://developer.apple.com/xcode/downloads/
 [vizreq_tooling]: https://watson-visual-recognition.ng.bluemix.net/
+[watson_studio_visrec_tooling]: https://dataplatform.ibm.com/registration/stepone?context=wdp&target=watson_vision_combined&apps=data_science_experience
