@@ -35,13 +35,16 @@ This project trains a Visual Recognition model (also called a classifier) to ide
     *   If you don't have an IBM Cloud account, *Create your IBM Cloud Account* by entering your email address and clicking the *Next* button. Complete the form and click *Create Account*. Check your email to confirm your account.
 1.  In Watson Studio you should be in your Visual Recognition instance overview page. Click on the *Credentials* tab and click *View credentials* for the Visual Recognition service instance. Copy the `api_key` of the service.
 1.  Click the *Overview* tab. Under "Custom" click the *Create Model* button.
-1.  Name your project and give it a description. Click the *Create* button to create your project.
+1.  If a project is not yet associted with the Visual Recognition instance you created, a project will be created now. Name your project and give it a description. Click the *Create* button to create your project.
 1.  Enter "Custom Core ML" for your model name.
 1.  Upload each .zip file of sample images from the Training Images directory onto the data panel. 
 1.  Add the `hdmi_male.zip` file to your model from the data panel.
 1.  Add the `usb_male.zip` file to your model.
 1.  Click *Train Model*.
-1.  Click on your project name on the top left of the screen. Copy the `Model ID` of the custom model you just trained.
+1.  Click on your Visual Recognition instance name immediately after `Associated Service`. Scroll down to find the "Custom Core ML" classifier you just created. Copy the `Model ID` of the classifier.
+
+## Adding the classifierId and apiKey to the project
+1.  Open the project in XCode.
 1.  Copy the classifier ID and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 1.  Copy your API Key and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 
