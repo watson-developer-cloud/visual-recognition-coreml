@@ -29,8 +29,8 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
     
-    let apiKey = "mockKeyForDev"
-    let classifierId = "connectors_1603202612"
+    let apiKey = ""
+    let classifierId = ""
     let version = "2017-12-07"
     var visualRecognition: VisualRecognition!
     
