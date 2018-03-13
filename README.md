@@ -1,8 +1,8 @@
-# Visual Recognition with Core ML starter kit
+# Visual Recognition with Core ML
 
 Classify images with [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/) and [Core ML](https://developer.apple.com/machine-learning/). The images are classified offline using a deep neural network that is trained by Visual Recognition.
 
-This starter kit includes the `QuickstartWorkspace.xcworkspace` workspace with two projects:
+This project includes the `QuickstartWorkspace.xcworkspace` workspace with two projects:
 
 - **Core ML Vision Simple**: Classify images locally with Visual Recognition.
 - **Core ML Vision Custom**: Train a custom Visual Recognition model for more specialized classification.
@@ -79,7 +79,7 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
 
 ## What to do next
 
-Add another Watson service to the custom project with the [Core ML Visual Recognition with Discovery][vizreq_with_discovery] starter kit.
+Add another Watson service to the custom project with the [Core ML Visual Recognition with Discovery][vizreq_with_discovery] project.
 
 ## Resources
 
