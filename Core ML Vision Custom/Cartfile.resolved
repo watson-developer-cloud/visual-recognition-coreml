@@ -1,4 +1,0 @@
-git "../../swift-sdk" "4ae94fe0ec6cc4ebae60c8ed3c2b0bc7e74e5ce4"
-github "daltoniam/Starscream" "3.0.4"
-github "daltoniam/common-crypto-spm" "1.1.0"
-github "daltoniam/zlib-spm" "1.1.0"
