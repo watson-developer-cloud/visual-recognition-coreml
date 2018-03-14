@@ -21,7 +21,8 @@ Identify common objects with a built-in Visual Recognition model. Images are cla
 1.  Select the `Core ML Vision Simple` scheme.
 1.  Run the application in the simulator or on your device.
 1.  Classify an image by clicking the camera icon and selecting a photo from your photo library. To add a custom image in the simulator, drag the image from the Finder to the simulator window.
-1.  Included in the repo are Core ML models for tools and plants. Switch between these models by uncommenting the model you would like to use in [ImageClassificationViewController](../master/Core%20Ml%20Vision%20Simple/Core%20Ml%20Vision%20Simple/ImageClassificationViewController.swift).
+
+**Tip**: This project also includes a Core ML model to classify trees and fungi. You can switch between the two included Core ML models by uncommenting the model you would like to use in [ImageClassificationViewController](../master/Core%20Ml%20Vision%20Simple/Core%20Ml%20Vision%20Simple/ImageClassificationViewController.swift).
 
 [Source code](../master/Core%20Ml%20Vision%20Simple/Core%20Ml%20Vision%20Simple/ImageClassificationViewController.swift) for `ImageClassificationViewController`.
 
