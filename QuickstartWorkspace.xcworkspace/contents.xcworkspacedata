@@ -2,7 +2,7 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Core Ml Vision Simple/Core ML Vision Simple.xcodeproj">
+      location = "group:Core ML Vision Simple/Core ML Vision Simple.xcodeproj">
    </FileRef>
    <FileRef
       location = "group:Core ML Vision Custom/Core ML Vision Custom.xcodeproj">
