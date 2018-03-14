@@ -28,20 +28,19 @@ Identify common objects with a built-in Visual Recognition model. Images are cla
 This project trains a Visual Recognition model (also called a classifier) to identify common types of cables (HDMI, USB, etc.). Use the [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk) to download, manage, and execute the trained model. By using the Watson Swift SDK, you don't have to learn about the underlying Core ML framework.
 
 ## Setting up Visual Recognition in Watson Studio
-1.  Click [here][watson_studio_visrec_tooling] to access Watson Studio.
+1.  Log into [Watson Studio][watson_studio_visrec_tooling].
 1.  Sign in to Studio and create an **IBM Cloud account** if you don't have one. 
-    *   If you already have an IBM Cloud account, click the link to *Use it to sign up for IBM Data Platform* and skip to step 3. 
-    *   If you already have both an IBM Cloud account and an IBM Studio account, click *Sign in*. and skip to step 3. 
-    *   If you don't have an IBM Cloud account, *Create your IBM Cloud Account* by entering your email address and clicking the *Next* button. Complete the form and click *Create Account*. Check your email to confirm your account.
-1.  In Watson Studio you should be in your Visual Recognition instance overview page. Click on the *Credentials* tab and click *View credentials* for the Visual Recognition service instance. Copy the `api_key` of the service.
-1.  Click the *Overview* tab. Under "Custom" click the *Create Model* button.
-1.  If a project is not yet associted with the Visual Recognition instance you created, a project will be created now. Name your project and give it a description. Click the *Create* button to create your project.
-1.  Enter "Custom Core ML" for your model name.
-1.  Upload each .zip file of sample images from the Training Images directory onto the data panel. 
+    *   If you already have an IBM Cloud account, click to **Use it to sign up for IBM Data Platform** and skip to step 3. 
+    *   If you already have both an IBM Cloud account and an IBM Studio account, click **Sign in**. and skip to step 3. 
+    *   If you don't have an IBM Cloud account, enter your email address, complete the form, and click **Create Account**.
+1.  In Watson Studio, you'll be on the Visual Recognition instance overview page. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
+1.  Click the **Overview** tab, and then under "Custom", click **Create Model**.
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project will be created now. Name your project "Custom Core ML Project" and click **Create**.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. 
 1.  Add the `hdmi_male.zip` file to your model from the data panel.
 1.  Add the `usb_male.zip` file to your model.
-1.  Click *Train Model*.
-1.  Click on your Visual Recognition instance name immediately after `Associated Service`. Scroll down to find the "Custom Core ML" classifier you just created. Copy the `Model ID` of the classifier.
+1.  Click **Train Model**.
+1.  Click your Visual Recognition instance that is displayed next to "Associated Service". Scroll down to find the **Custom Core ML** classifier you just created. Copy the **Model ID** of the classifier.
 
 ## Adding the classifierId and apiKey to the project
 1.  Open the project in XCode.
