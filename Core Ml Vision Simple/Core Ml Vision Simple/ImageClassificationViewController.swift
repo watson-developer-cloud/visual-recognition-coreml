@@ -31,8 +31,13 @@ class ImageClassificationViewController: UIViewController {
     lazy var classificationRequest: VNCoreMLRequest = {
         do {
             // Initialize Vision Core ML model from base Watson Visual Recognition model
-            let model = try VNCoreMLModel(for: MobileNet().model)
-            
+
+            //  Uncomment this line to use the tools model.
+            let model = try VNCoreMLModel(for: watson_tools().model)
+
+            //  Uncomment this line to use the plants model.
+            // let model = try VNCoreMLModel(for: watson_plants().model)
+
             // Create visual recognition request using Core ML model
             let request = VNCoreMLRequest(model: model) { [weak self] request, error in
                 self?.processClassifications(for: request, error: error)
