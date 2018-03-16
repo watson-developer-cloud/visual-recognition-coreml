@@ -31,19 +31,19 @@ This project trains a Visual Recognition model (also called a classifier) to ide
 
 ### Setting up Visual Recognition in Watson Studio
 1.  Log into [Watson Studio][watson_studio_visrec_tooling]. From this link you can create an IBM Cloud account, sign up for Watson Studio, or log in.
-1.  After you sign up or log in, you'll be on the Visual Recognition instance overview page in Watson Studio. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
+1.  After you sign up or log in, you'll be on the Visual Recognition instance overview page in Watson Studio.
 
 ### Training the model
-1.  From the instance overview page, click **Create Model** in the Custom box.
-1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project and give it a description. Click the **Create** button to create your project.
-1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. 
-1.  Add the `hdmi_male.zip` file to your model from the data panel. Also add the `usb_male.zip` file to your model.
+1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip` file to your model.
 1.  Click **Train Model**.
 
-### Copy your Model ID
-1.  Click your Visual Recognition instance name (it's next to Associated Service). 
+### Copy your Model ID and API Key
+1.  In Watson Studio on the Visual Recognition instance overview page, click your Visual Recognition instance name (it's next to Associated Service). 
 1.  Scroll down to find the **Custom Core ML** classifier you just created. 
 1.  Copy the **Model ID** of the classifier.
+1.  In the Visual Recognition instance overview page in Watson Studio. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
 
 ### Adding the classifierId and apiKey to the project
 1.  Open the project in XCode.
