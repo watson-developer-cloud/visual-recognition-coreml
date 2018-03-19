@@ -106,7 +106,7 @@
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
 				LastUpgradeCheck = 0900;
-				ORGANIZATIONNAME = "Iain McCown";
+				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					2DBDD26F1FCF7F88004A6DC1 = {
 						CreatedOnToolsVersion = 9.0;
@@ -290,7 +290,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Core-ML-Vision-Continuous-Learning1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Custom";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -309,7 +309,7 @@
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Core-ML-Vision-Continuous-Learning1";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Custom";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
