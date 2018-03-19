@@ -36,7 +36,7 @@ This project trains a Visual Recognition model (also called a classifier) to ide
 ### Training the model
 1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
 1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**.
-1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip` file to your model.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip`, `thunderbolt_male.zip`, `vga_male.zip` file to your model.
 1.  After the files are uploaded, select **Add to model** from the menu next to each file, and then click **Train Model**.
 
 ### Copy your Model ID and API Key
