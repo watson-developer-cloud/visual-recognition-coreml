@@ -35,7 +35,9 @@ This project trains a Visual Recognition model (also called a classifier) to ide
 
 ### Training the model
 1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
-1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**.
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**. 
+
+    **Tip**: If no storage is defined, click **refresh**.
 1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip`, `thunderbolt_male.zip`, `vga_male.zip` file to your model.
 1.  After the files are uploaded, select **Add to model** from the menu next to each file, and then click **Train Model**.
 
@@ -73,6 +75,8 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
 1. Run the application in the simulator or on a device.
 1. Classify an image by clicking the camera icon and selecting a photo from your photo library. To add a custom image in the simulator, drag the image from the Finder to the simulator window.
 1. Pull new versions of the visual recognition model with the refresh button in the bottom right.
+
+    **Tip:** The classifier status must be `Ready` to use it. Check the classifier status in Watson Studio on the Visual Recognition instance overview page.
 
 [Source code](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) for `ImageClassificationViewController`.
 
