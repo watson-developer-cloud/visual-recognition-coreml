@@ -95,5 +95,5 @@ Add another Watson service to the custom project with the [Core ML Visual Recogn
 
 [vizreq_with_discovery]: https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/
 [xcode_download]: https://developer.apple.com/xcode/downloads/
-[vizreq_tooling]: https://watson-visual-recognition.ng.bluemix.net/
+[vizreq_tooling]: https://dataplatform.ibm.com/registration/stepone?context=wdp&apps=watson_studio&target=watson_vision_combined
 [watson_studio_visrec_tooling]: https://dataplatform.ibm.com/registration/stepone?target=watson_vision_combined&context=wdp&apps=watson_studio&cm_sp=WatsonPlatform-WatsonPlatform-_-OnPageNavCTA-IBMWatson_VisualRecognition-_-CoreMLGithub
