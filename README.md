@@ -62,9 +62,6 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
     ```bash
     carthage bootstrap --platform iOS
     ```
-1.  In Xcode, use the **Project Navigator** to select the `Core ML Vision Custom` project.
-1.  In the General settings tab, scroll down to **Embedded Binaries** and click the `+` icon.
-1.  Click **Add Other**, navigate to the `Carthage/Build/iOS` directory, and select **VisualRecognitionV3.framework**.
 
 **Tip:** Regularly download updates of the SDK so you stay in sync with any updates to this project.
 
