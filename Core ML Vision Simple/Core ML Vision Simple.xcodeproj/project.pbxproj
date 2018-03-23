@@ -13,25 +13,9 @@
 		2DBDD2601FCF7F0E004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */; };
 		2DC5F1391FD5F33E0063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1381FD5F33E0063B2D5 /* Main.storyboard */; };
 		2DE513281FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
-		71648432206446D700017792 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71648431206446D700017792 /* VisualRecognitionV3.framework */; };
-		71648433206446D700017792 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71648431206446D700017792 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		71E03E8920596752009DC77A /* watson_plants.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71E03E8720596752009DC77A /* watson_plants.mlmodel */; };
 		71E03E8A20596752009DC77A /* watson_tools.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71E03E8820596752009DC77A /* watson_tools.mlmodel */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		71648434206446D700017792 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				71648433206446D700017792 /* VisualRecognitionV3.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2DBDD24F1FCF7F0E004A6DC1 /* Core ML Vision Simple.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Simple.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +36,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71648432206446D700017792 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +85,6 @@
 				2DBDD24B1FCF7F0E004A6DC1 /* Sources */,
 				2DBDD24C1FCF7F0E004A6DC1 /* Frameworks */,
 				2DBDD24D1FCF7F0E004A6DC1 /* Resources */,
-				71648434206446D700017792 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
