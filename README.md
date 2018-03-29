@@ -40,7 +40,7 @@ The second part of this project builds from the first part and trains a Visual R
 1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project `Custom Core ML` and click **Create**. 
 
     **Tip**: If no storage is defined, click **refresh**.
-1.  The data panel will be open on the right side of the page. Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip`, `thunderbolt_male.zip`, `vga_male.zip` file to your model.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data pane on the right side of the page.  Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data pane. Also add the `usb_male.zip`, `thunderbolt_male.zip`, and `vga_male.zip` file to your model.
 1.  After the files are uploaded, select **Add to model** from the menu next to each file, and then click **Train Model**.
 
 ### Copy your Model ID and API Key
