@@ -27,18 +27,20 @@ Identify common objects with a built-in Visual Recognition model. Images are cla
 [Source code](../master/Core%20ML%20Vision%20Simple/Core%20ML%20Vision%20Simple/ImageClassificationViewController.swift) for `ImageClassificationViewController`.
 
 ## Running Core ML Vision Custom
-This project trains a Visual Recognition model (also called a classifier) to identify common types of cables (HDMI, USB, etc.). Use the [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk) to download, manage, and execute the trained model. By using the Watson Swift SDK, you don't have to learn about the underlying Core ML framework.
+The second part of this project builds from the first part and trains a Visual Recognition model (also called a classifier) to identify common types of cables (HDMI, USB, etc.). Use the [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk) to download, manage, and execute the trained model. By using the Watson Swift SDK, you don't have to learn about the underlying Core ML framework.
 
 ### Setting up Visual Recognition in Watson Studio
 1.  Log into [Watson Studio][watson_studio_visrec_tooling]. From this link you can create an IBM Cloud account, sign up for Watson Studio, or log in.
 1.  After you sign up or log in, you'll be on the Visual Recognition instance overview page in Watson Studio.
 
+    **Tip**: If you lose your way in any of the following steps, click the `IBM Watson` logo on the top left of the page to bring you to the the Watson Studio home page. From there you can access your Visual Recognition instance by clicking the **Launch tool** button next to the service under "Watson services".
+
 ### Training the model
 1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
-1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project 'Custom Core ML' and click the **Create**. 
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project `Custom Core ML` and click **Create**. 
 
     **Tip**: If no storage is defined, click **refresh**.
-1.  Upload each .zip file of sample images from the `Training Images` directory onto the data panel. Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data panel. Also add the `usb_male.zip`, `thunderbolt_male.zip`, `vga_male.zip` file to your model.
+1.  Upload each .zip file of sample images from the `Training Images` directory onto the data pane on the right side of the page.  Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data pane. Also add the `usb_male.zip`, `thunderbolt_male.zip`, and `vga_male.zip` files to your model.
 1.  After the files are uploaded, select **Add to model** from the menu next to each file, and then click **Train Model**.
 
 ### Copy your Model ID and API Key
