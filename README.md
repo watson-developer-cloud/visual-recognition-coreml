@@ -1,3 +1,5 @@
+*Read this in other languages: [中国](README-cn.md).*
+
 # Visual Recognition with Core ML
 
 Classify images with [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/) and [Core ML](https://developer.apple.com/machine-learning/). The images are classified offline using a deep neural network that is trained by Visual Recognition.
