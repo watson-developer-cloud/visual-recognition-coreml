@@ -56,7 +56,7 @@ The second part of this project builds from the first part and trains a Visual R
 ### Adding the classifierId and apiKey to the project
 1.  Open the project in XCode.
 1.  Copy the **Model ID** and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
-1.  Copy your **api_key** and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
+1.  Copy either your **api_key** or **apikey** and paste it into either the **api_key** or **apikey** property in the  [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 
 ### Downloading the Watson Swift SDK
 Use the Carthage dependency manager to download and build the Watson Swift SDK.
