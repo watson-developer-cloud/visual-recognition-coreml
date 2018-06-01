@@ -49,7 +49,7 @@ The second part of this project builds from the first part and trains a Visual R
 1.  In Watson Studio on the custom model overview page, click your Visual Recognition instance name (it's next to Associated Service). 
 1.  Scroll down to find the **Custom Core ML** classifier you just created. 
 1.  Copy the **Model ID** of the classifier.
-1.  In the Visual Recognition instance overview page in Watson Studio. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` or the `apikey` of the service.
+1.  In the Visual Recognition instance overview page in Watson Studio, click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` or the `apikey` of the service.
 
     **Important**: Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use IAM.
 
