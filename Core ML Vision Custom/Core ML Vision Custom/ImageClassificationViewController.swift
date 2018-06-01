@@ -29,14 +29,20 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
     
-    let apiKey = ""
+    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
+    let apikey = ""     // The IAM apikey
+    let api_key = ""    // The apikey
     let classifierId = ""
-    let version = "2017-12-07"
+    let version = "2018-03-19"
     var visualRecognition: VisualRecognition!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.visualRecognition = VisualRecognition(apiKey: apiKey, version: version)
+        if !api_key.isEmpty {
+            self.visualRecognition = VisualRecognition(apiKey: api_key, version: version)
+        } else if !apikey.isEmpty {
+            self.visualRecognition = VisualRecognition(version: version, apiKey: apikey)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
