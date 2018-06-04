@@ -49,12 +49,14 @@ The second part of this project builds from the first part and trains a Visual R
 1.  In Watson Studio on the custom model overview page, click your Visual Recognition instance name (it's next to Associated Service). 
 1.  Scroll down to find the **Custom Core ML** classifier you just created. 
 1.  Copy the **Model ID** of the classifier.
-1.  In the Visual Recognition instance overview page in Watson Studio. Click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` of the service.
+1.  In the Visual Recognition instance overview page in Watson Studio, click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` or the `apikey` of the service.
+
+    **Important**: Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use IAM.
 
 ### Adding the classifierId and apiKey to the project
 1.  Open the project in XCode.
 1.  Copy the **Model ID** and paste it into the **classifierID** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
-1.  Copy your **api_key** and paste it into the **apiKey** property in the [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
+1.  Copy either your **api_key** or **apikey** and paste it into either the **api_key** or **apikey** property in the  [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 
 ### Downloading the Watson Swift SDK
 Use the Carthage dependency manager to download and build the Watson Swift SDK.
