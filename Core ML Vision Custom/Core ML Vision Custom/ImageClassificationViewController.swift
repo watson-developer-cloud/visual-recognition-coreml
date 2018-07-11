@@ -158,6 +158,10 @@ class ImageClassificationViewController: UIViewController {
         drawer.tableView.reloadData()
     }
     
+    @IBAction func reset() {
+        dismissResults()
+    }
+    
     // MARK: - Error Handling
     
     // Function to show an alert with an alertTitle String and alertMessage String
