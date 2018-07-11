@@ -99,8 +99,10 @@ class ImageClassificationViewController: UIViewController {
         showResultsUI()
         
         let failure = { (error: Error) in
-            self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
-            self.resetUI()
+            DispatchQueue.main.async {
+                self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
+                self.resetUI()
+            }
         }
         
         visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
