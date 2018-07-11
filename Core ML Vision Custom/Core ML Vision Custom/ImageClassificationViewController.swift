@@ -29,6 +29,7 @@ struct VisualRecognitionConstants {
 }
 
 class ImageClassificationViewController: UIViewController {
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var imageView: UIImageView!
@@ -60,7 +61,7 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
-    //MARK: - Model Methods
+    // MARK: - Model Methods
     
     func invokeModelUpdate() {
         let failure = { (error: Error) in
@@ -84,11 +85,9 @@ class ImageClassificationViewController: UIViewController {
         visualRecognition.updateLocalModel(classifierID: VisualRecognitionConstants.classifierId, failure: failure, success: success)
     }
     
-    
     @IBAction func updateModel(_ sender: Any) {
         invokeModelUpdate()
     }
-    
     
     // MARK: - Photo Actions
     
@@ -133,23 +132,33 @@ class ImageClassificationViewController: UIViewController {
         
         visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
             
-            var topClassification = ""
-
-            if classifiedImages.images.count > 0 && classifiedImages.images[0].classifiers.count > 0 && classifiedImages.images[0].classifiers[0].classes.count > 0 {
-                topClassification = classifiedImages.images[0].classifiers[0].classes[0].className
-            } else {
-                topClassification = "Unrecognized"
+            // Make sure that an image was successfully classified.
+            guard let classifiedImage = classifiedImages.images.first else {
+                return
             }
 
             // Update UI on main thread
             DispatchQueue.main.async {
-                // Display top classification ranked by confidence in the UI.
-                self.classificationLabel.text = "Classification: \(topClassification)"
+                // Push the classification results of all the provided models to the ResultsTableView.
+                self.push(results: classifiedImage.classifiers)
             }
         }
     }
     
-    //MARK: - Error Handling
+    func dismissResults() {
+        push(results: [], position: .closed)
+    }
+    
+    func push(results: [VisualRecognitionV3.ClassifierResult], position: PulleyPosition = .partiallyRevealed) {
+        guard let drawer = pulleyViewController?.drawerContentViewController as? ResultsTableViewController else {
+            return
+        }
+        drawer.classifications = results
+        pulleyViewController?.setDrawerPosition(position: position, animated: true)
+        drawer.tableView.reloadData()
+    }
+    
+    // MARK: - Error Handling
     
     // Function to show an alert with an alertTitle String and alertMessage String
     func showAlert(_ alertTitle: String, alertMessage: String) {
@@ -157,11 +166,10 @@ class ImageClassificationViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         present(alert, animated: true, completion: nil)
     }
-    
-    
 }
 
 extension ImageClassificationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    
     // MARK: - Handling Image Picker Selection
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
