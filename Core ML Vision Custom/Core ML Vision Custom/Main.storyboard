@@ -85,6 +85,7 @@
                         <outlet property="closeButton" destination="PQ4-s0-jJR" id="BIn-42-G6c"/>
                         <outlet property="currentModelLabel" destination="b2I-nz-Bpy" id="cYQ-WA-RnQ"/>
                         <outlet property="imageView" destination="pUB-PT-eoR" id="o73-CL-qHW"/>
+                        <outlet property="simulatorTextView" destination="Iqh-pk-Qts" id="Qud-cz-fR9"/>
                         <outlet property="updateModelButton" destination="uCt-W1-sDm" id="VRE-M6-kkf"/>
                     </connections>
                 </viewController>
