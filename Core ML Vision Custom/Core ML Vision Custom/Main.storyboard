@@ -43,9 +43,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ4-s0-jJR">
-                                <rect key="frame" x="316" y="20" width="39" height="30"/>
-                                <state key="normal" title="Close"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQ4-s0-jJR">
+                                <rect key="frame" x="322" y="20" width="33" height="33"/>
+                                <state key="normal" image="Cancel"/>
                                 <connections>
                                     <action selector="reset" destination="MPu-h4-IWa" eventType="touchUpInside" id="N2z-6g-FFa"/>
                                 </connections>
@@ -280,5 +280,6 @@
     </scenes>
     <resources>
         <image name="Background" width="414" height="736"/>
+        <image name="Cancel" width="33" height="33"/>
     </resources>
 </document>
