@@ -99,6 +99,7 @@
                     <connections>
                         <outlet property="cameraButton" destination="DIl-Jp-qo4" id="Uda-Bb-pvW"/>
                         <outlet property="classificationLabel" destination="pEb-NC-NRJ" id="fdK-Gq-GJU"/>
+                        <outlet property="closeButton" destination="PQ4-s0-jJR" id="BIn-42-G6c"/>
                         <outlet property="currentModelLabel" destination="b2I-nz-Bpy" id="cYQ-WA-RnQ"/>
                         <outlet property="imageView" destination="pUB-PT-eoR" id="o73-CL-qHW"/>
                         <outlet property="updateModelButton" destination="uCt-W1-sDm" id="VRE-M6-kkf"/>
@@ -179,14 +180,14 @@
                                         <rect key="frame" x="0.0" y="33" width="375" height="614"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellDefault" id="7SP-Em-SQh" customClass="ResultTableViewCell" customModule="Core_ML_Vision" customModuleProvider="target">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cellDefault" id="7SP-Em-SQh" customClass="ResultTableViewCell" customModule="Core_ML_Vision_Custom" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="68"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="7SP-Em-SQh" id="Tta-WD-BbO">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="67.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDH-yE-ZTu" customClass="ProgressBar" customModule="Core_ML_Vision" customModuleProvider="target">
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bDH-yE-ZTu" customClass="ProgressBar" customModule="Core_ML_Vision_Custom" customModuleProvider="target">
                                                             <rect key="frame" x="191" y="29" width="107" height="8"/>
                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                             <constraints>

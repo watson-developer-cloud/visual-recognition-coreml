@@ -15,9 +15,6 @@
  **/
 
 import UIKit
-import CoreML
-import Vision
-import ImageIO
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
@@ -37,6 +34,7 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
+    @IBOutlet weak var closeButton: UIButton!
     
     let visualRecognition: VisualRecognition = {
         if !VisualRecognitionConstants.api_key.isEmpty {
@@ -47,6 +45,7 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -97,12 +96,11 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - Image Classification
     
     func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
-        
-        classificationLabel.text = "Classifying..."
+        showResultsUI()
         
         let failure = { (error: Error) in
             self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
-            self.classificationLabel.text = "Add a photo."
+            self.resetUI()
         }
         
         visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
@@ -116,7 +114,6 @@ class ImageClassificationViewController: UIViewController {
             DispatchQueue.main.async {
                 // Push the classification results of all the provided models to the ResultsTableView.
                 self.push(results: classifiedImage.classifiers)
-                self.classificationLabel.text = "Add a photo."
             }
         }
     }
@@ -132,6 +129,17 @@ class ImageClassificationViewController: UIViewController {
         drawer.classifications = results
         pulleyViewController?.setDrawerPosition(position: position, animated: true)
         drawer.tableView.reloadData()
+    }
+    
+    func showResultsUI() {
+        closeButton.isHidden = false
+        classificationLabel.text = "Classifying..."
+    }
+    
+    func resetUI() {
+        closeButton.isHidden = true
+        classificationLabel.text = "Add a photo."
+        dismissResults()
     }
     
     // MARK: - IBActions
@@ -163,7 +171,7 @@ class ImageClassificationViewController: UIViewController {
     }
     
     @IBAction func reset() {
-        dismissResults()
+        resetUI()
     }
 }
 
