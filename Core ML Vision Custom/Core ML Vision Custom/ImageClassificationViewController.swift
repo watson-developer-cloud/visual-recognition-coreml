@@ -54,16 +54,15 @@ class ImageClassificationViewController: UIViewController {
             return
         }
         if localModels.contains(VisualRecognitionConstants.classifierId) {
-            self.currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
+            currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
         } else {
-            self.invokeModelUpdate()
+            invokeModelUpdate()
         }
     }
     
     //MARK: - Model Methods
     
-    func invokeModelUpdate()
-    {
+    func invokeModelUpdate() {
         let failure = { (error: Error) in
             print(error)
             let descriptError = error as NSError
@@ -87,7 +86,7 @@ class ImageClassificationViewController: UIViewController {
     
     
     @IBAction func updateModel(_ sender: Any) {
-        self.invokeModelUpdate()
+        invokeModelUpdate()
     }
     
     
@@ -156,7 +155,7 @@ class ImageClassificationViewController: UIViewController {
     func showAlert(_ alertTitle: String, alertMessage: String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     
