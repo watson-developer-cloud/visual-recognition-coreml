@@ -20,6 +20,14 @@ import Vision
 import ImageIO
 import VisualRecognitionV3
 
+struct VisualRecognitionConstants {
+    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
+    static let apikey = ""     // The IAM apikey
+    static let api_key = ""    // The apikey
+    static let classifierId = ""
+    static let version = "2018-03-19"
+}
+
 class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
     
@@ -29,27 +37,24 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
     
-    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
-    let apikey = ""     // The IAM apikey
-    let api_key = ""    // The apikey
-    let classifierId = ""
-    let version = "2018-03-19"
-    var visualRecognition: VisualRecognition!
+    let visualRecognition: VisualRecognition = {
+        if !VisualRecognitionConstants.api_key.isEmpty {
+            return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
+        }
+        return VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !api_key.isEmpty {
-            self.visualRecognition = VisualRecognition(apiKey: api_key, version: version)
-        } else if !apikey.isEmpty {
-            self.visualRecognition = VisualRecognition(version: version, apiKey: apikey)
-        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         // Pull down model if none on device
-        let localModels = try? visualRecognition.listLocalModels()
-        if let models = localModels, models.contains(self.classifierId)  {
-            self.currentModelLabel.text = "Current Model: \(self.classifierId)"
+        guard let localModels = try? visualRecognition.listLocalModels() else {
+            return
+        }
+        if localModels.contains(VisualRecognitionConstants.classifierId) {
+            self.currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
         } else {
             self.invokeModelUpdate()
         }
@@ -70,14 +75,14 @@ class ImageClassificationViewController: UIViewController {
         
         let success = {
             DispatchQueue.main.async {
-                self.currentModelLabel.text = "Current Model: \(self.classifierId)"
+                self.currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
                 SwiftSpinner.hide()
             }
         }
         
         SwiftSpinner.show("Compiling model...")
         
-        visualRecognition.updateLocalModel(classifierID: classifierId, failure: failure, success: success)
+        visualRecognition.updateLocalModel(classifierID: VisualRecognitionConstants.classifierId, failure: failure, success: success)
     }
     
     
@@ -127,7 +132,7 @@ class ImageClassificationViewController: UIViewController {
             self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
         }
         
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
+        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
             
             var topClassification = ""
 
