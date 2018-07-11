@@ -31,7 +31,6 @@ class ImageClassificationViewController: UIViewController {
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
     @IBOutlet weak var closeButton: UIButton!
@@ -135,12 +134,11 @@ class ImageClassificationViewController: UIViewController {
     
     func showResultsUI() {
         closeButton.isHidden = false
-        classificationLabel.text = "Classifying..."
     }
     
     func resetUI() {
         closeButton.isHidden = true
-        classificationLabel.text = "Add a photo."
+        imageView.image = UIImage(named: "Background")
         dismissResults()
     }
     
