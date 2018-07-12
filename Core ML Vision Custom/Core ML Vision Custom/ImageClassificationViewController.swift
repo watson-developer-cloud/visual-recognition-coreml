@@ -33,9 +33,9 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var simulatorTextView: UITextView!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var currentModelLabel: UILabel!
-    @IBOutlet weak var updateModelButton: UIBarButtonItem!
+    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var updateModelButton: UIButton!
+    @IBOutlet weak var choosePhotoButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
     
     // MARK: - Variable Declarations
@@ -62,9 +62,9 @@ class ImageClassificationViewController: UIViewController {
         guard let localModels = try? visualRecognition.listLocalModels() else {
             return
         }
-        if localModels.contains(VisualRecognitionConstants.classifierId) {
-            currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
-        } else {
+        
+        // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
+        if !localModels.contains(VisualRecognitionConstants.classifierId) {
             invokeModelUpdate()
         }
     }
@@ -100,17 +100,13 @@ class ImageClassificationViewController: UIViewController {
     
     func invokeModelUpdate() {
         let failure = { (error: Error) in
-            print(error)
-            let descriptError = error as NSError
             DispatchQueue.main.async {
-                self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
                 SwiftSpinner.hide()
             }
         }
         
         let success = {
             DispatchQueue.main.async {
-                self.currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
                 SwiftSpinner.hide()
             }
         }
