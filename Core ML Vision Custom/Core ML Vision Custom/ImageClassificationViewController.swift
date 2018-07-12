@@ -16,12 +16,10 @@
 
 import UIKit
 import AVFoundation
+// This app also uses extensions from `Supporting Files/VisualRecognition+Extensions.swift`.
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
-    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
-    static let apikey = ""     // The IAM apikey
-    static let api_key = ""    // The apikey
     static let modelIds = ["YOUR_MODEL_ID"]
     static let version = "2018-03-19"
 }
@@ -41,10 +39,22 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - Variable Declarations
     
     let visualRecognition: VisualRecognition = {
-        if !VisualRecognitionConstants.api_key.isEmpty {
-            return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
+        guard let path = Bundle.main.path(forResource: "Credentials", ofType: "plist") else {
+            // Please create a Credentials.plist file with your Visual Recognition credentials.
+            fatalError()
         }
-        return VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
+        guard let apiKey = NSDictionary(contentsOfFile: path)?["apikey"] as? String else {
+            // No Visual Recognition API key found. Make sure you add your API key to the Credentials.plist file.
+            fatalError()
+        }
+        /*
+         `easyInit` is not part of the Watson SDK.
+         `easyInit` is a convenient extension that tries to detect whether the supplied apiKey is:
+         - a Visual Recognition instance created before May 23, 2018
+         - a new IAM API key
+         It then returns the properly initialized VisualRecognition instance.
+         */
+        return VisualRecognition.easyInit(apiKey: apiKey, version: VisualRecognitionConstants.version)
     }()
     
     let photoOutput = AVCapturePhotoOutput()
@@ -71,6 +81,8 @@ class ImageClassificationViewController: UIViewController {
         return nil
     }()
     
+    // MARK: - Override Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSession?.startRunning()
@@ -80,23 +92,26 @@ class ImageClassificationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         for modelId in VisualRecognitionConstants.modelIds {
-            // Pull down model if none on device
-            guard let localModels = try? visualRecognition.listLocalModels() else {
-                return
-            }
-            
-            // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
-            if !localModels.contains(modelId) {
-                updateLocalModel(id: modelId)
+            /*
+             `checkLocalModelStatus` is not part of the Watson SDK.
+             `checkLocalModelStatus` is a convenient extension that checks if the local model
+             is up to date. The actual SDK makes this check as well in `updateLocalModel`.
+             However, we perfom this check purely for UI purposes.
+             */
+            visualRecognition.checkLocalModelStatus(classifierID: modelId) { modelUpToDate in
+                if !modelUpToDate {
+                    self.updateLocalModel(id: modelId)
+                }
             }
         }
     }
     
-    // MARK: - Model Methods
+    // MARK: - Methods
     
     func updateLocalModel(id modelId: String) {
         let failure = { (error: Error) in
             DispatchQueue.main.async {
+                self.modelUpdateFail(modelId: modelId, error: error)
                 SwiftSpinner.hide()
             }
         }
@@ -106,9 +121,8 @@ class ImageClassificationViewController: UIViewController {
                 SwiftSpinner.hide()
             }
         }
-        
+        // The spinner can only be hailed after viewDidAppear.
         SwiftSpinner.show("Compiling model...")
-        
         visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
     }
 
@@ -118,8 +132,6 @@ class ImageClassificationViewController: UIViewController {
         picker.sourceType = sourceType
         present(picker, animated: true)
     }
-    
-    // MARK: - Image Classification
     
     func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
@@ -219,6 +231,33 @@ extension ImageClassificationViewController {
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func modelUpdateFail(modelId: String, error: Error) {
+        let error = error as NSError
+        var errorMessage = ""
+        
+        // 0 = probably wrong api key
+        // 404 = probably no model
+        // -1009 = probably no internet
+        
+        switch error.code {
+        case 0:
+            errorMessage = "Please check your Visual Recognition API key in `Credentials.plist` and try again."
+        case 404:
+            errorMessage = "We couldn't find the model with ID: \"\(modelId)\""
+        case 500:
+            errorMessage = "Internal server error. Please try again."
+        case -1009:
+            errorMessage = "Please check your internet connection."
+        default:
+            errorMessage = "Please try again."
+        }
+        
+        // TODO: Do some more checks, does the model exist? is it still training? etc.
+        // The service's response is pretty generic and just guesses.
+        
+        showAlert("Unable to download model", alertMessage: errorMessage)
+    }
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -243,6 +282,7 @@ extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
             print(error.localizedDescription)
             return
         }
+        
         guard let photoData = photo.fileDataRepresentation(),
             let image = UIImage(data: photoData) else {
             return
