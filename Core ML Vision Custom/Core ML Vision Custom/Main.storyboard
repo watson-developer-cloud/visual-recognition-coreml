@@ -18,6 +18,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cut-U1-rk1">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="pUB-PT-eoR">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
@@ -60,8 +64,11 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Cut-U1-rk1" firstAttribute="top" secondItem="oBa-W5-Ood" secondAttribute="top" id="35o-HV-tL3"/>
                             <constraint firstAttribute="bottomMargin" secondItem="Iqh-pk-Qts" secondAttribute="bottom" constant="20" id="Dmq-Jh-iFa"/>
+                            <constraint firstAttribute="trailing" secondItem="Cut-U1-rk1" secondAttribute="trailing" id="E6A-QZ-cyO"/>
                             <constraint firstItem="QGZ-b4-zCe" firstAttribute="bottom" secondItem="b2I-nz-Bpy" secondAttribute="bottom" constant="10" id="IaM-ni-zxv"/>
+                            <constraint firstAttribute="bottom" secondItem="Cut-U1-rk1" secondAttribute="bottom" id="KyO-Vb-FCk"/>
                             <constraint firstItem="Iqh-pk-Qts" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leadingMargin" constant="20" id="OOR-M9-Lkj"/>
                             <constraint firstItem="b2I-nz-Bpy" firstAttribute="centerX" secondItem="oBa-W5-Ood" secondAttribute="centerX" id="S0r-AT-4iJ"/>
                             <constraint firstItem="PQ4-s0-jJR" firstAttribute="top" secondItem="QGZ-b4-zCe" secondAttribute="top" id="SBR-ap-OWn"/>
@@ -69,6 +76,7 @@
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leading" id="X6A-uN-JTq"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="trailing" secondItem="dAg-J4-Lwe" secondAttribute="trailing" id="ZQM-VP-HaA"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="bottom" secondItem="dAg-J4-Lwe" secondAttribute="bottom" id="bXh-dw-Iqp"/>
+                            <constraint firstItem="Cut-U1-rk1" firstAttribute="leading" secondItem="oBa-W5-Ood" secondAttribute="leading" id="d0k-tx-Loq"/>
                             <constraint firstItem="b2I-nz-Bpy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="QGZ-b4-zCe" secondAttribute="leading" constant="60" id="h4C-dj-fNl"/>
                             <constraint firstItem="Iqh-pk-Qts" firstAttribute="top" secondItem="oBa-W5-Ood" secondAttribute="topMargin" constant="20" id="k1v-ah-d5D"/>
                             <constraint firstItem="pUB-PT-eoR" firstAttribute="centerY" secondItem="oBa-W5-Ood" secondAttribute="centerY" id="pxE-cT-OTc"/>
@@ -82,6 +90,7 @@
                     </view>
                     <connections>
                         <outlet property="cameraButton" destination="DIl-Jp-qo4" id="Uda-Bb-pvW"/>
+                        <outlet property="cameraView" destination="Cut-U1-rk1" id="Drx-Vj-hkf"/>
                         <outlet property="closeButton" destination="PQ4-s0-jJR" id="BIn-42-G6c"/>
                         <outlet property="currentModelLabel" destination="b2I-nz-Bpy" id="cYQ-WA-RnQ"/>
                         <outlet property="imageView" destination="pUB-PT-eoR" id="o73-CL-qHW"/>

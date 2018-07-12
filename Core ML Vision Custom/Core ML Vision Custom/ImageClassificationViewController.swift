@@ -15,6 +15,7 @@
  **/
 
 import UIKit
+import AVFoundation
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
@@ -29,6 +30,7 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var simulatorTextView: UITextView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -36,6 +38,12 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
     @IBOutlet weak var closeButton: UIButton!
     
+    // MARK: - Variable Declarations
+    
+    var cameraAvailable = true
+    var captureSession: AVCaptureSession?
+    var photoOutput: AVCapturePhotoOutput?
+    var previewLayer: AVCaptureVideoPreviewLayer?
     let visualRecognition: VisualRecognition = {
         if !VisualRecognitionConstants.api_key.isEmpty {
             return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
@@ -45,6 +53,7 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        initializeCamera()
         resetUI()
     }
     
@@ -58,6 +67,33 @@ class ImageClassificationViewController: UIViewController {
         } else {
             invokeModelUpdate()
         }
+    }
+    
+    func initializeCamera() {
+        guard let backCamera = AVCaptureDevice.default(for: .video) else {
+            cameraAvailable = false
+            return
+        }
+        guard let input = try? AVCaptureDeviceInput(device: backCamera) else {
+            cameraAvailable = false
+            return
+        }
+        
+        captureSession = AVCaptureSession()
+        captureSession?.sessionPreset = .high
+        captureSession?.addInput(input)
+        photoOutput = AVCapturePhotoOutput()
+        
+        if (captureSession?.canAddOutput(photoOutput!) != nil) {
+            captureSession?.addOutput(photoOutput!)
+            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
+            previewLayer?.videoGravity = .resize
+            previewLayer?.connection?.videoOrientation = .portrait
+            cameraView.layer.addSublayer(previewLayer!)
+            captureSession?.startRunning()
+        }
+        
+        previewLayer?.frame = view.bounds
     }
     
     // MARK: - Model Methods
@@ -83,9 +119,7 @@ class ImageClassificationViewController: UIViewController {
         
         visualRecognition.updateLocalModel(classifierID: VisualRecognitionConstants.classifierId, failure: failure, success: success)
     }
-    
 
-    
     func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -140,9 +174,16 @@ class ImageClassificationViewController: UIViewController {
     }
     
     func resetUI() {
+        if (cameraAvailable) {
+            simulatorTextView.isHidden = true
+            imageView.isHidden = true
+        } else {
+            imageView.image = UIImage(named: "Background")
+            simulatorTextView.isHidden = false
+            imageView.isHidden = false
+        }
+        
         closeButton.isHidden = true
-        imageView.image = UIImage(named: "Background")
-        simulatorTextView.isHidden = false
         dismissResults()
     }
     
