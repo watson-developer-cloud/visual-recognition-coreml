@@ -16,12 +16,11 @@
 
 import UIKit
 import AVFoundation
+// This app also uses extensions from `Supporting Files/VisualRecognition+Extensions.swift`.
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
-    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
-    static let apikey = ""     // The IAM apikey
-    static let api_key = ""    // The apikey
+    static let apiKey = "YOUR_API_KEY"
     static let modelIds = ["YOUR_MODEL_ID"]
     static let version = "2018-03-19"
 }
@@ -41,10 +40,14 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - Variable Declarations
     
     let visualRecognition: VisualRecognition = {
-        if !VisualRecognitionConstants.api_key.isEmpty {
-            return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
-        }
-        return VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
+        /*
+         `easyInit` is not part of the Watson SDK.
+         `easyInit` is a convenient extension that tries to detect whether the supplied apiKey is:
+         - a Visual Recognition instance created before May 23, 2018
+         - a new IAM API key
+         It then returns the properly initialized VisualRecognition instance.
+         */
+        return VisualRecognition.easyInit(apiKey: VisualRecognitionConstants.apiKey, version: VisualRecognitionConstants.version)
     }()
     
     let photoOutput = AVCapturePhotoOutput()
@@ -71,6 +74,8 @@ class ImageClassificationViewController: UIViewController {
         return nil
     }()
     
+    // MARK: - Override Functions
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSession?.startRunning()
@@ -92,7 +97,7 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
-    // MARK: - Model Methods
+    // MARK: - Methods
     
     func updateLocalModel(id modelId: String) {
         let failure = { (error: Error) in
@@ -118,8 +123,6 @@ class ImageClassificationViewController: UIViewController {
         picker.sourceType = sourceType
         present(picker, animated: true)
     }
-    
-    // MARK: - Image Classification
     
     func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
