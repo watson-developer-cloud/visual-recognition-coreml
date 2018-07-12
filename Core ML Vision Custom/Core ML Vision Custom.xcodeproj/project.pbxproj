@@ -112,13 +112,13 @@
 			children = (
 				2D7B571920509E2E009ACA53 /* Supporting Files */,
 				2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */,
+				2DC5F1361FD5F3200063B2D5 /* Main.storyboard */,
 				2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */,
 				2308B8E920F6613A009C7CBD /* ResultsTableViewController.swift */,
 				2308B8EA20F6613B009C7CBD /* ResultsTableViewCell.swift */,
 				2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */,
 				2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
-				2DC5F1361FD5F3200063B2D5 /* Main.storyboard */,
 			);
 			path = "Core ML Vision Custom";
 			sourceTree = "<group>";
