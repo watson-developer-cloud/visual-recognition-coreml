@@ -41,9 +41,7 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - Variable Declarations
     
     var cameraAvailable = true
-    var captureSession: AVCaptureSession?
-    var photoOutput: AVCapturePhotoOutput?
-    var previewLayer: AVCaptureVideoPreviewLayer?
+    
     let visualRecognition: VisualRecognition = {
         if !VisualRecognitionConstants.api_key.isEmpty {
             return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
@@ -51,9 +49,34 @@ class ImageClassificationViewController: UIViewController {
         return VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
     }()
     
+    let photoOutput = AVCapturePhotoOutput()
+    lazy var captureSession: AVCaptureSession? = {
+        guard let backCamera = AVCaptureDevice.default(for: .video),
+            let input = try? AVCaptureDeviceInput(device: backCamera) else {
+                cameraAvailable = false
+                return nil
+        }
+        
+        let captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .high
+        captureSession.addInput(input)
+        
+        if captureSession.canAddOutput(photoOutput) {
+            captureSession.addOutput(photoOutput)
+            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            previewLayer.frame = view.bounds
+            // `.resize` allows the camera to fill the screen on the iPhone X.
+            previewLayer.videoGravity = .resize
+            previewLayer.connection?.videoOrientation = .portrait
+            cameraView.layer.addSublayer(previewLayer)
+            return captureSession
+        }
+        return nil
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        initializeCamera()
+        captureSession?.startRunning()
         resetUI()
     }
     
@@ -67,33 +90,6 @@ class ImageClassificationViewController: UIViewController {
         if !localModels.contains(VisualRecognitionConstants.classifierId) {
             invokeModelUpdate()
         }
-    }
-    
-    func initializeCamera() {
-        guard let backCamera = AVCaptureDevice.default(for: .video) else {
-            cameraAvailable = false
-            return
-        }
-        guard let input = try? AVCaptureDeviceInput(device: backCamera) else {
-            cameraAvailable = false
-            return
-        }
-        
-        captureSession = AVCaptureSession()
-        captureSession?.sessionPreset = .high
-        captureSession?.addInput(input)
-        photoOutput = AVCapturePhotoOutput()
-        
-        if (captureSession?.canAddOutput(photoOutput!) != nil) {
-            captureSession?.addOutput(photoOutput!)
-            previewLayer = AVCaptureVideoPreviewLayer(session: captureSession!)
-            previewLayer?.videoGravity = .resize
-            previewLayer?.connection?.videoOrientation = .portrait
-            cameraView.layer.addSublayer(previewLayer!)
-            captureSession?.startRunning()
-        }
-        
-        previewLayer?.frame = view.bounds
     }
     
     // MARK: - Model Methods
