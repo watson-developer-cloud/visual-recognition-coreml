@@ -30,8 +30,8 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - IBOutlets
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var simulatorTextView: UITextView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
     @IBOutlet weak var closeButton: UIButton!
@@ -96,7 +96,7 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - Image Classification
     
     func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
-        showResultsUI()
+        showResultsUI(for: image)
         
         let failure = { (error: Error) in
             DispatchQueue.main.async {
@@ -133,14 +133,16 @@ class ImageClassificationViewController: UIViewController {
         drawer.tableView.reloadData()
     }
     
-    func showResultsUI() {
+    func showResultsUI(for image: UIImage) {
+        imageView.image = image
+        simulatorTextView.isHidden = true
         closeButton.isHidden = false
-        classificationLabel.text = "Classifying..."
     }
     
     func resetUI() {
         closeButton.isHidden = true
-        classificationLabel.text = "Add a photo."
+        imageView.image = UIImage(named: "Background")
+        simulatorTextView.isHidden = false
         dismissResults()
     }
     
@@ -196,9 +198,6 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
             return
         }
-        
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        imageView.image = image
         
         classifyImage(for: image)
     }
