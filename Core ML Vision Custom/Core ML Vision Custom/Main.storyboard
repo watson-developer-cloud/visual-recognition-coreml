@@ -42,14 +42,23 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gZh-H7-kgW">
                                 <rect key="frame" x="149" y="550" width="77" height="77"/>
                                 <state key="normal" image="Capture"/>
+                                <connections>
+                                    <action selector="capturePhoto" destination="MPu-h4-IWa" eventType="touchUpInside" id="ZsM-1A-Eqj"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O2c-uk-frK">
                                 <rect key="frame" x="20" y="561" width="55" height="55"/>
                                 <state key="normal" image="Choose"/>
+                                <connections>
+                                    <action selector="presentPhotoPicker" destination="MPu-h4-IWa" eventType="touchUpInside" id="T1J-DT-Bgv"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0k-SZ-2ab">
                                 <rect key="frame" x="300" y="561" width="55" height="55"/>
                                 <state key="normal" image="Update"/>
+                                <connections>
+                                    <action selector="updateModel:" destination="MPu-h4-IWa" eventType="touchUpInside" id="39k-na-ywz"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>

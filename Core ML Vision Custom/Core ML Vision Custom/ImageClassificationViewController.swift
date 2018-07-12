@@ -40,8 +40,6 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - Variable Declarations
     
-    var cameraAvailable = true
-    
     let visualRecognition: VisualRecognition = {
         if !VisualRecognitionConstants.api_key.isEmpty {
             return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
@@ -53,7 +51,6 @@ class ImageClassificationViewController: UIViewController {
     lazy var captureSession: AVCaptureSession? = {
         guard let backCamera = AVCaptureDevice.default(for: .video),
             let input = try? AVCaptureDeviceInput(device: backCamera) else {
-                cameraAvailable = false
                 return nil
         }
         
@@ -161,50 +158,47 @@ class ImageClassificationViewController: UIViewController {
     
     func showResultsUI(for image: UIImage) {
         imageView.image = image
+        imageView.isHidden = false
         simulatorTextView.isHidden = true
         closeButton.isHidden = false
+        captureButton.isHidden = true
+        choosePhotoButton.isHidden = true
+        updateModelButton.isHidden = true
     }
     
     func resetUI() {
-        if (cameraAvailable) {
+        if captureSession != nil {
             simulatorTextView.isHidden = true
             imageView.isHidden = true
+            captureButton.isHidden = false
         } else {
             imageView.image = UIImage(named: "Background")
             simulatorTextView.isHidden = false
             imageView.isHidden = false
+            captureButton.isHidden = true
         }
         
         closeButton.isHidden = true
+        choosePhotoButton.isHidden = false
+        updateModelButton.isHidden = false
         dismissResults()
     }
     
     // MARK: - IBActions
     
+    @IBAction func capturePhoto() {
+        photoOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+    }
+    
     @IBAction func updateModel(_ sender: Any) {
         invokeModelUpdate()
     }
     
-    @IBAction func takePicture() {
-        // Show options for the source picker only if the camera is available.
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            presentPhotoPicker(sourceType: .photoLibrary)
-            return
-        }
-        
-        let photoSourcePicker = UIAlertController()
-        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .camera)
-        }
-        let choosePhoto = UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .photoLibrary)
-        }
-        
-        photoSourcePicker.addAction(takePhoto)
-        photoSourcePicker.addAction(choosePhoto)
-        photoSourcePicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(photoSourcePicker, animated: true)
+    @IBAction func presentPhotoPicker() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
     }
     
     @IBAction func reset() {
@@ -229,6 +223,23 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
         picker.dismiss(animated: true)
         
         guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
+        
+        classifyImage(for: image)
+    }
+}
+
+// MARK: - AVCapturePhotoCaptureDelegate
+
+extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let photoData = photo.fileDataRepresentation(),
+            let image = UIImage(data: photoData) else {
             return
         }
         
