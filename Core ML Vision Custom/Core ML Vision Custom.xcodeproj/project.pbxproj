@@ -15,6 +15,7 @@
 		2308B8F620F66151009C7CBD /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */; };
 		2308B8F720F66151009C7CBD /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */; };
 		23171B0020F7CF9500E58B86 /* VisualRecognition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23171AFF20F7CF9500E58B86 /* VisualRecognition+Extensions.swift */; };
+		23171B0220F7E1C100E58B86 /* Credentials.plist in Resources */ = {isa = PBXBuildFile; fileRef = 23171B0120F7E1C100E58B86 /* Credentials.plist */; };
 		2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
 		2D7B571B20509EE6009ACA53 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */; };
 		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
@@ -48,6 +49,7 @@
 		2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
 		2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
 		23171AFF20F7CF9500E58B86 /* VisualRecognition+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VisualRecognition+Extensions.swift"; sourceTree = "<group>"; };
+		23171B0120F7E1C100E58B86 /* Credentials.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Credentials.plist; sourceTree = "<group>"; };
 		2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
 		2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Custom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +124,7 @@
 				2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */,
 				2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
+				23171B0120F7E1C100E58B86 /* Credentials.plist */,
 			);
 			path = "Core ML Vision Custom";
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */,
+				23171B0220F7E1C100E58B86 /* Credentials.plist in Resources */,
 				2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */,
 				2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */,
 			);

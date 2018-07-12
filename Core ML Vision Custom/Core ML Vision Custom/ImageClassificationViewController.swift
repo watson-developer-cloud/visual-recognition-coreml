@@ -20,7 +20,6 @@ import AVFoundation
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
-    static let apiKey = "YOUR_API_KEY"
     static let modelIds = ["YOUR_MODEL_ID"]
     static let version = "2018-03-19"
 }
@@ -40,6 +39,14 @@ class ImageClassificationViewController: UIViewController {
     // MARK: - Variable Declarations
     
     let visualRecognition: VisualRecognition = {
+        guard let path = Bundle.main.path(forResource: "Credentials", ofType: "plist") else {
+            // Please create a Credentials.plist file with your Visual Recognition credentials.
+            fatalError()
+        }
+        guard let apiKey = NSDictionary(contentsOfFile: path)?["apikey"] as? String else {
+            // No Visual Recognition API key found. Make sure you add your API key to the Credentials.plist file.
+            fatalError()
+        }
         /*
          `easyInit` is not part of the Watson SDK.
          `easyInit` is a convenient extension that tries to detect whether the supplied apiKey is:
@@ -47,7 +54,7 @@ class ImageClassificationViewController: UIViewController {
          - a new IAM API key
          It then returns the properly initialized VisualRecognition instance.
          */
-        return VisualRecognition.easyInit(apiKey: VisualRecognitionConstants.apiKey, version: VisualRecognitionConstants.version)
+        return VisualRecognition.easyInit(apiKey: apiKey, version: VisualRecognitionConstants.version)
     }()
     
     let photoOutput = AVCapturePhotoOutput()
