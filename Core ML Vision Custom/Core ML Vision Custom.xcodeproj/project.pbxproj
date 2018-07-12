@@ -14,6 +14,7 @@
 		2308B8F520F66151009C7CBD /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F020F66151009C7CBD /* UIViewController+PulleyViewController.swift */; };
 		2308B8F620F66151009C7CBD /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */; };
 		2308B8F720F66151009C7CBD /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */; };
+		23171B0020F7CF9500E58B86 /* VisualRecognition+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23171AFF20F7CF9500E58B86 /* VisualRecognition+Extensions.swift */; };
 		2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
 		2D7B571B20509EE6009ACA53 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */; };
 		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
@@ -46,6 +47,7 @@
 		2308B8F020F66151009C7CBD /* UIViewController+PulleyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+PulleyViewController.swift"; sourceTree = "<group>"; };
 		2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulleyPassthroughScrollView.swift; sourceTree = "<group>"; };
 		2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
+		23171AFF20F7CF9500E58B86 /* VisualRecognition+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "VisualRecognition+Extensions.swift"; sourceTree = "<group>"; };
 		2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
 		2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
 		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Custom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */,
+				23171AFF20F7CF9500E58B86 /* VisualRecognition+Extensions.swift */,
 				2308B8ED20F66151009C7CBD /* ProgressBar.swift */,
 				2308B8EE20F66151009C7CBD /* Pulley Framework */,
 			);
@@ -198,6 +201,7 @@
 			files = (
 				2D7B571B20509EE6009ACA53 /* SwiftSpinner.swift in Sources */,
 				2308B8EC20F6613B009C7CBD /* ResultsTableViewCell.swift in Sources */,
+				23171B0020F7CF9500E58B86 /* VisualRecognition+Extensions.swift in Sources */,
 				2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */,
 				2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */,
 				2308B8F620F66151009C7CBD /* PulleyPassthroughScrollView.swift in Sources */,
