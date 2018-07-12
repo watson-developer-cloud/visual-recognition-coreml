@@ -85,14 +85,16 @@ class ImageClassificationViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         for modelId in VisualRecognitionConstants.modelIds {
-            // Pull down model if none on device
-            guard let localModels = try? visualRecognition.listLocalModels() else {
-                return
-            }
-            
-            // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
-            if !localModels.contains(modelId) {
-                updateLocalModel(id: modelId)
+            /*
+             `checkLocalModelStatus` is not part of the Watson SDK.
+             `checkLocalModelStatus` is a convenient extension that checks if the local model
+             is up to date. The actual SDK makes this check as well in `updateLocalModel`.
+             However, we perfom this check purely for UI purposes.
+             */
+            visualRecognition.checkLocalModelStatus(classifierID: modelId) { modelUpToDate in
+                if !modelUpToDate {
+                    self.updateLocalModel(id: modelId)
+                }
             }
         }
     }
@@ -102,6 +104,7 @@ class ImageClassificationViewController: UIViewController {
     func updateLocalModel(id modelId: String) {
         let failure = { (error: Error) in
             DispatchQueue.main.async {
+                self.modelUpdateFail(modelId: modelId, error: error)
                 SwiftSpinner.hide()
             }
         }
@@ -111,9 +114,8 @@ class ImageClassificationViewController: UIViewController {
                 SwiftSpinner.hide()
             }
         }
-        
+        // The spinner can only be hailed after viewDidAppear.
         SwiftSpinner.show("Compiling model...")
-        
         visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
     }
 
@@ -222,6 +224,33 @@ extension ImageClassificationViewController {
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func modelUpdateFail(modelId: String, error: Error) {
+        let error = error as NSError
+        var errorMessage = ""
+        
+        // 0 = probably wrong api key
+        // 404 = probably no model
+        // -1009 = probably no internet
+        
+        switch error.code {
+        case 0:
+            errorMessage = "Please check your Visual Recognition API key in `Credentials.plist` and try again."
+        case 404:
+            errorMessage = "We couldn't find the model with ID: \"\(modelId)\""
+        case 500:
+            errorMessage = "Internal server error. Please try again."
+        case -1009:
+            errorMessage = "Please check your internet connection."
+        default:
+            errorMessage = "Please try again."
+        }
+        
+        // TODO: Do some more checks, does the model exist? is it still training? etc.
+        // The service's response is pretty generic and just guesses.
+        
+        showAlert("Unable to download model", alertMessage: errorMessage)
+    }
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -246,6 +275,7 @@ extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
             print(error.localizedDescription)
             return
         }
+        
         guard let photoData = photo.fileDataRepresentation(),
             let image = UIImage(data: photoData) else {
             return
