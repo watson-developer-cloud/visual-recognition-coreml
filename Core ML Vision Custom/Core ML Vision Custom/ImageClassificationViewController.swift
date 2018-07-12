@@ -15,9 +15,6 @@
  **/
 
 import UIKit
-import CoreML
-import Vision
-import ImageIO
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
@@ -29,13 +26,15 @@ struct VisualRecognitionConstants {
 }
 
 class ImageClassificationViewController: UIViewController {
+    
     // MARK: - IBOutlets
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var simulatorTextView: UITextView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var classificationLabel: UILabel!
     @IBOutlet weak var currentModelLabel: UILabel!
     @IBOutlet weak var updateModelButton: UIBarButtonItem!
+    @IBOutlet weak var closeButton: UIButton!
     
     let visualRecognition: VisualRecognition = {
         if !VisualRecognitionConstants.api_key.isEmpty {
@@ -46,6 +45,7 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        resetUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -60,7 +60,7 @@ class ImageClassificationViewController: UIViewController {
         }
     }
     
-    //MARK: - Model Methods
+    // MARK: - Model Methods
     
     func invokeModelUpdate() {
         let failure = { (error: Error) in
@@ -84,13 +84,73 @@ class ImageClassificationViewController: UIViewController {
         visualRecognition.updateLocalModel(classifierID: VisualRecognitionConstants.classifierId, failure: failure, success: success)
     }
     
+
+    
+    func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = sourceType
+        present(picker, animated: true)
+    }
+    
+    // MARK: - Image Classification
+    
+    func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
+        showResultsUI(for: image)
+        
+        let failure = { (error: Error) in
+            DispatchQueue.main.async {
+                self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
+                self.resetUI()
+            }
+        }
+        
+        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
+            
+            // Make sure that an image was successfully classified.
+            guard let classifiedImage = classifiedImages.images.first else {
+                return
+            }
+
+            // Update UI on main thread
+            DispatchQueue.main.async {
+                // Push the classification results of all the provided models to the ResultsTableView.
+                self.push(results: classifiedImage.classifiers)
+            }
+        }
+    }
+    
+    func dismissResults() {
+        push(results: [], position: .closed)
+    }
+    
+    func push(results: [VisualRecognitionV3.ClassifierResult], position: PulleyPosition = .partiallyRevealed) {
+        guard let drawer = pulleyViewController?.drawerContentViewController as? ResultsTableViewController else {
+            return
+        }
+        drawer.classifications = results
+        pulleyViewController?.setDrawerPosition(position: position, animated: true)
+        drawer.tableView.reloadData()
+    }
+    
+    func showResultsUI(for image: UIImage) {
+        imageView.image = image
+        simulatorTextView.isHidden = true
+        closeButton.isHidden = false
+    }
+    
+    func resetUI() {
+        closeButton.isHidden = true
+        imageView.image = UIImage(named: "Background")
+        simulatorTextView.isHidden = false
+        dismissResults()
+    }
+    
+    // MARK: - IBActions
     
     @IBAction func updateModel(_ sender: Any) {
         invokeModelUpdate()
     }
-    
-    
-    // MARK: - Photo Actions
     
     @IBAction func takePicture() {
         // Show options for the source picker only if the camera is available.
@@ -114,65 +174,32 @@ class ImageClassificationViewController: UIViewController {
         present(photoSourcePicker, animated: true)
     }
     
-    func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = sourceType
-        present(picker, animated: true)
+    @IBAction func reset() {
+        resetUI()
     }
-    
-    // MARK: - Image Classification
-    
-    func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
-        
-        classificationLabel.text = "Classifying..."
-        
-        let failure = { (error: Error) in
-            self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
-        }
-        
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
-            
-            var topClassification = ""
+}
 
-            if classifiedImages.images.count > 0 && classifiedImages.images[0].classifiers.count > 0 && classifiedImages.images[0].classifiers[0].classes.count > 0 {
-                topClassification = classifiedImages.images[0].classifiers[0].classes[0].className
-            } else {
-                topClassification = "Unrecognized"
-            }
+// MARK: - Error Handling
 
-            // Update UI on main thread
-            DispatchQueue.main.async {
-                // Display top classification ranked by confidence in the UI.
-                self.classificationLabel.text = "Classification: \(topClassification)"
-            }
-        }
-    }
-    
-    //MARK: - Error Handling
-    
-    // Function to show an alert with an alertTitle String and alertMessage String
+extension ImageClassificationViewController {
     func showAlert(_ alertTitle: String, alertMessage: String) {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-        present(alert, animated: true, completion: nil)
+        self.present(alert, animated: true, completion: nil)
     }
-    
-    
 }
 
+// MARK: - UIImagePickerControllerDelegate
+
 extension ImageClassificationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    // MARK: - Handling Image Picker Selection
-    
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
         picker.dismiss(animated: true)
         
-        // We always expect `imagePickerController(:didFinishPickingMediaWithInfo:)` to supply the original image.
-        let image = info[UIImagePickerControllerOriginalImage] as! UIImage
-        imageView.contentMode = UIViewContentMode.scaleAspectFit
-        imageView.image = image
+        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+            return
+        }
         
-        classifyImage(for: image, localThreshold: 0.2)
+        classifyImage(for: image)
     }
 }
 
