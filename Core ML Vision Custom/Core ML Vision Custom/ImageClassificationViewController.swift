@@ -22,7 +22,7 @@ struct VisualRecognitionConstants {
     // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
     static let apikey = ""     // The IAM apikey
     static let api_key = ""    // The apikey
-    static let classifierId = ""
+    static let modelIds = ["YOUR_MODEL_ID"]
     static let version = "2018-03-19"
 }
 
@@ -78,20 +78,23 @@ class ImageClassificationViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // Pull down model if none on device
-        guard let localModels = try? visualRecognition.listLocalModels() else {
-            return
-        }
-        
-        // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
-        if !localModels.contains(VisualRecognitionConstants.classifierId) {
-            invokeModelUpdate()
+        super.viewDidAppear(animated)
+        for modelId in VisualRecognitionConstants.modelIds {
+            // Pull down model if none on device
+            guard let localModels = try? visualRecognition.listLocalModels() else {
+                return
+            }
+            
+            // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
+            if !localModels.contains(modelId) {
+                updateLocalModel(id: modelId)
+            }
         }
     }
     
     // MARK: - Model Methods
     
-    func invokeModelUpdate() {
+    func updateLocalModel(id modelId: String) {
         let failure = { (error: Error) in
             DispatchQueue.main.async {
                 SwiftSpinner.hide()
@@ -106,7 +109,7 @@ class ImageClassificationViewController: UIViewController {
         
         SwiftSpinner.show("Compiling model...")
         
-        visualRecognition.updateLocalModel(classifierID: VisualRecognitionConstants.classifierId, failure: failure, success: success)
+        visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
     }
 
     func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
@@ -118,7 +121,7 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - Image Classification
     
-    func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
+    func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
         
         let failure = { (error: Error) in
@@ -128,7 +131,7 @@ class ImageClassificationViewController: UIViewController {
             }
         }
         
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
+        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
             
             // Make sure that an image was successfully classified.
             guard let classifiedImage = classifiedImages.images.first else {
@@ -191,7 +194,9 @@ class ImageClassificationViewController: UIViewController {
     }
     
     @IBAction func updateModel(_ sender: Any) {
-        invokeModelUpdate()
+        for modelId in VisualRecognitionConstants.modelIds {
+            updateLocalModel(id: modelId)
+        }
     }
     
     @IBAction func presentPhotoPicker() {
@@ -226,7 +231,7 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
             return
         }
         
-        classifyImage(for: image)
+        classifyImage(image)
     }
 }
 
@@ -243,7 +248,7 @@ extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
             return
         }
         
-        classifyImage(for: image)
+        classifyImage(image)
     }
 }
 
