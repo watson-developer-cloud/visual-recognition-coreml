@@ -15,13 +15,14 @@
  **/
 
 import UIKit
+import AVFoundation
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
     // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
     static let apikey = ""     // The IAM apikey
     static let api_key = ""    // The apikey
-    static let classifierId = ""
+    static let modelIds = ["YOUR_MODEL_ID"]
     static let version = "2018-03-19"
 }
 
@@ -29,12 +30,15 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - IBOutlets
     
+    @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var simulatorTextView: UITextView!
-    @IBOutlet weak var cameraButton: UIBarButtonItem!
-    @IBOutlet weak var currentModelLabel: UILabel!
-    @IBOutlet weak var updateModelButton: UIBarButtonItem!
+    @IBOutlet weak var captureButton: UIButton!
+    @IBOutlet weak var updateModelButton: UIButton!
+    @IBOutlet weak var choosePhotoButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
+    
+    // MARK: - Variable Declarations
     
     let visualRecognition: VisualRecognition = {
         if !VisualRecognitionConstants.api_key.isEmpty {
@@ -43,49 +47,71 @@ class ImageClassificationViewController: UIViewController {
         return VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
     }()
     
+    let photoOutput = AVCapturePhotoOutput()
+    lazy var captureSession: AVCaptureSession? = {
+        guard let backCamera = AVCaptureDevice.default(for: .video),
+            let input = try? AVCaptureDeviceInput(device: backCamera) else {
+                return nil
+        }
+        
+        let captureSession = AVCaptureSession()
+        captureSession.sessionPreset = .high
+        captureSession.addInput(input)
+        
+        if captureSession.canAddOutput(photoOutput) {
+            captureSession.addOutput(photoOutput)
+            let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+            previewLayer.frame = view.bounds
+            // `.resize` allows the camera to fill the screen on the iPhone X.
+            previewLayer.videoGravity = .resize
+            previewLayer.connection?.videoOrientation = .portrait
+            cameraView.layer.addSublayer(previewLayer)
+            return captureSession
+        }
+        return nil
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        captureSession?.startRunning()
         resetUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        // Pull down model if none on device
-        guard let localModels = try? visualRecognition.listLocalModels() else {
-            return
-        }
-        if localModels.contains(VisualRecognitionConstants.classifierId) {
-            currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
-        } else {
-            invokeModelUpdate()
+        super.viewDidAppear(animated)
+        for modelId in VisualRecognitionConstants.modelIds {
+            // Pull down model if none on device
+            guard let localModels = try? visualRecognition.listLocalModels() else {
+                return
+            }
+            
+            // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
+            if !localModels.contains(modelId) {
+                updateLocalModel(id: modelId)
+            }
         }
     }
     
     // MARK: - Model Methods
     
-    func invokeModelUpdate() {
+    func updateLocalModel(id modelId: String) {
         let failure = { (error: Error) in
-            print(error)
-            let descriptError = error as NSError
             DispatchQueue.main.async {
-                self.currentModelLabel.text = descriptError.code == 401 ? "Error updating model: Invalid Credentials" : "Error updating model"
                 SwiftSpinner.hide()
             }
         }
         
         let success = {
             DispatchQueue.main.async {
-                self.currentModelLabel.text = "Current Model: \(VisualRecognitionConstants.classifierId)"
                 SwiftSpinner.hide()
             }
         }
         
         SwiftSpinner.show("Compiling model...")
         
-        visualRecognition.updateLocalModel(classifierID: VisualRecognitionConstants.classifierId, failure: failure, success: success)
+        visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
     }
-    
 
-    
     func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
@@ -95,7 +121,7 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - Image Classification
     
-    func classifyImage(for image: UIImage, localThreshold: Double = 0.0) {
+    func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
         
         let failure = { (error: Error) in
@@ -105,7 +131,7 @@ class ImageClassificationViewController: UIViewController {
             }
         }
         
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: [VisualRecognitionConstants.classifierId], threshold: localThreshold, failure: failure) { classifiedImages in
+        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
             
             // Make sure that an image was successfully classified.
             guard let classifiedImage = classifiedImages.images.first else {
@@ -135,43 +161,49 @@ class ImageClassificationViewController: UIViewController {
     
     func showResultsUI(for image: UIImage) {
         imageView.image = image
+        imageView.isHidden = false
         simulatorTextView.isHidden = true
         closeButton.isHidden = false
+        captureButton.isHidden = true
+        choosePhotoButton.isHidden = true
+        updateModelButton.isHidden = true
     }
     
     func resetUI() {
+        if captureSession != nil {
+            simulatorTextView.isHidden = true
+            imageView.isHidden = true
+            captureButton.isHidden = false
+        } else {
+            imageView.image = UIImage(named: "Background")
+            simulatorTextView.isHidden = false
+            imageView.isHidden = false
+            captureButton.isHidden = true
+        }
+        
         closeButton.isHidden = true
-        imageView.image = UIImage(named: "Background")
-        simulatorTextView.isHidden = false
+        choosePhotoButton.isHidden = false
+        updateModelButton.isHidden = false
         dismissResults()
     }
     
     // MARK: - IBActions
     
-    @IBAction func updateModel(_ sender: Any) {
-        invokeModelUpdate()
+    @IBAction func capturePhoto() {
+        photoOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
     
-    @IBAction func takePicture() {
-        // Show options for the source picker only if the camera is available.
-        guard UIImagePickerController.isSourceTypeAvailable(.camera) else {
-            presentPhotoPicker(sourceType: .photoLibrary)
-            return
+    @IBAction func updateModel(_ sender: Any) {
+        for modelId in VisualRecognitionConstants.modelIds {
+            updateLocalModel(id: modelId)
         }
-        
-        let photoSourcePicker = UIAlertController()
-        let takePhoto = UIAlertAction(title: "Take Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .camera)
-        }
-        let choosePhoto = UIAlertAction(title: "Choose Photo", style: .default) { [unowned self] _ in
-            self.presentPhotoPicker(sourceType: .photoLibrary)
-        }
-        
-        photoSourcePicker.addAction(takePhoto)
-        photoSourcePicker.addAction(choosePhoto)
-        photoSourcePicker.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        
-        present(photoSourcePicker, animated: true)
+    }
+    
+    @IBAction func presentPhotoPicker() {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true)
     }
     
     @IBAction func reset() {
@@ -199,7 +231,24 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
             return
         }
         
-        classifyImage(for: image)
+        classifyImage(image)
+    }
+}
+
+// MARK: - AVCapturePhotoCaptureDelegate
+
+extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
+    func photoOutput(_ output: AVCapturePhotoOutput, didFinishProcessingPhoto photo: AVCapturePhoto, error: Error?) {
+        if let error = error {
+            print(error.localizedDescription)
+            return
+        }
+        guard let photoData = photo.fileDataRepresentation(),
+            let image = UIImage(data: photoData) else {
+            return
+        }
+        
+        classifyImage(image)
     }
 }
 
