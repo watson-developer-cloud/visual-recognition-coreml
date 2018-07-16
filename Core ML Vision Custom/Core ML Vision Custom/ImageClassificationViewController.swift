@@ -79,6 +79,7 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        let dispatchGroup = DispatchGroup()
         for modelId in VisualRecognitionConstants.modelIds {
             // Pull down model if none on device
             guard let localModels = try? visualRecognition.listLocalModels() else {
@@ -87,28 +88,34 @@ class ImageClassificationViewController: UIViewController {
             
             // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
             if !localModels.contains(modelId) {
-                updateLocalModel(id: modelId)
+                dispatchGroup.enter()
+                updateLocalModel(id: modelId) { error in
+                    dispatchGroup.leave()
+                    guard let _ = error else {
+                        return
+                    }
+                }
             }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            SwiftSpinner.hide()
         }
     }
     
     // MARK: - Model Methods
     
-    func updateLocalModel(id modelId: String) {
+    func updateLocalModel(id modelId: String, completion: @escaping (Error?) -> Void) {
         let failure = { (error: Error) in
-            DispatchQueue.main.async {
-                SwiftSpinner.hide()
-            }
+            completion(error)
         }
         
         let success = {
-            DispatchQueue.main.async {
-                SwiftSpinner.hide()
-            }
+            completion(nil)
         }
         
+        // This being called a few times shouldn't matter.
         SwiftSpinner.show("Compiling model...")
-        
         visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
     }
 
@@ -194,8 +201,18 @@ class ImageClassificationViewController: UIViewController {
     }
     
     @IBAction func updateModel(_ sender: Any) {
+        let dispatchGroup = DispatchGroup()
         for modelId in VisualRecognitionConstants.modelIds {
-            updateLocalModel(id: modelId)
+            dispatchGroup.enter()
+            updateLocalModel(id: modelId) { error in
+                dispatchGroup.leave()
+                guard let _ = error else {
+                    return
+                }
+            }
+        }
+        dispatchGroup.notify(queue: .main) {
+            SwiftSpinner.hide()
         }
     }
     
