@@ -79,44 +79,51 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        let dispatchGroup = DispatchGroup()
+        guard let localModels = try? visualRecognition.listLocalModels() else {
+            return
+        }
+        
+        var modelsToUpdate = [String]()
+        
         for modelId in VisualRecognitionConstants.modelIds {
             // Pull down model if none on device
-            guard let localModels = try? visualRecognition.listLocalModels() else {
-                return
-            }
-            
             // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
             if !localModels.contains(modelId) {
-                dispatchGroup.enter()
-                updateLocalModel(id: modelId) { error in
-                    dispatchGroup.leave()
-                    guard let _ = error else {
-                        return
-                    }
-                }
+                modelsToUpdate.append(modelId)
             }
         }
         
-        dispatchGroup.notify(queue: .main) {
-            SwiftSpinner.hide()
+        if modelsToUpdate.count > 0 {
+            updateLocalModels(ids: modelsToUpdate)
         }
     }
     
     // MARK: - Model Methods
     
-    func updateLocalModel(id modelId: String, completion: @escaping (Error?) -> Void) {
-        let failure = { (error: Error) in
-            completion(error)
-        }
-        
-        let success = {
-            completion(nil)
-        }
-        
-        // This being called a few times shouldn't matter.
+    func updateLocalModels(ids modelIds: [String]) {
         SwiftSpinner.show("Compiling model...")
-        visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
+        let dispatchGroup = DispatchGroup()
+        // If the array is empty the dispatch group won't be notified so we might end up with an endless spinner
+        dispatchGroup.enter()
+        for modelId in modelIds {
+            dispatchGroup.enter()
+            let failure = { (error: Error) in
+                dispatchGroup.leave()
+                DispatchQueue.main.async {
+                    self.modelUpdateFail(modelId: modelId, error: error)
+                }
+            }
+            
+            let success = {
+                dispatchGroup.leave()
+            }
+            
+            visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
+        }
+        dispatchGroup.leave()
+        dispatchGroup.notify(queue: .main) {
+            SwiftSpinner.hide()
+        }
     }
 
     func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
@@ -201,19 +208,7 @@ class ImageClassificationViewController: UIViewController {
     }
     
     @IBAction func updateModel(_ sender: Any) {
-        let dispatchGroup = DispatchGroup()
-        for modelId in VisualRecognitionConstants.modelIds {
-            dispatchGroup.enter()
-            updateLocalModel(id: modelId) { error in
-                dispatchGroup.leave()
-                guard let _ = error else {
-                    return
-                }
-            }
-        }
-        dispatchGroup.notify(queue: .main) {
-            SwiftSpinner.hide()
-        }
+        updateLocalModels(ids: VisualRecognitionConstants.modelIds)
     }
     
     @IBAction func presentPhotoPicker() {
@@ -235,6 +230,33 @@ extension ImageClassificationViewController {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func modelUpdateFail(modelId: String, error: Error) {
+        let error = error as NSError
+        var errorMessage = ""
+        
+        // 0 = probably wrong api key
+        // 404 = probably no model
+        // -1009 = probably no internet
+        
+        switch error.code {
+        case 0:
+            errorMessage = "Please check your Visual Recognition API key in `Credentials.plist` and try again."
+        case 404:
+            errorMessage = "We couldn't find the model with ID: \"\(modelId)\""
+        case 500:
+            errorMessage = "Internal server error. Please try again."
+        case -1009:
+            errorMessage = "Please check your internet connection."
+        default:
+            errorMessage = "Please try again."
+        }
+        
+        // TODO: Do some more checks, does the model exist? is it still training? etc.
+        // The service's response is pretty generic and just guesses.
+        
+        showAlert("Unable to download model", alertMessage: errorMessage)
     }
 }
 
