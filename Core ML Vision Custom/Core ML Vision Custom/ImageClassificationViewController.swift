@@ -145,7 +145,9 @@ class ImageClassificationViewController: UIViewController {
             }
         }
         
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
+        let imageCentered = cropToCenter(image: image)
+        
+        visualRecognition.classifyWithLocalModel(image: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
             
             // Make sure that an image was successfully classified.
             guard let classifiedImage = classifiedImages.images.first else {
@@ -158,6 +160,36 @@ class ImageClassificationViewController: UIViewController {
                 self.push(results: classifiedImage.classifiers)
             }
         }
+    }
+    
+    func cropToCenter(image: UIImage) -> UIImage {
+        let contextImage: UIImage = UIImage(cgImage: image.cgImage!)
+        
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = contextSize.width
+        var cgheight: CGFloat = contextSize.height
+        
+        // See what size is longer and create the center off of that
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else if contextSize.width < contextSize.height {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+        
+        // crop image to square
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+        let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        
+        return image
     }
     
     func dismissResults() {
