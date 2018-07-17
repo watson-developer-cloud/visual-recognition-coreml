@@ -61,9 +61,9 @@ class ImageClassificationViewController: UIViewController {
         if captureSession.canAddOutput(photoOutput) {
             captureSession.addOutput(photoOutput)
             let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
-            previewLayer.frame = view.bounds
+            previewLayer.frame = CGRect(x: view.bounds.minX, y: view.bounds.minY, width: view.bounds.width, height: view.bounds.width)
             // `.resize` allows the camera to fill the screen on the iPhone X.
-            previewLayer.videoGravity = .resize
+            previewLayer.videoGravity = .resizeAspectFill
             previewLayer.connection?.videoOrientation = .portrait
             cameraView.layer.addSublayer(previewLayer)
             return captureSession
