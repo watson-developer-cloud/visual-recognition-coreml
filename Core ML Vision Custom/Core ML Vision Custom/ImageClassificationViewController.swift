@@ -79,37 +79,51 @@ class ImageClassificationViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        guard let localModels = try? visualRecognition.listLocalModels() else {
+            return
+        }
+        
+        var modelsToUpdate = [String]()
+        
         for modelId in VisualRecognitionConstants.modelIds {
             // Pull down model if none on device
-            guard let localModels = try? visualRecognition.listLocalModels() else {
-                return
-            }
-            
             // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
             if !localModels.contains(modelId) {
-                updateLocalModel(id: modelId)
+                modelsToUpdate.append(modelId)
             }
+        }
+        
+        if modelsToUpdate.count > 0 {
+            updateLocalModels(ids: modelsToUpdate)
         }
     }
     
     // MARK: - Model Methods
     
-    func updateLocalModel(id modelId: String) {
-        let failure = { (error: Error) in
-            DispatchQueue.main.async {
-                SwiftSpinner.hide()
-            }
-        }
-        
-        let success = {
-            DispatchQueue.main.async {
-                SwiftSpinner.hide()
-            }
-        }
-        
+    func updateLocalModels(ids modelIds: [String]) {
         SwiftSpinner.show("Compiling model...")
-        
-        visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
+        let dispatchGroup = DispatchGroup()
+        // If the array is empty the dispatch group won't be notified so we might end up with an endless spinner
+        dispatchGroup.enter()
+        for modelId in modelIds {
+            dispatchGroup.enter()
+            let failure = { (error: Error) in
+                dispatchGroup.leave()
+                DispatchQueue.main.async {
+                    self.modelUpdateFail(modelId: modelId, error: error)
+                }
+            }
+            
+            let success = {
+                dispatchGroup.leave()
+            }
+            
+            visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
+        }
+        dispatchGroup.leave()
+        dispatchGroup.notify(queue: .main) {
+            SwiftSpinner.hide()
+        }
     }
 
     func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
@@ -131,7 +145,9 @@ class ImageClassificationViewController: UIViewController {
             }
         }
         
-        visualRecognition.classifyWithLocalModel(image: image, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
+        let imageCentered = cropToCenter(image: image)
+        
+        visualRecognition.classifyWithLocalModel(image: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
             
             // Make sure that an image was successfully classified.
             guard let classifiedImage = classifiedImages.images.first else {
@@ -144,6 +160,36 @@ class ImageClassificationViewController: UIViewController {
                 self.push(results: classifiedImage.classifiers)
             }
         }
+    }
+    
+    func cropToCenter(image: UIImage) -> UIImage {
+        let contextImage: UIImage = UIImage(cgImage: image.cgImage!)
+        
+        let contextSize: CGSize = contextImage.size
+        var posX: CGFloat = 0.0
+        var posY: CGFloat = 0.0
+        var cgwidth: CGFloat = contextSize.width
+        var cgheight: CGFloat = contextSize.height
+        
+        // See what size is longer and create the center off of that
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            cgwidth = contextSize.height
+            cgheight = contextSize.height
+        } else if contextSize.width < contextSize.height {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            cgwidth = contextSize.width
+            cgheight = contextSize.width
+        }
+        
+        // crop image to square
+        let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
+        let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
+        let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
+        
+        return image
     }
     
     func dismissResults() {
@@ -194,9 +240,7 @@ class ImageClassificationViewController: UIViewController {
     }
     
     @IBAction func updateModel(_ sender: Any) {
-        for modelId in VisualRecognitionConstants.modelIds {
-            updateLocalModel(id: modelId)
-        }
+        updateLocalModels(ids: VisualRecognitionConstants.modelIds)
     }
     
     @IBAction func presentPhotoPicker() {
@@ -218,6 +262,33 @@ extension ImageClassificationViewController {
         let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func modelUpdateFail(modelId: String, error: Error) {
+        let error = error as NSError
+        var errorMessage = ""
+        
+        // 0 = probably wrong api key
+        // 404 = probably no model
+        // -1009 = probably no internet
+        
+        switch error.code {
+        case 0:
+            errorMessage = "Please check your Visual Recognition API key in `Credentials.plist` and try again."
+        case 404:
+            errorMessage = "We couldn't find the model with ID: \"\(modelId)\""
+        case 500:
+            errorMessage = "Internal server error. Please try again."
+        case -1009:
+            errorMessage = "Please check your internet connection."
+        default:
+            errorMessage = "Please try again."
+        }
+        
+        // TODO: Do some more checks, does the model exist? is it still training? etc.
+        // The service's response is pretty generic and just guesses.
+        
+        showAlert("Unable to download model", alertMessage: errorMessage)
     }
 }
 
