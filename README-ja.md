@@ -102,7 +102,7 @@ Carthage 依存管理マネージャーを使用して、Watson Swift SDK をダ
 
 ## リソース
 
-- [Watson Visual Recognition](https://www.ibm.com/watson/services/visual-recognition/)
+- [Watson Visual Recognition (画像認識)](https://www.ibm.com/watson/jp-ja/developercloud/visual-recognition.html)
 - [Watson Visual Recognition Tool][vizreq_tooling]
 - [Apple 機械学習](https://developer.apple.com/machine-learning/)
 - [Core ML ドキュメント](https://developer.apple.com/documentation/coreml)
