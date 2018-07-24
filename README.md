@@ -1,4 +1,4 @@
-*Read this in other languages: [中国](README-cn.md).*
+*Read this in other languages: [中国](README-cn.md), [日本](README-ja.md).*
 
 # Visual Recognition with Core ML
 
