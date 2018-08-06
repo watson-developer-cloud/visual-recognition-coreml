@@ -160,7 +160,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Custom" */;
+			buildConfigurationList = 2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Watson Agriculture - Crop Disease Recognition" */;
 			compatibilityVersion = "Xcode 8.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -183,9 +183,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */,
-				2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */,
 				2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */,
+				2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */,
+				2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,15 +334,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 73CP3TPHE9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Custom";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.watson-agriculture-crop-disease-recognition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -353,15 +354,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 73CP3TPHE9;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Custom";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.watson-agriculture-crop-disease-recognition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -371,7 +373,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Core ML Vision Custom" */ = {
+		2DBDD26B1FCF7F88004A6DC1 /* Build configuration list for PBXProject "Watson Agriculture - Crop Disease Recognition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2DBDD2831FCF7F88004A6DC1 /* Debug */,
