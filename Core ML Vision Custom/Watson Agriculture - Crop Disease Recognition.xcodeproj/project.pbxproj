@@ -7,31 +7,31 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2308B8EB20F6613B009C7CBD /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8E920F6613A009C7CBD /* ResultsTableViewController.swift */; };
-		2308B8EC20F6613B009C7CBD /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8EA20F6613B009C7CBD /* ResultsTableViewCell.swift */; };
-		2308B8F320F66151009C7CBD /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8ED20F66151009C7CBD /* ProgressBar.swift */; };
-		2308B8F420F66151009C7CBD /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8EF20F66151009C7CBD /* PulleyViewController.swift */; };
-		2308B8F520F66151009C7CBD /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F020F66151009C7CBD /* UIViewController+PulleyViewController.swift */; };
-		2308B8F620F66151009C7CBD /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */; };
-		2308B8F720F66151009C7CBD /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */; };
-		2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
-		2D7B571B20509EE6009ACA53 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */; };
-		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
-		2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
-		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
-		2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1361FD5F3200063B2D5 /* Main.storyboard */; };
-		71C8518020655A9000D855B2 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */; };
-		71C8518120655A9000D855B2 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3B4F9A012119157200E09207 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */; };
+		3B4F9A022119157200E09207 /* ResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8EA20F6613B009C7CBD /* ResultsTableViewCell.swift */; };
+		3B4F9A032119157200E09207 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
+		3B4F9A042119157200E09207 /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
+		3B4F9A052119157200E09207 /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */; };
+		3B4F9A062119157200E09207 /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */; };
+		3B4F9A072119157200E09207 /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F020F66151009C7CBD /* UIViewController+PulleyViewController.swift */; };
+		3B4F9A082119157200E09207 /* ResultsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8E920F6613A009C7CBD /* ResultsTableViewController.swift */; };
+		3B4F9A092119157200E09207 /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8ED20F66151009C7CBD /* ProgressBar.swift */; };
+		3B4F9A0A2119157200E09207 /* PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8EF20F66151009C7CBD /* PulleyViewController.swift */; };
+		3B4F9A0C2119157200E09207 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */; };
+		3B4F9A0E2119157200E09207 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
+		3B4F9A0F2119157200E09207 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
+		3B4F9A102119157200E09207 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1361FD5F3200063B2D5 /* Main.storyboard */; };
+		3B4F9A122119157200E09207 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		71C8518220655A9000D855B2 /* Embed Frameworks */ = {
+		3B4F9A112119157200E09207 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				71C8518120655A9000D855B2 /* VisualRecognitionV3.framework in Embed Frameworks */,
+				3B4F9A122119157200E09207 /* VisualRecognitionV3.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -48,22 +48,22 @@
 		2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constrainToParent.swift"; sourceTree = "<group>"; };
 		2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageClassificationViewController.swift; sourceTree = "<group>"; };
 		2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftSpinner.swift; sourceTree = "<group>"; };
-		2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Core ML Vision Custom.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2DBDD2801FCF7F88004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC5F1361FD5F3200063B2D5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		3B4F99FE2119147D00E09207 /* Core ML Vision Custom copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Core ML Vision Custom copy-Info.plist"; path = "/Users/bchow/dev_local/agrotech/visual-recognition-coreml/Core ML Vision Custom/Core ML Vision Custom copy-Info.plist"; sourceTree = "<absolute>"; };
+		3B4F9A162119157200E09207 /* Watson Agriculture - Crop Disease Recognition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Watson Agriculture - Crop Disease Recognition.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3B4F9A172119157200E09207 /* Watson Agriculture - Crop Disease Recognition.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Watson Agriculture - Crop Disease Recognition.plist"; path = "/Users/bchow/dev_local/agrotech/visual-recognition-coreml/Core ML Vision Custom/Watson Agriculture - Crop Disease Recognition.plist"; sourceTree = "<absolute>"; };
 		71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		2DBDD26D1FCF7F88004A6DC1 /* Frameworks */ = {
+		3B4F9A0B2119157200E09207 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C8518020655A9000D855B2 /* VisualRecognitionV3.framework in Frameworks */,
+				3B4F9A0C2119157200E09207 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -97,14 +97,14 @@
 				71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */,
 				2DBDD2721FCF7F88004A6DC1 /* Watson Agriculture - Crop Disease Recognition */,
 				2DBDD2711FCF7F88004A6DC1 /* Products */,
-				3B4F99FE2119147D00E09207 /* Core ML Vision Custom copy-Info.plist */,
+				3B4F9A172119157200E09207 /* Watson Agriculture - Crop Disease Recognition.plist */,
 			);
 			sourceTree = "<group>";
 		};
 		2DBDD2711FCF7F88004A6DC1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */,
+				3B4F9A162119157200E09207 /* Watson Agriculture - Crop Disease Recognition.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -128,22 +128,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2DBDD26F1FCF7F88004A6DC1 /* Core ML Vision Custom */ = {
+		3B4F99FF2119157200E09207 /* Watson Agriculture - Crop Disease Recognition */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Custom" */;
+			buildConfigurationList = 3B4F9A132119157200E09207 /* Build configuration list for PBXNativeTarget "Watson Agriculture - Crop Disease Recognition" */;
 			buildPhases = (
-				2DBDD26C1FCF7F88004A6DC1 /* Sources */,
-				2DBDD26D1FCF7F88004A6DC1 /* Frameworks */,
-				2DBDD26E1FCF7F88004A6DC1 /* Resources */,
-				71C8518220655A9000D855B2 /* Embed Frameworks */,
+				3B4F9A002119157200E09207 /* Sources */,
+				3B4F9A0B2119157200E09207 /* Frameworks */,
+				3B4F9A0D2119157200E09207 /* Resources */,
+				3B4F9A112119157200E09207 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = "Core ML Vision Custom";
+			name = "Watson Agriculture - Crop Disease Recognition";
 			productName = "Core ML Vision Continuous Learning";
-			productReference = 2DBDD2701FCF7F88004A6DC1 /* Core ML Vision Custom.app */;
+			productReference = 3B4F9A162119157200E09207 /* Watson Agriculture - Crop Disease Recognition.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -156,8 +156,7 @@
 				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
-					2DBDD26F1FCF7F88004A6DC1 = {
-						CreatedOnToolsVersion = 9.0;
+					3B4F99FF2119157200E09207 = {
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -175,39 +174,39 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2DBDD26F1FCF7F88004A6DC1 /* Core ML Vision Custom */,
+				3B4F99FF2119157200E09207 /* Watson Agriculture - Crop Disease Recognition */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		2DBDD26E1FCF7F88004A6DC1 /* Resources */ = {
+		3B4F9A0D2119157200E09207 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */,
-				2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */,
-				2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */,
+				3B4F9A0E2119157200E09207 /* Assets.xcassets in Resources */,
+				3B4F9A0F2119157200E09207 /* LaunchScreen.storyboard in Resources */,
+				3B4F9A102119157200E09207 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		2DBDD26C1FCF7F88004A6DC1 /* Sources */ = {
+		3B4F9A002119157200E09207 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D7B571B20509EE6009ACA53 /* SwiftSpinner.swift in Sources */,
-				2308B8EC20F6613B009C7CBD /* ResultsTableViewCell.swift in Sources */,
-				2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */,
-				2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */,
-				2308B8F620F66151009C7CBD /* PulleyPassthroughScrollView.swift in Sources */,
-				2308B8F720F66151009C7CBD /* UIView+constrainToParent.swift in Sources */,
-				2308B8F520F66151009C7CBD /* UIViewController+PulleyViewController.swift in Sources */,
-				2308B8EB20F6613B009C7CBD /* ResultsTableViewController.swift in Sources */,
-				2308B8F320F66151009C7CBD /* ProgressBar.swift in Sources */,
-				2308B8F420F66151009C7CBD /* PulleyViewController.swift in Sources */,
+				3B4F9A012119157200E09207 /* SwiftSpinner.swift in Sources */,
+				3B4F9A022119157200E09207 /* ResultsTableViewCell.swift in Sources */,
+				3B4F9A032119157200E09207 /* AppDelegate.swift in Sources */,
+				3B4F9A042119157200E09207 /* ImageClassificationViewController.swift in Sources */,
+				3B4F9A052119157200E09207 /* PulleyPassthroughScrollView.swift in Sources */,
+				3B4F9A062119157200E09207 /* UIView+constrainToParent.swift in Sources */,
+				3B4F9A072119157200E09207 /* UIViewController+PulleyViewController.swift in Sources */,
+				3B4F9A082119157200E09207 /* ResultsTableViewController.swift in Sources */,
+				3B4F9A092119157200E09207 /* ProgressBar.swift in Sources */,
+				3B4F9A0A2119157200E09207 /* PulleyViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,7 +331,7 @@
 			};
 			name = Release;
 		};
-		2DBDD2861FCF7F88004A6DC1 /* Debug */ = {
+		3B4F9A142119157200E09207 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -343,7 +342,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Watson Agriculture - Crop Disease Recognition/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Watson Agriculture - Crop Disease Recognition.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.watson-agriculture-crop-disease-recognition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,7 +351,7 @@
 			};
 			name = Debug;
 		};
-		2DBDD2871FCF7F88004A6DC1 /* Release */ = {
+		3B4F9A152119157200E09207 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -363,7 +362,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Watson Agriculture - Crop Disease Recognition/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Watson Agriculture - Crop Disease Recognition.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.watson-agriculture-crop-disease-recognition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -384,11 +383,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Custom" */ = {
+		3B4F9A132119157200E09207 /* Build configuration list for PBXNativeTarget "Watson Agriculture - Crop Disease Recognition" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				2DBDD2861FCF7F88004A6DC1 /* Debug */,
-				2DBDD2871FCF7F88004A6DC1 /* Release */,
+				3B4F9A142119157200E09207 /* Debug */,
+				3B4F9A152119157200E09207 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
