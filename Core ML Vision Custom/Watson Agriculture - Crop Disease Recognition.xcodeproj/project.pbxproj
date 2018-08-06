@@ -54,6 +54,7 @@
 		2DBDD2801FCF7F88004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC5F1361FD5F3200063B2D5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		3B4F99FE2119147D00E09207 /* Core ML Vision Custom copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "Core ML Vision Custom copy-Info.plist"; path = "/Users/bchow/dev_local/agrotech/visual-recognition-coreml/Core ML Vision Custom/Core ML Vision Custom copy-Info.plist"; sourceTree = "<absolute>"; };
 		71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,8 +95,9 @@
 			isa = PBXGroup;
 			children = (
 				71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */,
-				2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */,
+				2DBDD2721FCF7F88004A6DC1 /* Watson Agriculture - Crop Disease Recognition */,
 				2DBDD2711FCF7F88004A6DC1 /* Products */,
+				3B4F99FE2119147D00E09207 /* Core ML Vision Custom copy-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -107,7 +109,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */ = {
+		2DBDD2721FCF7F88004A6DC1 /* Watson Agriculture - Crop Disease Recognition */ = {
 			isa = PBXGroup;
 			children = (
 				2D7B571920509E2E009ACA53 /* Supporting Files */,
@@ -120,7 +122,7 @@
 				2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
 			);
-			path = "Core ML Vision Custom";
+			path = "Watson Agriculture - Crop Disease Recognition";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,7 +343,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Watson Agriculture - Crop Disease Recognition/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.watson-agriculture-crop-disease-recognition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -361,7 +363,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Watson Agriculture - Crop Disease Recognition/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.watson-agriculture-crop-disease-recognition";
 				PRODUCT_NAME = "$(TARGET_NAME)";
