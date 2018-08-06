@@ -1,0 +1,11 @@
+framework module NaturalLanguageClassifierV1 {
+  umbrella header "NaturalLanguageClassifierV1.h"
+
+  export *
+  module * { export * }
+}
+
+module NaturalLanguageClassifierV1.Swift {
+    header "NaturalLanguageClassifierV1-Swift.h"
+    requires objc
+}

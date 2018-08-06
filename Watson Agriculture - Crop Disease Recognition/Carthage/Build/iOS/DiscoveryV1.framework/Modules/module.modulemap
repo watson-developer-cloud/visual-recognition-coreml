@@ -1,0 +1,11 @@
+framework module DiscoveryV1 {
+  umbrella header "DiscoveryV1.h"
+
+  export *
+  module * { export * }
+}
+
+module DiscoveryV1.Swift {
+    header "DiscoveryV1-Swift.h"
+    requires objc
+}

@@ -1,0 +1,41 @@
+excluded: # paths to ignore during linting (takes precedence over `included`)
+  - Carthage
+  - Source/SupportingFiles/Dependencies
+
+disabled_rules: # rule identifiers to exclude from running
+  - closure_parameter_position
+  - opening_brace
+  - redundant_string_enum_value
+  - cyclomatic_complexity
+
+opt_in_rules:
+ - force_unwrapping
+
+file_length:
+  warning: 3000
+  error: 4000
+
+type_body_length:
+  warning: 3000
+  error: 4000
+
+function_body_length:
+  warning: 50
+  error: 80
+
+line_length:
+  warning: 500
+  error: 999
+
+identifier_name:
+  excluded: # excluded via string array
+    - id
+
+trailing_comma:
+  mandatory_comma: true
+
+trailing_whitespace:
+  severity: error
+
+superfluous_disable_command:
+  severity: warning

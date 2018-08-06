@@ -1,0 +1,11 @@
+framework module NaturalLanguageUnderstandingV1 {
+  umbrella header "NaturalLanguageUnderstandingV1.h"
+
+  export *
+  module * { export * }
+}
+
+module NaturalLanguageUnderstandingV1.Swift {
+    header "NaturalLanguageUnderstandingV1-Swift.h"
+    requires objc
+}

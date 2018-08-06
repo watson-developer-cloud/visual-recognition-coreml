@@ -1,0 +1,11 @@
+framework module AssistantV1 {
+  umbrella header "AssistantV1.h"
+
+  export *
+  module * { export * }
+}
+
+module AssistantV1.Swift {
+    header "AssistantV1-Swift.h"
+    requires objc
+}

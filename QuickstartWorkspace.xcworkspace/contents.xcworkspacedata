@@ -5,6 +5,6 @@
       location = "group:Core ML Vision Simple/Core ML Vision Simple.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:/Users/bchow/dev_local/agrotech/visual-recognition-coreml/Core ML Vision Custom/Watson Agriculture - Crop Disease Recognition.xcodeproj">
+      location = "group:Watson Agriculture - Crop Disease Recognition/Watson Agriculture - Crop Disease Recognition.xcodeproj">
    </FileRef>
 </Workspace>
