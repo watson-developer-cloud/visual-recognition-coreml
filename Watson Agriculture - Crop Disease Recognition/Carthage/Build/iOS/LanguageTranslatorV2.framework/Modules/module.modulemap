@@ -1,0 +1,11 @@
+framework module LanguageTranslatorV2 {
+  umbrella header "LanguageTranslatorV2.h"
+
+  export *
+  module * { export * }
+}
+
+module LanguageTranslatorV2.Swift {
+    header "LanguageTranslatorV2-Swift.h"
+    requires objc
+}

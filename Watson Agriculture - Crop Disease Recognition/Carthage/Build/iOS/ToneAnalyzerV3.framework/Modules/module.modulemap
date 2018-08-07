@@ -1,0 +1,11 @@
+framework module ToneAnalyzerV3 {
+  umbrella header "ToneAnalyzerV3.h"
+
+  export *
+  module * { export * }
+}
+
+module ToneAnalyzerV3.Swift {
+    header "ToneAnalyzerV3-Swift.h"
+    requires objc
+}

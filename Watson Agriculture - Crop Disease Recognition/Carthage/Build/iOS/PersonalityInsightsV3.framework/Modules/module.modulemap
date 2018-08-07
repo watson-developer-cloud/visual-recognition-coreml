@@ -1,0 +1,11 @@
+framework module PersonalityInsightsV3 {
+  umbrella header "PersonalityInsightsV3.h"
+
+  export *
+  module * { export * }
+}
+
+module PersonalityInsightsV3.Swift {
+    header "PersonalityInsightsV3-Swift.h"
+    requires objc
+}

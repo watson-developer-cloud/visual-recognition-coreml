@@ -20,9 +20,9 @@ import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
     // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
-    static let apikey = ""     // The IAM apikey
-    static let api_key = ""    // The apikey
-    static let modelIds = ["YOUR_MODEL_ID"]
+    static let apikey = "7a16a079f2a8743d195ee7b7ded4f812407f5ae0"     // The IAM apikey
+    static let api_key = "7a16a079f2a8743d195ee7b7ded4f812407f5ae0"    // The apikey
+    static let modelIds = ["DefaultCustomModel_251684684"]
     static let version = "2018-03-19"
 }
 

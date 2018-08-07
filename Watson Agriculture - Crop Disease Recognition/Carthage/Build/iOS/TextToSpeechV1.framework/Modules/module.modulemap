@@ -1,0 +1,11 @@
+framework module TextToSpeechV1 {
+  umbrella header "TextToSpeechV1.h"
+
+  export *
+  module * { export * }
+}
+
+module TextToSpeechV1.Swift {
+    header "TextToSpeechV1-Swift.h"
+    requires objc
+}
