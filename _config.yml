@@ -1,0 +1,64 @@
+# Site settings
+title: IBM Core ML Code Pattern
+description: >-
+  Watson Visual Recognition & Core ML Code Pattern
+baseurl: "/visual-recognition-coreml" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: yrezgui
+github_username:  yrezgui
+
+# Build settings
+markdown: kramdown
+theme: minima
+
+# Code pattern config
+codepattern_title: "Core ML & Watson Visual Recognition"
+codepattern_url: https://developer.ibm.com/code/patterns/deploy-a-core-ml-model-with-watson-visual-recognition/
+
+# Authors
+authors:
+  - name: Yacine Rezgui
+    twitter: yrezgui
+    github: yrezgui
+  - name: Sam Couch
+    twitter: SamuelCouch
+    github: samuelcouch
+
+collections:
+  advanced:
+    output: true
+  simple:
+    output: true
+  multiple:
+    output: true
+  plz_work:
+    output: true
+  arduino:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "advanced"
+    values:
+      layout: advanced_lesson
+  - scope:
+      path: ""
+      type: "simple"
+    values:
+      layout: simple_lesson
+  - scope:
+      path: ""
+      type: "multiple"
+    values:
+      layout: multiple_lesson
+  - scope:
+      path: ""
+      type: "plz_work"
+    values:
+      layout: plz_work
+  - scope:
+      path: ""
+      type: "arduino"
+    values:
+      layout: arduino_lesson

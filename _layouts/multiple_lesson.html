@@ -1,0 +1,76 @@
+---
+layout: base
+---
+<div class="grid grid-nogutter grid-show" style="min-height: 100vh">
+  <div class="col col-fixed pvxl phxl" style="width:350px;">
+    <p class="txt-c">
+      <a href="https://developer.ibm.com/code">
+        <svg alt="ibm-logo" height="40">
+          <use xlink:href="#ibm-logo"></use>
+        </svg>
+      </a>
+    </p>
+    <a
+      href="{{ site.url }}/visual-recognition-coreml/"
+      class="pui-btn pui-btn-brand pui-btn-sm btn btn-brand btn-sm btn-full"
+      aria-label="Clone code pattern"
+    >
+      <span class="btn-inner-content pui-btn-inner-content">
+        <span>{{ site.codepattern_title }}</span>
+      </span>
+    </a>
+    <br />
+    <br />
+    <ol>
+    {% for item in site.multiple %}
+      {% if item.url == page.url %}
+        <li>{{ item.title }}</li>
+      {% else %}
+        <li><a href="{{ item.url | relative_url }}">{{ item.title }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ol>
+  </div>
+  <div id="lesson" class="col paxxxl bg-neutral-11">
+    <h1>{{ page.title }}</h1>
+    <hr class="divider-alternate-1" />
+    <br />
+    {{ content }}
+    <br />
+    <div>
+      {% if page.previous %}
+      <a
+        href="{{ page.previous.url | relative_url }}"
+        class="pui-btn pui-btn-default btn btn-default float-left"
+        aria-label="Previous page"
+      >
+        <span class="btn-inner-content pui-btn-inner-content">
+          <div class="icon icon-middle">
+            <svg alt="previous page icon" width="48" height="48">
+              <use xlink:href="#icon-chevron-left"></use>
+            </svg>
+          </div>
+          <span>Previous</span>
+        </span>
+      </a>
+      {% endif %}
+      {% if page.next %}
+      <a
+        href="{{ page.next.url | relative_url }}"
+        class="pui-btn pui-btn-primary btn btn-primary float-right"
+        aria-label="Next page"
+      >
+        <span class="btn-inner-content pui-btn-inner-content">
+          <span>Next</span>
+          <div class="icon icon-middle">
+            <svg alt="next page icon" width="48" height="48">
+              <use xlink:href="#icon-chevron-right"></use>
+            </svg>
+          </div>
+        </span>
+      </a>
+      {% endif %}
+      <br />
+    </div>
+  </div>
+</div>
