@@ -20,8 +20,8 @@
 		2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
 		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
 		2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1361FD5F3200063B2D5 /* Main.storyboard */; };
-		71C8518020655A9000D855B2 /* VisualRecognitionV3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */; };
-		71C8518120655A9000D855B2 /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92FB01322147212C00F7004B /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92FB01302147211600F7004B /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		92FB01352147232E00F7004B /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92FB01332147232800F7004B /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,7 +31,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				71C8518120655A9000D855B2 /* VisualRecognitionV3.framework in Embed Frameworks */,
+				92FB01352147232E00F7004B /* VisualRecognitionV3.framework in Embed Frameworks */,
+				92FB01322147212C00F7004B /* RestKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -54,7 +55,8 @@
 		2DBDD2801FCF7F88004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC5F1361FD5F3200063B2D5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = "<group>"; };
+		92FB01302147211600F7004B /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = SOURCE_ROOT; };
+		92FB01332147232800F7004B /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,7 +64,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				71C8518020655A9000D855B2 /* VisualRecognitionV3.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,8 +94,8 @@
 		2DBDD2671FCF7F88004A6DC1 = {
 			isa = PBXGroup;
 			children = (
-				71C8517F20655A9000D855B2 /* VisualRecognitionV3.framework */,
 				2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */,
+				92FB012F2147210100F7004B /* Frameworks */,
 				2DBDD2711FCF7F88004A6DC1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -121,6 +122,15 @@
 				2DBDD2821FCF7F88004A6DC1 /* Info.plist */,
 			);
 			path = "Core ML Vision Custom";
+			sourceTree = "<group>";
+		};
+		92FB012F2147210100F7004B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				92FB01332147232800F7004B /* VisualRecognitionV3.framework */,
+				92FB01302147211600F7004B /* RestKit.framework */,
+			);
+			path = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
