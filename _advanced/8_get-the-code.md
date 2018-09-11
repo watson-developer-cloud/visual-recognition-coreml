@@ -4,7 +4,7 @@ date: 2018-01-08
 ---
 
 1. From *Launchpad* search for `terminal` and click the icon to open the application
-![](assets/launchpad_terminal.png)
+![](../_images/launchpad_terminal.png)
 1. Clone the project with the following command
 ```bash
 git clone https://github.com/bourdakos1/visual-recognition-with-coreml.git

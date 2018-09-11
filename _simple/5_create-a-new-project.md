@@ -15,7 +15,7 @@ We want to create a new project so click on the **New project** graphic.
 
 A popup should appear with a grid of choices. Choose **Basic** and click **OK**.
 
-![](assets/5_0_basic.png)
+![](../_images/5_0_basic.png)
 
 Give your project a nice name and then click **Add** to add a Cloud Object Storage instance to your project.
 > ### Object Storage is used to store all your training images
