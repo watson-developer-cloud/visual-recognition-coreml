@@ -36,7 +36,7 @@ In this tutorial, you’ll also learn how to implement two models. For a given A
 
 These are the steps you will do in this workshop:
 
-{% include retina-image.html src="assets/watson-coreml-diagram-large.png" %}
+{% include retina-image.html src="../images/watson-coreml-diagram-large.png" %}
 
 1. Train a custom image classifier
 2. Create an iOS application including Visual Recognition SDK

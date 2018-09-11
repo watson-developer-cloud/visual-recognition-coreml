@@ -7,7 +7,7 @@ date: 2018-04-06
 With Xcode open, we can now test our application by running it in the simulator.
 
 Click the **Build and Run** button.
-![](../_images/xcode_build_and_run.png)
+![](../images/xcode_build_and_run.png)
 
 If all goes well, you should now see your app running!
-![](../_images/simulator_running.png)
+![](../images/simulator_running.png)

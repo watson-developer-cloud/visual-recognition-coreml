@@ -8,18 +8,18 @@ date: 2018-01-09
    open .
    ```
 1. Then double click the `Core ML Vision Custom.xcodeproj` file to open the project in Xcode
-![](../_images/step_9_open_project.png)
+![](../images/step_9_open_project.png)
 1. In Watson Studio, make your way back to your project's **Assets** tab.
-![](../_images/arduino_data_assets_list.png)
+![](../images/arduino_data_assets_list.png)
 1. Then open your model and copy your **ModelID**s. Keep them handy for later.
-![](../_images/arduino_model_id.png)
+![](../images/arduino_model_id.png)
 1. Open the associated visual recognition service.
-![](../_images/arduino_associated_service.png)
+![](../images/arduino_associated_service.png)
 1. Navigate to the **Credentials** tab.
-![](../_images/arduino_credentials.png)
+![](../images/arduino_credentials.png)
 1. Copy your **"apikey"** and keep it handy for later.
-![](../_images/arduino_api_key.png)
+![](../images/arduino_api_key.png)
 1. Open the file called `ImageClassificationViewController.swift` and add your ModelIDs.
-![](../_images/step_9_add_model_ids.png)
+![](../images/step_9_add_model_ids.png)
 1. Next, in the same file, add your api key.
-![](../_images/step_9_add_api_key.png)
+![](../images/step_9_add_api_key.png)

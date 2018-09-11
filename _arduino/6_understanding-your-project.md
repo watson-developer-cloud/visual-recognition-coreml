@@ -21,7 +21,7 @@ First, ensure that **Watson Tools** is checked under **Tools**. This will unlock
 
 In order for us to be able to create a model, we need to spin up a Watson service called Visual Recognition. We can do this by clicking the **Add service** dropdown under **Associated services**.
 
-![](../_images/step_6_add_watson_service.png)
+![](../images/step_6_add_watson_service.png)
 
 Choose **Watson**.
 
@@ -48,4 +48,4 @@ You can upload the training files you created earlier by clicking **browse** or 
 
 You should then see a list of your training data show up.
 
-![](../_images/arduino_data_assets.png)
+![](../images/arduino_data_assets.png)
