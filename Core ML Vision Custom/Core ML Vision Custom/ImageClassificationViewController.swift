@@ -19,9 +19,7 @@ import AVFoundation
 import VisualRecognitionV3
 
 struct VisualRecognitionConstants {
-    // Instantiation with `api_key` works only with Visual Recognition service instances created before May 23, 2018. Visual Recognition instances created after May 22 use the IAM `apikey`.
     static let apikey = ""     // The IAM apikey
-    static let api_key = ""    // The apikey
     static let modelIds = ["YOUR_MODEL_ID"]
     static let version = "2018-03-19"
 }
@@ -40,12 +38,7 @@ class ImageClassificationViewController: UIViewController {
     
     // MARK: - Variable Declarations
     
-    let visualRecognition: VisualRecognition = {
-        if !VisualRecognitionConstants.api_key.isEmpty {
-            return VisualRecognition(apiKey: VisualRecognitionConstants.api_key, version: VisualRecognitionConstants.version)
-        }
-        return VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
-    }()
+    let visualRecognition: VisualRecognition = VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
     
     let photoOutput = AVCapturePhotoOutput()
     lazy var captureSession: AVCaptureSession? = {
@@ -107,18 +100,18 @@ class ImageClassificationViewController: UIViewController {
         dispatchGroup.enter()
         for modelId in modelIds {
             dispatchGroup.enter()
-            let failure = { (error: Error) in
-                dispatchGroup.leave()
-                DispatchQueue.main.async {
-                    self.modelUpdateFail(modelId: modelId, error: error)
+            
+            visualRecognition.updateLocalModel(classifierID: modelId){ _, error in
+                if let error = error {
+                    dispatchGroup.leave()
+                    DispatchQueue.main.async {
+                        self.modelUpdateFail(modelId: modelId, error: error)
+                    }
+                    return
                 }
-            }
-            
-            let success = {
+                
                 dispatchGroup.leave()
             }
-            
-            visualRecognition.updateLocalModel(classifierID: modelId, failure: failure, success: success)
         }
         dispatchGroup.leave()
         dispatchGroup.notify(queue: .main) {
@@ -126,7 +119,7 @@ class ImageClassificationViewController: UIViewController {
         }
     }
 
-    func presentPhotoPicker(sourceType: UIImagePickerControllerSourceType) {
+    func presentPhotoPicker(sourceType: UIImagePickerController.SourceType) {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = sourceType
@@ -138,19 +131,19 @@ class ImageClassificationViewController: UIViewController {
     func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
         
-        let failure = { (error: Error) in
-            DispatchQueue.main.async {
-                self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
-                self.resetUI()
+        let imageCentered: Data = cropToCenter(image: image).pngData()!
+        
+        visualRecognition.classifyWithLocalModel(imageData: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold) { classifiedImages, error in
+            
+            if let error = error {
+                DispatchQueue.main.async {
+                    self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
+                    self.resetUI()
+                }
             }
-        }
-        
-        let imageCentered = cropToCenter(image: image)
-        
-        visualRecognition.classifyWithLocalModel(image: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold, failure: failure) { classifiedImages in
             
             // Make sure that an image was successfully classified.
-            guard let classifiedImage = classifiedImages.images.first else {
+            guard let classifiedImage = classifiedImages?.images.first else {
                 return
             }
 
@@ -259,8 +252,8 @@ class ImageClassificationViewController: UIViewController {
 
 extension ImageClassificationViewController {
     func showAlert(_ alertTitle: String, alertMessage: String) {
-        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertControllerStyle.alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        let alert = UIAlertController(title: alertTitle, message: alertMessage, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -295,10 +288,13 @@ extension ImageClassificationViewController {
 // MARK: - UIImagePickerControllerDelegate
 
 extension ImageClassificationViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+// Local variable inserted by Swift 4.2 migrator.
+let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+
         picker.dismiss(animated: true)
         
-        guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
+        guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else {
             return
         }
         
@@ -324,3 +320,13 @@ extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
 }
 
 
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+	return input.rawValue
+}

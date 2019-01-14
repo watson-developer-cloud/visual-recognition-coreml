@@ -1,1 +1,1 @@
-github "watson-developer-cloud/swift-sdk" == 0.33.0
+github "watson-developer-cloud/swift-sdk" ~> 1.1

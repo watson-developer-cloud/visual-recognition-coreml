@@ -15,6 +15,7 @@
 		2DE513281FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */; };
 		71E03E8920596752009DC77A /* watson_plants.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71E03E8720596752009DC77A /* watson_plants.mlmodel */; };
 		71E03E8A20596752009DC77A /* watson_tools.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = 71E03E8820596752009DC77A /* watson_tools.mlmodel */; };
+		AA27243D21ED3B9E005B7878 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA27243C21ED3B9E005B7878 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		2DE513271FD066250063C133 /* CGImagePropertyOrientation+UIImageOrientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGImagePropertyOrientation+UIImageOrientation.swift"; sourceTree = "<group>"; };
 		71E03E8720596752009DC77A /* watson_plants.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = watson_plants.mlmodel; path = "../Core ML Vision Simple/watson_plants.mlmodel"; sourceTree = "<group>"; };
 		71E03E8820596752009DC77A /* watson_tools.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = watson_tools.mlmodel; path = "../Core ML Vision Simple/watson_tools.mlmodel"; sourceTree = "<group>"; };
+		AA27243C21ED3B9E005B7878 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2DBDD25C1FCF7F0E004A6DC1 /* Assets.xcassets */,
 				2DBDD25E1FCF7F0E004A6DC1 /* LaunchScreen.storyboard */,
 				2DBDD2611FCF7F0E004A6DC1 /* Info.plist */,
+				AA27243C21ED3B9E005B7878 /* Images.xcassets */,
 			);
 			path = "Core ML Vision Simple";
 			sourceTree = "<group>";
@@ -100,11 +103,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0900;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "";
 				TargetAttributes = {
 					2DBDD24E1FCF7F0E004A6DC1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -133,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2DC5F1391FD5F33E0063B2D5 /* Main.storyboard in Resources */,
+				AA27243D21ED3B9E005B7878 /* Images.xcassets in Resources */,
 				2DBDD2601FCF7F0E004A6DC1 /* LaunchScreen.storyboard in Resources */,
 				2DBDD25D1FCF7F0E004A6DC1 /* Assets.xcassets in Resources */,
 			);
@@ -181,6 +186,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -188,6 +194,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -238,6 +245,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -245,6 +253,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -285,7 +294,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Simple";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -301,7 +310,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Simple";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

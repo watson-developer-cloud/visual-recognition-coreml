@@ -128,7 +128,7 @@ extension ResultsTableViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDefault", for: indexPath) as! ResultTableViewCell
         
-        let score = classifications[indexPath.section].classes[indexPath.item].score ?? 0.0
+        let score = classifications[indexPath.section].classes[indexPath.item].score
 
         cell.label.text = classifications[indexPath.section].classes[indexPath.item].className
         cell.progress.progress = CGFloat(score)

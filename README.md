@@ -11,7 +11,7 @@ This project includes the `QuickstartWorkspace.xcworkspace` workspace with two p
 
 ## Before you begin
 
-Make sure that you have installed [Xcode 9][xcode_download] or later and iOS 11.0 or later. These versions are required to support Core ML.
+Make sure that you have installed [Xcode 10][xcode_download] or later and iOS 11.0 or later. These versions are required to support Core ML.
 
 ## Getting the files
 Use GitHub to clone the repository locally, or download the .zip file of the repository and extract the files.
@@ -39,15 +39,15 @@ The second part of this project builds from the first part and trains a Visual R
 
 ### Training the model
 1.  In Watson Studio on the Visual Recognition instance overview page, click **Create Model** in the Custom box.
-1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project `Custom Core ML` and click **Create**. 
+1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project `Custom Core ML` and click **Create**.
 
     **Tip**: If no storage is defined, click **refresh**.
 1.  Upload each .zip file of sample images from the `Training Images` directory onto the data pane on the right side of the page.  Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data pane. Also add the `usb_male.zip`, `thunderbolt_male.zip`, and `vga_male.zip` files to your model.
 1.  After the files are uploaded, select **Add to model** from the menu next to each file, and then click **Train Model**.
 
 ### Copy your Model ID and API Key
-1.  In Watson Studio on the custom model overview page, click your Visual Recognition instance name (it's next to Associated Service). 
-1.  Scroll down to find the **Custom Core ML** classifier you just created. 
+1.  In Watson Studio on the custom model overview page, click your Visual Recognition instance name (it's next to Associated Service).
+1.  Scroll down to find the **Custom Core ML** classifier you just created.
 1.  Copy the **Model ID** of the classifier.
 1.  In the Visual Recognition instance overview page in Watson Studio, click the **Credentials** tab, and then click **View credentials**. Copy the `api_key` or the `apikey` of the service.
 
@@ -69,7 +69,7 @@ Use the Carthage dependency manager to download and build the Watson Swift SDK.
     carthage bootstrap --platform iOS
     ```
 
-**Tip:** Regularly download updates of the SDK so you stay in sync with any updates to this project.
+**Tip:** Regularly download updates of the SDK so you stay in sync with any updates to this project.  If you are using a different Swift version from the SDK, add the `--no-use-binaries` flag to the above command.
 
 ### Testing the custom model
 
@@ -94,7 +94,7 @@ Add another Watson service to the custom project with the [Core ML Visual Recogn
 - [Apple machine learning](https://developer.apple.com/machine-learning/)
 - [Core ML documentation](https://developer.apple.com/documentation/coreml)
 - [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
-- [IBM Cloud](https://bluemix.net)
+- [IBM Cloud](https://cloud.ibm.com)
 
 [vizreq_with_discovery]: https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/
 [xcode_download]: https://developer.apple.com/xcode/downloads/
