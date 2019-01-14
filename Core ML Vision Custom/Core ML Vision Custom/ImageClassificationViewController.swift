@@ -131,9 +131,9 @@ class ImageClassificationViewController: UIViewController {
     func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
         
-        let imageCentered: Data = cropToCenter(image: image).pngData()!
+        let imageCentered = cropToCenter(image: image)
         
-        visualRecognition.classifyWithLocalModel(imageData: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold) { classifiedImages, error in
+        visualRecognition.classifyWithLocalModel(image: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold) { classifiedImages, error in
             
             if let error = error {
                 DispatchQueue.main.async {
