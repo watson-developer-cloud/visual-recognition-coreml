@@ -25,9 +25,9 @@ struct VisualRecognitionConstants {
 }
 
 class ImageClassificationViewController: UIViewController {
-    
+
     // MARK: - IBOutlets
-    
+
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var simulatorTextView: UITextView!
@@ -35,22 +35,22 @@ class ImageClassificationViewController: UIViewController {
     @IBOutlet weak var updateModelButton: UIButton!
     @IBOutlet weak var choosePhotoButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
-    
+
     // MARK: - Variable Declarations
-    
+
     let visualRecognition: VisualRecognition = VisualRecognition(version: VisualRecognitionConstants.version, apiKey: VisualRecognitionConstants.apikey)
-    
+
     let photoOutput = AVCapturePhotoOutput()
     lazy var captureSession: AVCaptureSession? = {
         guard let backCamera = AVCaptureDevice.default(for: .video),
             let input = try? AVCaptureDeviceInput(device: backCamera) else {
                 return nil
         }
-        
+
         let captureSession = AVCaptureSession()
         captureSession.sessionPreset = .high
         captureSession.addInput(input)
-        
+
         if captureSession.canAddOutput(photoOutput) {
             captureSession.addOutput(photoOutput)
             let previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
@@ -63,21 +63,21 @@ class ImageClassificationViewController: UIViewController {
         }
         return nil
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         captureSession?.startRunning()
         resetUI()
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         guard let localModels = try? visualRecognition.listLocalModels() else {
             return
         }
-        
+
         var modelsToUpdate = [String]()
-        
+
         for modelId in VisualRecognitionConstants.modelIds {
             // Pull down model if none on device
             // This only checks if the model is downloaded, we need to change this if we want to check for updates when then open the app
@@ -85,14 +85,14 @@ class ImageClassificationViewController: UIViewController {
                 modelsToUpdate.append(modelId)
             }
         }
-        
+
         if modelsToUpdate.count > 0 {
             updateLocalModels(ids: modelsToUpdate)
         }
     }
-    
+
     // MARK: - Model Methods
-    
+
     func updateLocalModels(ids modelIds: [String]) {
         SwiftSpinner.show("Compiling model...")
         let dispatchGroup = DispatchGroup()
@@ -100,8 +100,8 @@ class ImageClassificationViewController: UIViewController {
         dispatchGroup.enter()
         for modelId in modelIds {
             dispatchGroup.enter()
-            
-            visualRecognition.updateLocalModel(classifierID: modelId){ _, error in
+
+            visualRecognition.updateLocalModel(classifierID: modelId) { _, error in
                 if let error = error {
                     dispatchGroup.leave()
                     DispatchQueue.main.async {
@@ -109,7 +109,7 @@ class ImageClassificationViewController: UIViewController {
                     }
                     return
                 }
-                
+
                 dispatchGroup.leave()
             }
         }
@@ -125,23 +125,23 @@ class ImageClassificationViewController: UIViewController {
         picker.sourceType = sourceType
         present(picker, animated: true)
     }
-    
+
     // MARK: - Image Classification
-    
+
     func classifyImage(_ image: UIImage, localThreshold: Double = 0.0) {
         showResultsUI(for: image)
-        
+
         let imageCentered = cropToCenter(image: image)
-        
+
         visualRecognition.classifyWithLocalModel(image: imageCentered, classifierIDs: VisualRecognitionConstants.modelIds, threshold: localThreshold) { classifiedImages, error in
-            
+
             if let error = error {
                 DispatchQueue.main.async {
                     self.showAlert("Could not classify image", alertMessage: error.localizedDescription)
                     self.resetUI()
                 }
             }
-            
+
             // Make sure that an image was successfully classified.
             guard let classifiedImage = classifiedImages?.images.first else {
                 return
@@ -154,16 +154,16 @@ class ImageClassificationViewController: UIViewController {
             }
         }
     }
-    
+
     func cropToCenter(image: UIImage) -> UIImage {
         let contextImage: UIImage = UIImage(cgImage: image.cgImage!)
-        
+
         let contextSize: CGSize = contextImage.size
         var posX: CGFloat = 0.0
         var posY: CGFloat = 0.0
         var cgwidth: CGFloat = contextSize.width
         var cgheight: CGFloat = contextSize.height
-        
+
         // See what size is longer and create the center off of that
         if contextSize.width > contextSize.height {
             posX = ((contextSize.width - contextSize.height) / 2)
@@ -176,19 +176,19 @@ class ImageClassificationViewController: UIViewController {
             cgwidth = contextSize.width
             cgheight = contextSize.width
         }
-        
+
         // crop image to square
         let rect: CGRect = CGRect(x: posX, y: posY, width: cgwidth, height: cgheight)
         let imageRef: CGImage = contextImage.cgImage!.cropping(to: rect)!
         let image: UIImage = UIImage(cgImage: imageRef, scale: image.scale, orientation: image.imageOrientation)
-        
+
         return image
     }
-    
+
     func dismissResults() {
         push(results: [], position: .closed)
     }
-    
+
     func push(results: [VisualRecognitionV3.ClassifierResult], position: PulleyPosition = .partiallyRevealed) {
         guard let drawer = pulleyViewController?.drawerContentViewController as? ResultsTableViewController else {
             return
@@ -197,7 +197,7 @@ class ImageClassificationViewController: UIViewController {
         pulleyViewController?.setDrawerPosition(position: position, animated: true)
         drawer.tableView.reloadData()
     }
-    
+
     func showResultsUI(for image: UIImage) {
         imageView.image = image
         imageView.isHidden = false
@@ -207,7 +207,7 @@ class ImageClassificationViewController: UIViewController {
         choosePhotoButton.isHidden = true
         updateModelButton.isHidden = true
     }
-    
+
     func resetUI() {
         if captureSession != nil {
             simulatorTextView.isHidden = true
@@ -219,30 +219,30 @@ class ImageClassificationViewController: UIViewController {
             imageView.isHidden = false
             captureButton.isHidden = true
         }
-        
+
         closeButton.isHidden = true
         choosePhotoButton.isHidden = false
         updateModelButton.isHidden = false
         dismissResults()
     }
-    
+
     // MARK: - IBActions
-    
+
     @IBAction func capturePhoto() {
         photoOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
-    
+
     @IBAction func updateModel(_ sender: Any) {
         updateLocalModels(ids: VisualRecognitionConstants.modelIds)
     }
-    
+
     @IBAction func presentPhotoPicker() {
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .photoLibrary
         present(picker, animated: true)
     }
-    
+
     @IBAction func reset() {
         resetUI()
     }
@@ -256,15 +256,15 @@ extension ImageClassificationViewController {
         alert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     func modelUpdateFail(modelId: String, error: Error) {
         let error = error as NSError
         var errorMessage = ""
-        
+
         // 0 = probably wrong api key
         // 404 = probably no model
         // -1009 = probably no internet
-        
+
         switch error.code {
         case 0:
             errorMessage = "Please check your Visual Recognition API key in `Credentials.plist` and try again."
@@ -277,10 +277,10 @@ extension ImageClassificationViewController {
         default:
             errorMessage = "Please try again."
         }
-        
+
         // TODO: Do some more checks, does the model exist? is it still training? etc.
         // The service's response is pretty generic and just guesses.
-        
+
         showAlert("Unable to download model", alertMessage: errorMessage)
     }
 }
@@ -293,11 +293,11 @@ extension ImageClassificationViewController: UIImagePickerControllerDelegate, UI
 let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         picker.dismiss(animated: true)
-        
+
         guard let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage else {
             return
         }
-        
+
         classifyImage(image)
     }
 }
@@ -314,19 +314,17 @@ extension ImageClassificationViewController: AVCapturePhotoCaptureDelegate {
             let image = UIImage(data: photoData) else {
             return
         }
-        
+
         classifyImage(image)
     }
 }
 
-
-
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
+private func convertFromUIImagePickerControllerInfoKeyDictionary(_ input: [UIImagePickerController.InfoKey: Any]) -> [String: Any] {
 	return Dictionary(uniqueKeysWithValues: input.map {key, value in (key.rawValue, value)})
 }
 
 // Helper function inserted by Swift 4.2 migrator.
-fileprivate func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
+private func convertFromUIImagePickerControllerInfoKey(_ input: UIImagePickerController.InfoKey) -> String {
 	return input.rawValue
 }

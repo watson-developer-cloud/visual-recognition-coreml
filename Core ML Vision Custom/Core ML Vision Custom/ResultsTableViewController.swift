@@ -18,9 +18,9 @@ import UIKit
 import VisualRecognitionV3
 
 class ResultsTableViewController: UIViewController {
-    
+
     // MARK: - IBOutlets
-    
+
     @IBOutlet var tableView: UITableView!
     @IBOutlet var topSeparatorView: UIView!
     @IBOutlet var bottomSeperatorView: UIView!
@@ -31,7 +31,7 @@ class ResultsTableViewController: UIViewController {
             gripperView.layer.cornerRadius = 2.5
         }
     }
-    
+
     // MARK: - Variable Declarations
 
     var classifications = [VisualRecognitionV3.ClassifierResult]()
@@ -42,9 +42,9 @@ class ResultsTableViewController: UIViewController {
             tableView.contentInset = UIEdgeInsets(top: 0.0, left: 0.0, bottom: drawerBottomSafeArea, right: 0.0)
         }
     }
-    
+
     // MARK: - Override Functions
-    
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
@@ -54,7 +54,7 @@ class ResultsTableViewController: UIViewController {
             pulleyViewController?.feedbackGenerator = feedbackGenerator
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
@@ -68,37 +68,37 @@ extension ResultsTableViewController: PulleyDrawerViewControllerDelegate {
         // For devices with a bottom safe area, we want to make our drawer taller.
         return 33.0 + bottomSafeArea
     }
-    
+
     func partialRevealDrawerHeight(bottomSafeArea: CGFloat) -> CGFloat {
         // For devices with a bottom safe area, we want to make our drawer taller.
         let count = classifications.reduce(0, { (result, classifierResult) -> Int in
             return result + classifierResult.classes.count
         })
-        
+
         return min(56.0 * CGFloat(count) + 33.0 + bottomSafeArea, 264.0 + bottomSafeArea)
     }
-    
+
     func supportedDrawerPositions() -> [PulleyPosition] {
          // This is the same as: [.open, .partiallyRevealed, .collapsed, .closed]
         return PulleyPosition.all
     }
-    
+
     func drawerPositionDidChange(drawer: PulleyViewController, bottomSafeArea: CGFloat) {
         // We want to know about the safe area to customize our UI.
         drawerBottomSafeArea = bottomSafeArea
-        
+
         if drawer.drawerPosition == .collapsed {
             headerSectionHeightConstraint.constant = 33.0 + drawerBottomSafeArea
         } else {
             headerSectionHeightConstraint.constant = 33.0
         }
-        
+
         // Handle tableview scrolling
         tableView.isScrollEnabled = drawer.drawerPosition == .open
         topSeparatorView.isHidden = false
         bottomSeperatorView.isHidden = true
     }
-    
+
     func drawerDisplayModeDidChange(drawer: PulleyViewController) {
         gripperTopConstraint.isActive = drawer.currentDisplayMode == .bottomDrawer
     }
@@ -113,27 +113,27 @@ extension ResultsTableViewController: UITableViewDataSource {
         }
         return classifications[section].classes.count
     }
-    
+
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if classifications.count <= 1 {
             return nil
         }
         return classifications[section].name
     }
-    
+
     func numberOfSections(in tableView: UITableView) -> Int {
         return classifications.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellDefault", for: indexPath) as! ResultTableViewCell
-        
+
         let score = classifications[indexPath.section].classes[indexPath.item].score
 
         cell.label.text = classifications[indexPath.section].classes[indexPath.item].className
         cell.progress.progress = CGFloat(score)
         cell.score.text = String(format: "%.2f", score)
-        
+
         return cell
     }
 }
