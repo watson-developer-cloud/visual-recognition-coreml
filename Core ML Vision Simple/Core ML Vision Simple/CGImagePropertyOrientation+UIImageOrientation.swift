@@ -25,7 +25,7 @@ extension CGImagePropertyOrientation {
      
      - Tag: ConvertOrientation
      */
-    init(_ orientation: UIImageOrientation) {
+    init(_ orientation: UIImage.Orientation) {
         switch orientation {
         case .up: self = .up
         case .upMirrored: self = .upMirrored
@@ -38,4 +38,3 @@ extension CGImagePropertyOrientation {
         }
     }
 }
-
