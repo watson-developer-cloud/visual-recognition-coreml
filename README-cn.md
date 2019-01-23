@@ -39,15 +39,15 @@
 
 ### 训练模型
 1.  在 Watson Studio 中的 Visual Recognition 实例概述页面上，单击 Custom 框中的 **Create Model**。
-1.  如果尚未将任何项目与您创建的 Visual Recognition 实例关联，将会创建一个项目。请将项目命名为 `Custom Core ML`，然后单击 **Create**。 
+1.  如果尚未将任何项目与您创建的 Visual Recognition 实例关联，将会创建一个项目。请将项目命名为 `Custom Core ML`，然后单击 **Create**。
 
     **提示**：如果未定义存储，请单击 **refresh**。
 1.  将每个样本图像 .zip 文件从 `Training Images` 目录上传至页面右侧的数据窗格中。单击数据窗格中的 **Browse** 按钮，将 `hdmi_male.zip` 文件添加到模型中。同时将 `usb_male.zip`、`thunderbolt_male.zip` 和 `vga_male.zip` 文件添加到模型中。
 1.  上传这些文件后，从每个文件旁的菜单中选择 **Add to model**，然后单击 **Train Model**。
 
 ### 复制模型 ID 和 API 密钥
-1.  在 Watson Studio 中的自定义模型概述页面上，单击 Visual Recognition 实例名称（位于 Associated Service 旁）。 
-1.  向下滚动以查找刚才创建的 **Custom Core ML** 分类器。 
+1.  在 Watson Studio 中的自定义模型概述页面上，单击 Visual Recognition 实例名称（位于 Associated Service 旁）。
+1.  向下滚动以查找刚才创建的 **Custom Core ML** 分类器。
 1.  复制分类器的 **Model ID**。
 1.  在 Watson Studio 中的 Visual Recognition 实例概述页面上，单击 **Credentials** 选项卡，然后单击 **View credentials**。复制服务的 `api_key`。
 
@@ -57,14 +57,14 @@
 1.  复制 **api_key**，并将其粘贴到 [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift)文件的 **apiKey** 属性中。
 
 ### 下载 Watson Swift SDK
-使用 Carthage 依赖关系管理器来下载和构建 Watson Swift SDK。
+使用 Cocoapods 依赖关系管理器来下载和构建 Watson Swift SDK。
 
-1.  安装 [Carthage](https://github.com/Carthage/Carthage#installing-carthage)。
+1.  安装 [Cocoapods](https://cocoapods.org/)。
 1.  打开终端窗口，浏览至 `Core ML Vision Custom` 目录。
 1.  运行以下命令以下载和构建 Watson Swift SDK：
 
     ```bash
-    carthage bootstrap --platform iOS
+    pod install
     ```
 
 **提示：** 定期下载 SDK 更新，以便与此项目的任何更新保持同步
@@ -92,7 +92,7 @@
 - [Apple 机器学习](https://developer.apple.com/machine-learning/)
 - [Core ML 文档](https://developer.apple.com/documentation/coreml)
 - [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
-- [IBM Cloud](https://bluemix.net)
+- [IBM Cloud](https://cloud.ibm.com)
 
 [vizreq_with_discovery]: https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/
 [xcode_download]: https://developer.apple.com/xcode/downloads/

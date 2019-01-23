@@ -14,30 +14,14 @@
 		2308B8F520F66151009C7CBD /* UIViewController+PulleyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F020F66151009C7CBD /* UIViewController+PulleyViewController.swift */; };
 		2308B8F620F66151009C7CBD /* PulleyPassthroughScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F120F66151009C7CBD /* PulleyPassthroughScrollView.swift */; };
 		2308B8F720F66151009C7CBD /* UIView+constrainToParent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2308B8F220F66151009C7CBD /* UIView+constrainToParent.swift */; };
+		2757C0506D2CFDAD1CD46E9A /* Pods_Core_ML_Vision_Custom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D584BD5CB71B1640556C664A /* Pods_Core_ML_Vision_Custom.framework */; };
 		2D6D8B1F1FDF53FD00C3A77B /* ImageClassificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6D8B1E1FDF53FD00C3A77B /* ImageClassificationViewController.swift */; };
 		2D7B571B20509EE6009ACA53 /* SwiftSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D7B571A20509EE6009ACA53 /* SwiftSpinner.swift */; };
 		2DBDD2741FCF7F88004A6DC1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DBDD2731FCF7F88004A6DC1 /* AppDelegate.swift */; };
 		2DBDD27E1FCF7F88004A6DC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27D1FCF7F88004A6DC1 /* Assets.xcassets */; };
 		2DBDD2811FCF7F88004A6DC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DBDD27F1FCF7F88004A6DC1 /* LaunchScreen.storyboard */; };
 		2DC5F1371FD5F3200063B2D5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2DC5F1361FD5F3200063B2D5 /* Main.storyboard */; };
-		92FB01322147212C00F7004B /* RestKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92FB01302147211600F7004B /* RestKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		92FB01352147232E00F7004B /* VisualRecognitionV3.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 92FB01332147232800F7004B /* VisualRecognitionV3.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		71C8518220655A9000D855B2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				92FB01352147232E00F7004B /* VisualRecognitionV3.framework in Embed Frameworks */,
-				92FB01322147212C00F7004B /* RestKit.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2308B8E920F6613A009C7CBD /* ResultsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsTableViewController.swift; sourceTree = "<group>"; };
@@ -55,8 +39,9 @@
 		2DBDD2801FCF7F88004A6DC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2DBDD2821FCF7F88004A6DC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2DC5F1361FD5F3200063B2D5 /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		92FB01302147211600F7004B /* RestKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RestKit.framework; path = Carthage/Build/iOS/RestKit.framework; sourceTree = SOURCE_ROOT; };
-		92FB01332147232800F7004B /* VisualRecognitionV3.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VisualRecognitionV3.framework; path = Carthage/Build/iOS/VisualRecognitionV3.framework; sourceTree = SOURCE_ROOT; };
+		7C703C11EF7C531FE940DDED /* Pods-Core ML Vision Custom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core ML Vision Custom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core ML Vision Custom/Pods-Core ML Vision Custom.release.xcconfig"; sourceTree = "<group>"; };
+		A23164D1529249DEA24E0288 /* Pods-Core ML Vision Custom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core ML Vision Custom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core ML Vision Custom/Pods-Core ML Vision Custom.debug.xcconfig"; sourceTree = "<group>"; };
+		D584BD5CB71B1640556C664A /* Pods_Core_ML_Vision_Custom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_ML_Vision_Custom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +49,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2757C0506D2CFDAD1CD46E9A /* Pods_Core_ML_Vision_Custom.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,8 +81,9 @@
 			isa = PBXGroup;
 			children = (
 				2DBDD2721FCF7F88004A6DC1 /* Core ML Vision Custom */,
-				92FB012F2147210100F7004B /* Frameworks */,
 				2DBDD2711FCF7F88004A6DC1 /* Products */,
+				6F1810CDBF82E24117984E67 /* Pods */,
+				365D29D65A1AEF0FCB4E6973 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -124,13 +111,21 @@
 			path = "Core ML Vision Custom";
 			sourceTree = "<group>";
 		};
-		92FB012F2147210100F7004B /* Frameworks */ = {
+		365D29D65A1AEF0FCB4E6973 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				92FB01332147232800F7004B /* VisualRecognitionV3.framework */,
-				92FB01302147211600F7004B /* RestKit.framework */,
+				D584BD5CB71B1640556C664A /* Pods_Core_ML_Vision_Custom.framework */,
 			);
-			path = Frameworks;
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		6F1810CDBF82E24117984E67 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A23164D1529249DEA24E0288 /* Pods-Core ML Vision Custom.debug.xcconfig */,
+				7C703C11EF7C531FE940DDED /* Pods-Core ML Vision Custom.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,10 +135,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2DBDD2851FCF7F88004A6DC1 /* Build configuration list for PBXNativeTarget "Core ML Vision Custom" */;
 			buildPhases = (
+				3A56CEEE051D0031AAD8021D /* [CP] Check Pods Manifest.lock */,
 				2DBDD26C1FCF7F88004A6DC1 /* Sources */,
 				2DBDD26D1FCF7F88004A6DC1 /* Frameworks */,
 				2DBDD26E1FCF7F88004A6DC1 /* Resources */,
-				71C8518220655A9000D855B2 /* Embed Frameworks */,
+				2502DF4C8F31E0D404A440DC /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,7 +163,7 @@
 					2DBDD26F1FCF7F88004A6DC1 = {
 						CreatedOnToolsVersion = 9.0;
 						LastSwiftMigration = 1010;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -201,6 +197,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2502DF4C8F31E0D404A440DC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Core ML Vision Custom/Pods-Core ML Vision Custom-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/IBMWatsonRestKit/RestKit.framework",
+				"${BUILT_PRODUCTS_DIR}/IBMWatsonVisualRecognitionV3/VisualRecognition.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RestKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/VisualRecognition.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Core ML Vision Custom/Pods-Core ML Vision Custom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		3A56CEEE051D0031AAD8021D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Core ML Vision Custom-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2DBDD26C1FCF7F88004A6DC1 /* Sources */ = {
@@ -347,18 +392,17 @@
 		};
 		2DBDD2861FCF7F88004A6DC1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A23164D1529249DEA24E0288 /* Pods-Core ML Vision Custom.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Custom";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -366,18 +410,17 @@
 		};
 		2DBDD2871FCF7F88004A6DC1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C703C11EF7C531FE940DDED /* Pods-Core ML Vision Custom.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/Carthage/Build/iOS",
-				);
+				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "$(SRCROOT)/Core ML Vision Custom/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.ibm.watson.developer-cloud.Core-ML-Vision-Custom";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

@@ -16,7 +16,7 @@
 
 import UIKit
 import AVFoundation
-import VisualRecognitionV3
+import VisualRecognition
 
 struct VisualRecognitionConstants {
     static let apikey = ""     // The IAM apikey
@@ -189,7 +189,7 @@ class ImageClassificationViewController: UIViewController {
         push(results: [], position: .closed)
     }
 
-    func push(results: [VisualRecognitionV3.ClassifierResult], position: PulleyPosition = .partiallyRevealed) {
+    func push(results: [ClassifierResult], position: PulleyPosition = .partiallyRevealed) {
         guard let drawer = pulleyViewController?.drawerContentViewController as? ResultsTableViewController else {
             return
         }

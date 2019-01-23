@@ -4,5 +4,5 @@
 # Xcode - User files
 *xcuserdata/
 
-# Carthage
-Core\ ML\ Vision\ Custom/Carthage/
+# Cocoapods
+Core\ ML\ Vision\ Custom/Pods

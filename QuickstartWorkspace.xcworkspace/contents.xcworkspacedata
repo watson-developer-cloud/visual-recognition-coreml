@@ -7,4 +7,7 @@
    <FileRef
       location = "group:Core ML Vision Custom/Core ML Vision Custom.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Core ML Vision Custom/Pods/Pods.xcodeproj">
+   </FileRef>
 </Workspace>

@@ -1,0 +1,20 @@
+PODS:
+  - IBMWatsonRestKit (2.0.0)
+  - IBMWatsonVisualRecognitionV3 (1.3.1):
+    - IBMWatsonRestKit (~> 2.0.0)
+
+DEPENDENCIES:
+  - IBMWatsonVisualRecognitionV3 (~> 1.3.1)
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - IBMWatsonRestKit
+    - IBMWatsonVisualRecognitionV3
+
+SPEC CHECKSUMS:
+  IBMWatsonRestKit: 0a8d0f2f1cc757a0231729e9206e0b774cda0997
+  IBMWatsonVisualRecognitionV3: b64efa95c24dfeeb7f426e09aaa52866de65860a
+
+PODFILE CHECKSUM: 830a2e9a06b1930c99e2ecc4fef7cad907e031e4
+
+COCOAPODS: 1.5.3

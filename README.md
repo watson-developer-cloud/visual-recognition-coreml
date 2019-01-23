@@ -42,7 +42,7 @@ The second part of this project builds from the first part and trains a Visual R
 1.  If a project is not yet associated with the Visual Recognition instance you created, a project is created. Name your project `Custom Core ML` and click **Create**.
 
     **Tip**: If no storage is defined, click **refresh**.
-1.  Upload each .zip file of sample images from the `Training Images` directory onto the data pane on the right side of the page.  Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data pane. Also add the `usb_male.zip`, `thunderbolt_male.zip`, and `vga_male.zip` files to your model.
+1.  Navigate to the **Assets** tab and upload each .zip file of sample images from the `Training Images` directory onto the data pane on the right side of the page.  Add the `hdmi_male.zip` file to your model by clicking the **Browse** button in the data pane. Also add the `usb_male.zip`, `thunderbolt_male.zip`, and `vga_male.zip` files to your model.
 1.  After the files are uploaded, select **Add to model** from the menu next to each file, and then click **Train Model**.
 
 ### Copy your Model ID and API Key
@@ -59,17 +59,17 @@ The second part of this project builds from the first part and trains a Visual R
 1.  Copy either your **api_key** or **apikey** and paste it into either the **api_key** or **apikey** property in the  [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift) file.
 
 ### Downloading the Watson Swift SDK
-Use the Carthage dependency manager to download and build the Watson Swift SDK.
+Use the Cocoapods dependency manager to download and build the Watson Swift SDK.  The Watson Swift SDK can also be installed via [Carthage](https://github.com/watson-developer-cloud/swift-sdk#carthage) and [Swift Package Manager](https://github.com/watson-developer-cloud/swift-sdk#swift-package-manager).
 
-1.  Install [Carthage](https://github.com/Carthage/Carthage#installing-carthage).
+1.  Install [Cocoapods](https://cocoapods.org/).
 1.  Open a terminal window and navigate to the `Core ML Vision Custom` directory.
 1.  Run the following command to download and build the Watson Swift SDK:
 
     ```bash
-    carthage bootstrap --platform iOS
+    pod install
     ```
 
-**Tip:** Regularly download updates of the SDK so you stay in sync with any updates to this project.  If you are using a different Swift version from the SDK, add the `--no-use-binaries` flag to the above command.
+**Tip:** Regularly download updates of the SDK so you stay in sync with any updates to this project.  If you have updated to a new version, you may need to run `pod repo update` before installing.
 
 ### Testing the custom model
 
