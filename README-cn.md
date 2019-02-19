@@ -52,7 +52,7 @@
 1.  在 Watson Studio 中的 Visual Recognition 实例概述页面上，单击 **Credentials** 选项卡，然后单击 **View credentials**。复制服务的 `api_key`。
 
 ### 将 classifierId 和 apiKey 添加到项目中
-1.  在 XCode 中打开项目。
+1.  在 Xcode 中打开项目。
 1.  复制 **Model ID**，并将其粘贴到 [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift)文件的 **classifierID** 属性中。
 1.  复制 **api_key**，并将其粘贴到 [ImageClassificationViewController](../master/Core%20ML%20Vision%20Custom/Core%20ML%20Vision%20Custom/ImageClassificationViewController.swift)文件的 **apiKey** 属性中。
 
