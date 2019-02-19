@@ -9,7 +9,7 @@
 - **Core ML Vision Simple**：利用 Visual Recognition 在本地对图像进行分类。
 - **Core ML Vision Custom**：训练自定义 Visual Recognition 模型，实现更专业化的分类。
 
-## 准确工作
+## 准备工作
 
 确保已安装 [Xcode 9][xcode_download] 或更高版本以及 iOS 11.0 或更高版本。这些是支持 Core ML 所必需的版本。
 
