@@ -1,5 +1,6 @@
 excluded: # paths to ignore during linting. Takes precedence over `included`.
   - Core ML Vision Custom/Carthage
+  - Core ML Vision Custom/Pods
   - Core ML Vision Custom/Core ML Vision Custom/Supporting Files
 
 disabled_rules:

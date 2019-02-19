@@ -72,14 +72,14 @@ Watson Swift SDK を使用することで、基礎となる Core ML フレーム
 
 ### Watson Swift SDK をダウンロードする
 
-Carthage 依存管理マネージャーを使用して、Watson Swift SDK をダウンロードしてビルドします。
+Cocoapods 依存管理マネージャーを使用して、Watson Swift SDK をダウンロードしてビルドします。
 
-1.  [Carthage](https://github.com/Carthage/Carthage#installing-carthage) をインストール。
+1.  [Cocoapods](https://cocoapods.org/) をインストール。
 2.  ターミナルを開いて、`Core ML Vision Custom` ディレクトリに移動。
 3.  以下のコマンドを実行して、Watson Swift SDK をダウンロードし、ビルドする:
 
     ```bash
-    carthage bootstrap --platform iOS
+    pod install
     ```
 
     **Tip:** SDK のアップデートを定期的にダウンロードして、このプロジェクトのアップデートと同期してください。
@@ -107,7 +107,7 @@ Carthage 依存管理マネージャーを使用して、Watson Swift SDK をダ
 - [Apple 機械学習](https://developer.apple.com/machine-learning/)
 - [Core ML ドキュメント](https://developer.apple.com/documentation/coreml)
 - [Watson Swift SDK](https://github.com/watson-developer-cloud/swift-sdk)
-- [IBM Cloud](https://bluemix.net)
+- [IBM Cloud](https://cloud.ibm.com)
 
 [vizreq_with_discovery]: https://github.com/watson-developer-cloud/visual-recognition-with-discovery-coreml/
 [xcode_download]: https://developer.apple.com/xcode/downloads/
