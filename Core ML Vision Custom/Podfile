@@ -9,6 +9,6 @@ target 'Core ML Vision Custom' do
   use_frameworks!
 
   # Pods for Core ML Vision Custom
-  pod 'IBMWatsonVisualRecognitionV3', '~> 1.3.1'
+  pod 'IBMWatsonVisualRecognitionV3', '~> 2.0.2'
 
 end
